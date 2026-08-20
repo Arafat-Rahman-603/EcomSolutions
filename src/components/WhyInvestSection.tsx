@@ -42,9 +42,9 @@ export default function WhyInvestSection({ onOpenApplication }: WhyInvestSection
   ];
 
   return (
-    <section id="why-invest" className="relative py-24 lg:py-32 bg-[#0E1013] overflow-hidden border-t border-white/[0.06]">
+    <section id="why-invest" className="relative py-24 lg:py-32 bg-[#0b0c0e] overflow-hidden border-t border-white/[0.05]">
       {/* Ambient background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-[#A79CC8]/06 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-[#A79CC8]/04 rounded-full blur-[180px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Headline */}
@@ -55,7 +55,7 @@ export default function WhyInvestSection({ onOpenApplication }: WhyInvestSection
               INVESTOR CONFIDENCE ARCHITECTURE
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-[#F3F3F1] leading-[1.12]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display tracking-tight text-[#F3F3F1] leading-[1.12]">
             We put your money to work, so you can put your{' '}
             <span className="text-gradient">mind at ease.</span>
           </h2>
@@ -69,7 +69,7 @@ export default function WhyInvestSection({ onOpenApplication }: WhyInvestSection
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-4 p-8 sm:p-10 rounded-3xl bg-[#141619] border border-white/[0.08] flex flex-col justify-between"
+            className="lg:col-span-4 p-8 sm:p-10 rounded-2xl bg-[#080808] border border-white/[0.07] flex flex-col justify-between"
           >
             <div className="space-y-6">
               <div className="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-[#D7A6B8]">
@@ -104,7 +104,7 @@ export default function WhyInvestSection({ onOpenApplication }: WhyInvestSection
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="lg:col-span-4 p-6 sm:p-8 rounded-3xl bg-[#17191D] border border-[#A79CC8]/20 shadow-[0_0_50px_rgba(167,156,200,0.1)] flex flex-col justify-between relative overflow-hidden"
+            className="lg:col-span-4 p-6 sm:p-8 rounded-2xl bg-[#0d0d0d] border border-[#A79CC8]/15 shadow-[0_0_40px_rgba(167,156,200,0.07)] flex flex-col justify-between relative overflow-hidden"
           >
             {/* Ambient glowing beam */}
             <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-64 h-32 bg-[#A79CC8]/15 rounded-full blur-2xl pointer-events-none" />
@@ -165,7 +165,7 @@ export default function WhyInvestSection({ onOpenApplication }: WhyInvestSection
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-4 p-8 sm:p-10 rounded-3xl bg-[#141619] border border-white/[0.08] flex flex-col justify-between"
+            className="lg:col-span-4 p-8 sm:p-10 rounded-2xl bg-[#080808] border border-white/[0.07] flex flex-col justify-between"
           >
             <div>
               <h4 className="text-xs font-mono uppercase tracking-wider text-[#A79CC8] mb-6">

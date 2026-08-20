@@ -1,17 +1,26 @@
 import type { Metadata } from 'next';
-import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
+import { Geist, Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import CustomCursor from '@/components/CustomCursor';
 
-const inter = Inter({
+const geist = Geist({
   subsets: ['latin'],
-  variable: '--font-sans',
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-geist',
   display: 'swap',
 });
 
-const jakarta = Plus_Jakarta_Sans({
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-heading',
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-mono',
   display: 'swap',
 });
 
@@ -56,8 +65,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jakarta.variable} scroll-smooth dark`}>
-      <body className="bg-[#0B0D0F] text-[#F3F3F1] min-h-screen antialiased selection:bg-[#A79CC8]/30 selection:text-[#F3F3F1] font-sans">
+    <html
+      lang="en"
+      className={`${geist.variable} ${inter.variable} ${jetbrainsMono.variable} scroll-smooth dark`}
+    >
+      <head />
+      <body
+        className="bg-[#0b0c0e] text-[#f2f2f0] min-h-screen antialiased selection:bg-[#a7a0cc]/25 selection:text-[#f2f2f0]"
+      >
         <CustomCursor />
         {children}
       </body>

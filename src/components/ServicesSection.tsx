@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import {
   ArrowUpRight,
   TrendingUp,
@@ -39,6 +40,8 @@ interface ServiceItem {
 
 export default function ServicesSection({ onOpenApplication }: ServicesSectionProps) {
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const [featuredActive, setFeaturedActive] = useState(0);
 
   const services: ServiceItem[] = [
     {
@@ -56,7 +59,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
       tags: ['Zero Inventory Risk', 'Automated Pricing Engine', 'Prime Delivery Routing'],
       gridClass: 'lg:col-span-8',
       cardVariant: 'large-horiz',
-      icon: '🛒',
+      icon: '/work/amazon.png',
       color: '#D7A6B8',
       highlightDetails: [
         'Proprietary US supplier integration to guarantee strict 2-3 day shipping compliance',
@@ -78,7 +81,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
       tags: ['Prime Badge', 'Wholesale Sourcing', 'Hands-Off Prep'],
       gridClass: 'lg:col-span-4',
       cardVariant: 'square',
-      icon: '📦',
+      icon: '/work/amazon.png',
       color: '#A79CC8',
       highlightDetails: [
         'Direct relationship building with top US distributors & brand authorizations',
@@ -100,7 +103,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
       tags: ['Top Rated Status', 'Automated Relisting', 'Global Shipping'],
       gridClass: 'lg:col-span-4',
       cardVariant: 'tall',
-      icon: '⚡',
+      icon: '/work/ebay.png',
       color: '#7F89C5',
       highlightDetails: [
         'Automated product sync across trending consumer electronics, tools, and home goods',
@@ -122,7 +125,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
       tags: ['Social Commerce', 'Zero Ad Spend Models', 'In-App Checkout'],
       gridClass: 'lg:col-span-8',
       cardVariant: 'medium',
-      icon: '🔥',
+      icon: '/work/fb-shop.png',
       color: '#D7A6B8',
       highlightDetails: [
         'Harness Meta algorithmic recommendations to drive repeat organic checkout sales',
@@ -144,7 +147,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
       tags: ['Less Competition', 'High Average Ticket', 'Curated Catalog'],
       gridClass: 'lg:col-span-7',
       cardVariant: 'wide-bottom',
-      icon: '💎',
+      icon: '/work/walmart.png',
       color: '#7F89C5',
       highlightDetails: [
         'Walmart seller account approval assistance and corporate structure onboarding',
@@ -166,7 +169,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
       tags: ['2-Day Badge', 'WFS Storage Sync', 'Premium Placement'],
       gridClass: 'lg:col-span-5',
       cardVariant: 'small-accent',
-      icon: '🚀',
+      icon: '/work/walmart.png',
       color: '#A79CC8',
       highlightDetails: [
         'Complete inventory prep and shipment dispatch directly into Walmart WFS hubs',
@@ -176,18 +179,284 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
     },
   ];
 
+  // Featured services for the layered card carousel
+  const featuredServices = [
+    {
+      id: 'feat-amazon',
+      title: 'Amazon Automation',
+      description: 'Build, operate, and scale your Amazon store with our full DFY management team. From product research to Prime-compliant fulfillment.',
+      image: '/work/amazon.png',
+      tag: 'Most Popular',
+      tagColor: '#D7A6B8',
+      marketplace: 'Amazon FBA & Dropship',
+      metric: '$84.9K /mo Avg.',
+    },
+    {
+      id: 'feat-walmart',
+      title: 'Walmart Automation',
+      description: "Tap into Walmart's 120M+ monthly shoppers. Less competition, higher average order value — we handle everything from approval to scaling.",
+      image: '/work/walmart.png',
+      tag: '2-Day Badge',
+      tagColor: '#7F89C5',
+      marketplace: 'Walmart WFS',
+      metric: '1/10th Competition',
+    },
+    {
+      id: 'feat-ebay',
+      title: 'eBay Automation',
+      description: 'High buyer volume with minimal seller restrictions. Our team manages full store operations, listings, and Top Rated Seller compliance.',
+      image: '/work/ebay.png',
+      tag: 'Top Rated Plus',
+      tagColor: '#A79CC8',
+      marketplace: 'eBay Global',
+      metric: '135M+ Active Buyers',
+    },
+    {
+      id: 'feat-facebook',
+      title: 'Facebook Shop Automation',
+      description: 'Social commerce with organic reach. We run your Facebook Shop with zero ad spend models, viral catalog placement, and hands-free checkout.',
+      image: '/work/fb-shop.png',
+      tag: 'Viral Organic',
+      tagColor: '#D7A6B8',
+      marketplace: 'Meta Commerce',
+      metric: '2.9B+ Reach',
+    },
+  ];
+
+  /* Auto-advance featured carousel every 7s, pause on hover */
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setFeaturedActive((prev) => (prev + 1) % featuredServices.length);
+    }, 7000);
+    return () => clearInterval(timer);
+  }, [isPaused, featuredServices.length]);
+
   return (
-    <section id="services" className="relative py-24 lg:py-32 bg-[#0B0D0F] overflow-hidden">
+    <section id="services" className="relative py-24 lg:py-32 bg-[#0b0c0e] overflow-hidden border-t border-white/[0.05]">
       {/* Background ambient lighting */}
-      <div className="absolute top-1/4 -right-40 w-96 h-96 bg-[#A79CC8]/08 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-1/3 -left-40 w-96 h-96 bg-[#D7A6B8]/08 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/4 -right-40 w-96 h-96 bg-[#a7a0cc]/04 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-1/3 -left-40 w-96 h-96 bg-[#d8a6b8]/04 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeading
           label="COMPREHENSIVE MARKETPLACE SOLUTIONS"
-          title="Our Popular Services"
-          subtitle="We build and manage scalable e-commerce businesses across the world's leading marketplaces with tailored operational frameworks."
+          title="Featured Services"
+          subtitle="Showcase and storytelling for our most in-demand automation programs."
         />
+
+        {/* ── FEATURED LAYERED CARD CAROUSEL ── */}
+        <div
+          className="mb-20 lg:mb-28"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          {/* Platform tab selectors */}
+          <div className="flex items-center justify-center gap-2 mb-10 flex-wrap">
+            {featuredServices.map((fs, idx) => (
+              <button
+                key={fs.id}
+                type="button"
+                onClick={() => setFeaturedActive(idx)}
+                className={`px-4 py-2 rounded-full text-xs font-medium border transition-all duration-300 cursor-pointer ${
+                  featuredActive === idx
+                    ? 'bg-[#111111] border-[#D7A6B8]/40 text-[#F3F3F1] shadow-[0_0_16px_rgba(215,166,184,0.2)]'
+                    : 'bg-transparent border-white/[0.07] text-[#555760] hover:text-[#8A8C94] hover:border-white/[0.14]'
+                }`}
+                style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}
+              >
+                {fs.title.split(' ')[0]}
+              </button>
+            ))}
+          </div>
+
+          {/* Layered card composition — desktop */}
+          <div className="hidden md:flex items-center justify-center relative h-[420px] lg:h-[460px]">
+            {featuredServices.map((fs, idx) => {
+              const N = featuredServices.length;
+              let offset = idx - featuredActive;
+              if (offset > N / 2) offset -= N;
+              if (offset < -N / 2) offset += N;
+              const absOffset = Math.abs(offset);
+              const isActive = offset === 0;
+              const isVisible = absOffset <= 1;
+
+              return (
+                <motion.div
+                  key={fs.id}
+                  animate={{
+                    x: offset * 280,
+                    scale: isActive ? 1 : 0.82,
+                    zIndex: isActive ? 10 : 5 - absOffset,
+                    opacity: isVisible ? (isActive ? 1 : 0.55) : 0,
+                    rotateY: offset * 8,
+                    pointerEvents: isVisible ? 'auto' : 'none',
+                  }}
+                  transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute w-[320px] lg:w-[380px] cursor-pointer"
+                  onClick={() => setFeaturedActive(idx)}
+                  style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
+                >
+                  <div
+                    className={`relative rounded-2xl overflow-hidden border transition-all duration-300 ${
+                      isActive
+                        ? 'bg-[#0a0a0a] border-white/[0.14] shadow-[0_30px_80px_rgba(0,0,0,0.8)]'
+                        : 'bg-[#080808] border-white/[0.06]'
+                    }`}
+                  >
+                    {/* Accent top bar on active */}
+                    {isActive && (
+                      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#D7A6B8]/60 to-transparent" />
+                    )}
+
+                    {/* Image */}
+                    <div className="relative h-44 lg:h-52 bg-gradient-to-b from-white/[0.025] to-transparent flex items-center justify-center p-8">
+                      <div className="relative w-full h-full">
+                        <Image
+                          src={fs.image}
+                          alt={fs.marketplace}
+                          fill
+                          className="object-contain drop-shadow-xl"
+                          sizes="380px"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Card content */}
+                    <div className="p-6 space-y-3">
+                      <div className="flex items-center justify-between gap-2">
+                        <span
+                          className="text-[10px] font-semibold uppercase tracking-wider"
+                          style={{
+                            color: fs.tagColor,
+                            fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
+                          }}
+                        >
+                          {fs.marketplace}
+                        </span>
+                        <span
+                          className="text-[9px] font-semibold px-2 py-0.5 rounded-full"
+                          style={{
+                            color: fs.tagColor,
+                            backgroundColor: `${fs.tagColor}15`,
+                            border: `1px solid ${fs.tagColor}25`,
+                            fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
+                          }}
+                        >
+                          {fs.tag}
+                        </span>
+                      </div>
+
+                      <h3
+                        className="text-xl lg:text-2xl font-semibold text-[#F3F3F1]"
+                        style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}
+                      >
+                        {fs.title}
+                      </h3>
+
+                      {isActive && (
+                        <motion.p
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ duration: 0.4 }}
+                          className="text-sm text-[#8A8C94] leading-relaxed"
+                          style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}
+                        >
+                          {fs.description}
+                        </motion.p>
+                      )}
+
+                      <div className="flex items-center justify-between pt-3 border-t border-white/[0.05]">
+                        <span
+                          className="text-xs font-mono text-[#555760]"
+                        >
+                          {fs.metric}
+                        </span>
+                        {isActive && (
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              onOpenApplication(fs.title);
+                            }}
+                            className="text-xs font-semibold px-4 py-2 rounded-full bg-gradient-to-r from-[#D7A6B8] via-[#A79CC8] to-[#7F89C5] text-black hover:shadow-[0_0_20px_rgba(215,166,184,0.4)] transition-all cursor-pointer"
+                            style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}
+                          >
+                            Apply Now
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* Mobile: horizontal scroll cards */}
+          <div className="md:hidden flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory -mx-4 px-4">
+            {featuredServices.map((fs) => (
+              <div
+                key={fs.id}
+                className="shrink-0 w-[280px] snap-center rounded-2xl bg-[#0a0a0a] border border-white/[0.08] overflow-hidden"
+              >
+                <div className="relative h-36 bg-white/[0.02] flex items-center justify-center p-6">
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={fs.image}
+                      alt={fs.marketplace}
+                      fill
+                      className="object-contain"
+                      sizes="280px"
+                    />
+                  </div>
+                </div>
+                <div className="p-4 space-y-2">
+                  <p className="text-[10px] text-[#A79CC8] uppercase tracking-wider font-semibold"
+                     style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}>
+                    {fs.marketplace}
+                  </p>
+                  <h3 className="text-base font-semibold text-[#F3F3F1]"
+                      style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}>
+                    {fs.title}
+                  </h3>
+                  <p className="text-xs text-[#8A8C94]" style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}>{fs.metric}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* ── END FEATURED CAROUSEL ── */}
+
+        {/* Explore All Services heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+          className="text-center mb-14"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] mb-5">
+            <div className="w-1.5 h-1.5 rounded-full bg-[#8188c2]" />
+            <span
+              className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#a1a1aa]"
+              style={{ fontFamily: 'var(--font-sans)' }}
+            >
+              FULL CATALOG
+            </span>
+          </div>
+          <h2
+            className="text-3xl sm:text-4xl lg:text-5xl leading-[1.08] font-display tracking-tight text-[#f2f2f0]"
+          >
+            Explore All <span className="text-gradient">Services</span>
+          </h2>
+          <p
+            className="mt-4 text-[#a1a1aa] text-base max-w-2xl mx-auto leading-relaxed"
+            style={{ fontFamily: 'var(--font-sans)' }}
+          >
+            Every service, from marketplace launch to scale — fully managed by our specialist teams.
+          </p>
+        </motion.div>
 
         {/* Asymmetrical Masonry Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
@@ -199,7 +468,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.6, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ y: -6 }}
-              className={`${service.gridClass} group relative rounded-3xl p-7 sm:p-9 bg-[#16181B] border border-white/[0.08] hover:border-white/[0.22] hover:bg-[#1A1D21] transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.4)] cursor-pointer`}
+              className={`${service.gridClass} group relative rounded-2xl p-7 sm:p-9 bg-[#080808] border border-white/[0.07] hover:border-white/[0.18] hover:bg-[#0d0d0d] transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.6)] cursor-pointer`}
               onClick={() => setSelectedService(service)}
             >
               {/* Subtle hover gradient glow inside card */}
@@ -212,8 +481,8 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
               <div>
                 <div className="flex items-center justify-between gap-4 mb-6">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-[#222426] border border-white/10 flex items-center justify-center text-2xl group-hover:scale-110 group-hover:border-[#A79CC8]/40 transition-all">
-                      {service.icon}
+                    <div className="relative w-12 h-12 rounded-2xl bg-[#1a1c1f] border border-white/10 flex items-center justify-center text-2xl group-hover:scale-110 group-hover:border-[#A79CC8]/40 transition-all">
+                      <Image src={service.icon} alt={service.marketplace} fill className="object-contain" sizes="40px" />
                     </div>
                     <div>
                       <span className="text-[11px] font-mono text-[#A79CC8] uppercase tracking-wider block">
@@ -282,14 +551,14 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedService(null)}
-              className="fixed inset-0 bg-[#0B0D0F]/80 backdrop-blur-xl"
+              className="fixed inset-0 bg-black/85 backdrop-blur-xl"
             />
 
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-2xl bg-[#14161A] border border-white/15 rounded-3xl p-6 sm:p-9 shadow-2xl z-10 my-8 overflow-hidden"
+              className="relative w-full max-w-2xl bg-[#080808] border border-white/[0.10] rounded-2xl p-6 sm:p-9 shadow-2xl z-10 my-8 overflow-hidden"
             >
               <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#D7A6B8] via-[#A79CC8] to-[#7F89C5]" />
 
@@ -301,8 +570,8 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
               </button>
 
               <div className="flex items-center gap-3 mb-4">
-                <span className="text-3xl p-2.5 rounded-2xl bg-[#1E2126] border border-white/10">
-                  {selectedService.icon}
+                <span className="relative w-12 h-12 sm:w-14 sm:h-14 p-2.5 rounded-2xl bg-[#1E2126] border border-white/10 flex-shrink-0 block">
+                  <Image src={selectedService.icon} alt={selectedService.marketplace} fill className="object-contain" sizes="40px" />
                 </span>
                 <div>
                   <span className="text-xs font-mono text-[#A79CC8] uppercase tracking-wider">

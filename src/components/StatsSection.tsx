@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import Image from 'next/image';
 
 function Counter({ end, suffix = '+', duration = 2 }: { end: number; suffix?: string; duration?: number }) {
   const [count, setCount] = useState(0);
@@ -75,9 +76,9 @@ export default function StatsSection() {
   ];
 
   return (
-    <section className="relative py-16 bg-[#0E1012] border-y border-white/[0.06] overflow-hidden">
+    <section className="relative py-16 bg-[#0b0c0e] border-y border-white/[0.05] overflow-hidden">
       {/* Ambient background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-32 bg-[#A79CC8]/05 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-32 bg-[#A79CC8]/03 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Statistics Grid with subtle vertical dividers */}
@@ -115,19 +116,35 @@ export default function StatsSection() {
             </span>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 opacity-75">
-            {marketplaces.map((m, i) => (
-              <div
-                key={m.name}
-                className="flex items-center gap-2.5 px-4 py-2 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/15 transition-colors"
-              >
-                <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#D7A6B8] to-[#7F89C5]" />
-                <span className="text-xs font-medium text-[#96989F]">{m.name}</span>
-                <span className="text-[10px] font-mono text-[#6E7078] bg-white/[0.04] px-1.5 py-0.5 rounded">
-                  {m.tag}
-                </span>
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 opacity-80 text-white">
+            {/* Amazon */}
+            <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.10] transition-colors">
+              <div className="relative w-16 h-6">
+                <Image src="/work/amazon.png" alt="Amazon" fill className="object-contain" sizes="64px" />
               </div>
-            ))}
+              <span className="text-[10px] font-mono text-gray-200 bg-white/[0.03] px-1.5 py-0.5 rounded">FBA & DS</span>
+            </div>
+            {/* Walmart */}
+            <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.10] transition-colors">
+              <div className="relative w-16 h-6">
+                <Image src="/work/walmart.png" alt="Walmart" fill className="object-contain" sizes="64px" />
+              </div>
+              <span className="text-[10px] font-mono text-white bg-white/[0.03] px-1.5 py-0.5 rounded">WFS Verified</span>
+            </div>
+            {/* eBay */}
+            <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.10] transition-colors">
+              <div className="relative w-16 h-6">
+                <Image src="/work/ebay.png" alt="eBay" fill className="object-contain" sizes="64px" />
+              </div>
+              <span className="text-[10px] font-mono text-white bg-white/[0.03] px-1.5 py-0.5 rounded">Top Rated+</span>
+            </div>
+            {/* Facebook */}
+            <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.10] transition-colors">
+              <div className="relative w-20 h-6">
+                <Image src="/work/fb-shop.png" alt="Facebook Shop" fill className="object-contain" sizes="80px" />
+              </div>
+              <span className="text-[10px] font-mono text-white bg-white/[0.03] px-1.5 py-0.5 rounded">Meta Verified</span>
+            </div>
           </div>
         </div>
       </div>

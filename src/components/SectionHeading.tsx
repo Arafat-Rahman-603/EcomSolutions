@@ -44,11 +44,11 @@ export default function SectionHeading({
       )}
 
       <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 20, filter: 'blur(6px)' }}
+        whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
         viewport={{ once: true, margin: '-50px' }}
-        transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-[#F3F3F1] leading-[1.12]"
+        transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display tracking-tight text-[#f2f2f0] leading-[1.08]"
       >
         {title}
       </motion.h2>
@@ -58,8 +58,9 @@ export default function SectionHeading({
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-4 md:mt-6 text-base sm:text-lg text-[#96989F] font-normal leading-relaxed"
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+          className="mt-4 md:mt-6 text-base sm:text-lg text-[#a1a1aa] font-normal leading-relaxed"
+          style={{ fontFamily: 'var(--font-sans)' }}
         >
           {subtitle}
         </motion.p>

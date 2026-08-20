@@ -16,9 +16,10 @@ export default function BenefitsSection({ onOpenApplication }: BenefitsSectionPr
       description:
         'We guide you through every step, from onboarding consultation and business setup to a personalized application process. We assist with entity formation, tax registration, and marketplace seller approval.',
       icon: Compass,
-      gradientBg: 'from-[#D7A6B8]/10 via-[#1A1C1F] to-[#141619]',
-      borderHighlight: 'border-[#D7A6B8]/30',
-      accentColor: '#D7A6B8',
+      cardBg: 'bg-[#121315]',
+      bgTint: '',
+      borderHighlight: 'border-[#d8a6b8]/20',
+      accentColor: '#d8a6b8',
       number: '01',
       highlights: ['Turnkey Account Setup', 'EIN & Reseller Cert Support', 'Dedicated Onboarding Director'],
     },
@@ -27,9 +28,10 @@ export default function BenefitsSection({ onOpenApplication }: BenefitsSectionPr
       description:
         'Once your business is running, our team manages the daily operations so you can focus on your time and priorities. Product sourcing, inventory replenishment, and customer support run autonomously.',
       icon: Clock,
-      gradientBg: 'from-[#A79CC8]/10 via-[#1A1C1F] to-[#141619]',
-      borderHighlight: 'border-[#A79CC8]/30',
-      accentColor: '#A79CC8',
+      cardBg: 'bg-[#a7a0cc]/08',
+      bgTint: 'bg-[#a7a0cc]/05',
+      borderHighlight: 'border-[#a7a0cc]/25',
+      accentColor: '#a7a0cc',
       number: '02',
       highlights: ['24/7 Automated Repricing', 'US Warehousing & Prep', 'Zero Daily Manual Work'],
     },
@@ -38,9 +40,10 @@ export default function BenefitsSection({ onOpenApplication }: BenefitsSectionPr
       description:
         'Our operation is built around transparency, accountability, and strong business values. You have full access to view invoices, profit margins, and performance metrics in real time with zero hidden markups.',
       icon: Shield,
-      gradientBg: 'from-[#7F89C5]/10 via-[#1A1C1F] to-[#141619]',
-      borderHighlight: 'border-[#7F89C5]/30',
-      accentColor: '#7F89C5',
+      cardBg: 'bg-[#121315]',
+      bgTint: '',
+      borderHighlight: 'border-[#8188c2]/20',
+      accentColor: '#8188c2',
       number: '03',
       highlights: ['Live Financial Dashboard', 'Audited Supplier Invoices', 'Strict Policy Compliance'],
     },
@@ -49,16 +52,17 @@ export default function BenefitsSection({ onOpenApplication }: BenefitsSectionPr
       description:
         'You work directly with our team. We maintain control over the operational process and do not rely on unnecessary outsourcing or third-party middlemen. Your account is handled by full-time vetted pros.',
       icon: Users,
-      gradientBg: 'from-[#D7A6B8]/08 via-[#A79CC8]/08 to-[#141619]',
-      borderHighlight: 'border-white/20',
-      accentColor: '#D7A6B8',
+      cardBg: 'bg-[#d8a6b8]/06',
+      bgTint: 'bg-[#d8a6b8]/04',
+      borderHighlight: 'border-[#d8a6b8]/25',
+      accentColor: '#d8a6b8',
       number: '04',
       highlights: ['In-House 300+ Operators', 'No Low-Quality Outsourcing', 'Dedicated Slack / WhatsApp Channel'],
     },
   ];
 
   return (
-    <section id="benefits" className="relative py-24 lg:py-32 bg-[#0E1012] overflow-hidden border-t border-white/[0.06]">
+    <section id="benefits" className="relative py-24 lg:py-32 bg-[#0b0c0e] overflow-hidden border-t border-white/[0.06]">
       {/* Background ambient lighting */}
       <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-[#A79CC8]/06 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-10 right-1/4 w-[400px] h-[400px] bg-[#D7A6B8]/06 rounded-full blur-[130px] pointer-events-none" />
@@ -76,12 +80,12 @@ export default function BenefitsSection({ onOpenApplication }: BenefitsSectionPr
             return (
               <motion.div
                 key={b.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={{ y: -6 }}
-                className={`group relative rounded-3xl p-8 sm:p-10 bg-gradient-to-br ${b.gradientBg} border border-white/[0.08] hover:${b.borderHighlight} transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-[0_10px_35px_rgba(0,0,0,0.5)]`}
+                initial={{ opacity: 0, y: 30, filter: 'blur(6px)' }}
+                whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+                whileHover={{ y: -4 }}
+                className={`group relative rounded-3xl p-8 sm:p-10 ${b.cardBg} border border-white/[0.08] hover:${b.borderHighlight} transition-all duration-400 flex flex-col justify-between overflow-hidden shadow-[0_10px_35px_rgba(0,0,0,0.5)]`}
               >
                 {/* Number Watermark */}
                 <span className="absolute top-6 right-8 text-6xl font-light tracking-tighter text-white/[0.03] group-hover:text-white/[0.08] transition-colors font-mono select-none pointer-events-none">

@@ -37,7 +37,7 @@ export default function PromiseSection() {
   ];
 
   return (
-    <section className="relative py-24 lg:py-32 bg-[#0B0D0F] overflow-hidden">
+    <section className="relative py-24 lg:py-32 bg-[#0b0c0e] overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-6xl h-48 bg-gradient-to-r from-[#D7A6B8]/05 via-[#A79CC8]/08 to-[#7F89C5]/05 rounded-full blur-[140px] pointer-events-none" />
 

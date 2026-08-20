@@ -56,7 +56,7 @@ export default function FAQSection({ onOpenApplication }: FAQSectionProps) {
   };
 
   return (
-    <section id="faq" className="relative py-24 lg:py-32 bg-[#0E1012] overflow-hidden border-t border-white/[0.06]">
+    <section id="faq" className="relative py-24 lg:py-32 bg-[#0b0c0e] overflow-hidden border-t border-white/[0.06]">
       {/* Ambient background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-80 bg-[#A79CC8]/05 rounded-full blur-[170px] pointer-events-none" />
 
