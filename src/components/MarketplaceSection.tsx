@@ -24,8 +24,8 @@ const platforms = [
     secondaryMetric: '18–28%',
     secondaryLabel: 'Net Margin',
     tag: 'Most Popular',
-    tagColor: '#D7A6B8',
-    color: '#D7A6B8',
+    tagColor: '#4A7BFF',
+    color: '#4A7BFF',
     bullets: [
       'US supplier network — 2–3 day shipping',
       '24/7 Buy-Box repricing across 5k+ SKUs',
@@ -44,8 +44,8 @@ const platforms = [
     secondaryMetric: '120M+',
     secondaryLabel: 'Monthly Visitors',
     tag: '2-Day Badge',
-    tagColor: '#7F89C5',
-    color: '#7F89C5',
+    tagColor: '#2D5ADB',
+    color: '#2D5ADB',
     bullets: [
       'Walmart seller approval & corporate setup',
       'WFS storage, prep, and 2-day delivery',
@@ -64,8 +64,8 @@ const platforms = [
     secondaryMetric: '3–5 Days',
     secondaryLabel: 'Launch Speed',
     tag: 'Top Rated Plus',
-    tagColor: '#A79CC8',
-    color: '#A79CC8',
+    tagColor: '#6B96FF',
+    color: '#6B96FF',
     bullets: [
       'Top Rated Seller status maintenance',
       'API tracking & automated relisting',
@@ -84,8 +84,8 @@ const platforms = [
     secondaryMetric: '0',
     secondaryLabel: 'Ad Spend Required',
     tag: 'Viral Organic',
-    tagColor: '#D7A6B8',
-    color: '#E0B5C4',
+    tagColor: '#6B96FF',
+    color: '#4A7BFF',
     bullets: [
       'Organic feed traffic + marketplace listings',
       'Direct US supplier order injection',
@@ -122,8 +122,8 @@ export default function MarketplaceSection({ onOpenApplication }: MarketplaceSec
       className="relative py-24 lg:py-32 bg-[#0b0c0e] overflow-hidden border-t border-white/[0.05]"
     >
       {/* Ambient lighting */}
-      <div className="absolute top-1/3 -left-40 w-[520px] h-[520px] bg-[#a7a0cc]/05 rounded-full blur-[180px] pointer-events-none" />
-      <div className="absolute bottom-1/4 -right-40 w-[440px] h-[440px] bg-[#d8a6b8]/04 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/3 -left-40 w-[520px] h-[520px] bg-[#6B96FF]/05 rounded-full blur-[180px] pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-40 w-[440px] h-[440px] bg-[#4A7BFF]/04 rounded-full blur-[150px] pointer-events-none" />
       <div
         className="absolute inset-0 opacity-[0.025] pointer-events-none"
         style={{
@@ -216,9 +216,9 @@ export default function MarketplaceSection({ onOpenApplication }: MarketplaceSec
               >
                 <defs>
                   <linearGradient id="connGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#a7a0cc" stopOpacity="0" />
-                    <stop offset="50%" stopColor="#a7a0cc" stopOpacity="0.35" />
-                    <stop offset="100%" stopColor="#d8a6b8" stopOpacity="0" />
+                    <stop offset="0%" stopColor="#6B96FF" stopOpacity="0" />
+                    <stop offset="50%" stopColor="#6B96FF" stopOpacity="0.35" />
+                    <stop offset="100%" stopColor="#4A7BFF" stopOpacity="0" />
                   </linearGradient>
                 </defs>
                 <motion.path
@@ -278,8 +278,8 @@ export default function MarketplaceSection({ onOpenApplication }: MarketplaceSec
                   />
 
                   <div className="relative space-y-6">
-                    {/* Header: logo + tag + marketplace */}
-                    <header className="flex items-start justify-between gap-4">
+                    {/* Header: logo + marketplace */}
+                    <header className="flex items-start gap-4">
                       <div className="flex items-center gap-4 min-w-0">
                         <div
                           className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-[#0a0b0d] border border-white/[0.08] flex items-center justify-center shrink-0 p-3 shadow-inner"
@@ -306,16 +306,6 @@ export default function MarketplaceSection({ onOpenApplication }: MarketplaceSec
                           </h3>
                         </div>
                       </div>
-                      <span
-                        className="text-[10px] font-semibold px-2.5 py-1 rounded-full shrink-0"
-                        style={{
-                          color: active.tagColor,
-                          backgroundColor: `${active.tagColor}14`,
-                          border: `1px solid ${active.tagColor}26`,
-                        }}
-                      >
-                        {active.tag}
-                      </span>
                     </header>
 
                     {/* Description */}
@@ -375,7 +365,7 @@ export default function MarketplaceSection({ onOpenApplication }: MarketplaceSec
                       <MagneticButton
                         variant="primary"
                         onClick={() => onOpenApplication(`${active.name} Automation`)}
-                        className="w-full sm:w-auto !py-3.5 !px-7 text-sm shadow-[0_0_30px_rgba(215,166,184,0.25)]"
+                        className="w-full sm:w-auto !py-3.5 !px-7 text-sm shadow-[0_0_30px_rgba(74,123,255,0.25)]"
                       >
                         <span style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}>
                           Launch {active.name} Store
@@ -398,7 +388,7 @@ export default function MarketplaceSection({ onOpenApplication }: MarketplaceSec
                       setActiveIdx(i);
                     }}
                     aria-label={`Select ${p.name}`}
-                    className="group relative h-1.5 rounded-full overflow-hidden transition-all duration-300"
+                    className="group relative h-1.5 rounded-md overflow-hidden transition-all duration-300"
                     style={{
                       width: i === activeIdx ? '28px' : '8px',
                       backgroundColor: i === activeIdx ? `${p.color}40` : 'rgba(255,255,255,0.06)',
@@ -407,7 +397,7 @@ export default function MarketplaceSection({ onOpenApplication }: MarketplaceSec
                     {i === activeIdx && (
                       <motion.span
                         layoutId="pip-fill"
-                        className="absolute inset-0 rounded-full"
+                        className="absolute inset-0 rounded-md"
                         style={{ backgroundColor: p.color }}
                         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                       />
@@ -431,7 +421,7 @@ export default function MarketplaceSection({ onOpenApplication }: MarketplaceSec
                   className="flex items-center gap-3 px-4 py-3.5 rounded-2xl bg-[#080808] border border-white/[0.06] hover:border-white/[0.12] transition-colors duration-200"
                 >
                   <div className="w-9 h-9 rounded-xl bg-white/[0.03] border border-white/[0.05] flex items-center justify-center shrink-0">
-                    <Icon className="w-4 h-4 text-[#A79CC8]" />
+                    <Icon className="w-4 h-4 text-[#6B96FF]" />
                   </div>
                   <span
                     className="text-xs sm:text-sm text-[#8A8C94]"
@@ -452,13 +442,13 @@ export default function MarketplaceSection({ onOpenApplication }: MarketplaceSec
               className="relative rounded-2xl p-5 overflow-hidden"
               style={{
                 background:
-                  'linear-gradient(135deg, rgba(215,166,184,0.07) 0%, rgba(167,160,204,0.05) 50%, rgba(127,137,197,0.07) 100%)',
+                  'linear-gradient(135deg, rgba(74,123,255,0.07) 0%, rgba(107,150,255,0.05) 50%, rgba(45,90,219,0.07) 100%)',
                 border: '1px solid rgba(255,255,255,0.07)',
               }}
             >
-              <div className="absolute -top-20 -right-20 w-44 h-44 rounded-full blur-3xl bg-[#a7a0cc]/20 pointer-events-none" />
+              <div className="absolute -top-20 -right-20 w-44 h-44 rounded-full blur-3xl bg-[#6B96FF]/20 pointer-events-none" />
               <div className="relative">
-                <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#A79CC8] mb-2">
+                <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#6B96FF] mb-2">
                   Unified Control Plane
                 </div>
                 <div

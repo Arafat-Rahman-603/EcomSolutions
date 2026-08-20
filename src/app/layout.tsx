@@ -71,7 +71,7 @@ export default function RootLayout({
     >
       <head />
       <body
-        className="bg-[#0b0c0e] text-[#f2f2f0] min-h-screen antialiased selection:bg-[#a7a0cc]/25 selection:text-[#f2f2f0]"
+        className="bg-[#0b0c0e] text-[#f2f2f0] min-h-screen antialiased selection:bg-[#4A7BFF]/25 selection:text-[#f2f2f0]"
       >
         <CustomCursor />
         {children}

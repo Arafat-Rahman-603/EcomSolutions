@@ -78,7 +78,7 @@ export default function StatsSection() {
   return (
     <section className="relative py-16 bg-[#0b0c0e] border-y border-white/[0.05] overflow-hidden">
       {/* Ambient background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-32 bg-[#A79CC8]/03 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-32 bg-[#6B96FF]/03 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Statistics Grid with subtle vertical dividers */}
@@ -98,7 +98,7 @@ export default function StatsSection() {
                 {stat.prefix && <span>{stat.prefix}</span>}
                 <Counter end={stat.value} suffix={stat.suffix} />
               </div>
-              <div className="mt-2 text-base font-semibold text-[#A79CC8] tracking-wide">
+              <div className="mt-2 text-base font-semibold text-[#6B96FF] tracking-wide">
                 {stat.label}
               </div>
               <div className="mt-1 text-xs text-[#6E7078] max-w-[180px]">

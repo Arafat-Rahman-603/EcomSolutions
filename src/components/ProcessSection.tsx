@@ -32,7 +32,7 @@ export default function ProcessSection({ onOpenApplication }: ProcessSectionProp
       subtitle: 'Regardless of the service, the first step is building the operational foundation.',
       description:
         'We set up your legal business structure, verify marketplace seller privileges, assign your dedicated account management team, and integrate our automated software stack.',
-      color: '#D7A6B8',
+      color: '#6B96FF',
       items: [
         { label: 'Business & Entity Setup', detail: 'LLC, EIN, Resale Certificate, and banking integration.' },
         { label: 'Team Preparation', detail: 'Dedicated account director, sourcing leads, and fulfillment staff.' },
@@ -63,7 +63,7 @@ export default function ProcessSection({ onOpenApplication }: ProcessSectionProp
       subtitle: 'Our team works on the account daily and focuses on maintaining consistent operations.',
       description:
         'Our specialists take over the day-to-day workload. From daily product research and order dispatching to Buy Box optimization and rapid customer service resolution.',
-      color: '#A79CC8',
+      color: '#4A7BFF',
       items: [
         { label: 'Daily Product Operations', detail: 'Constant algorithmic sourcing of high-demand, low-competition items.' },
         { label: 'Store Monitoring & Health', detail: '24/7 surveillance of metrics, order defect rate (ODR), and shipping compliance.' },
@@ -94,7 +94,7 @@ export default function ProcessSection({ onOpenApplication }: ProcessSectionProp
       subtitle: 'We focus on improving the long-term value and growth of your business.',
       description:
         'Once stability is established, we systematically compound your revenue through catalog expansion, multi-channel replication, supplier exclusivity contracts, and working capital optimization.',
-      color: '#7F89C5',
+      color: '#2D5ADB',
       items: [
         { label: 'Catalog & Channel Expansion', detail: 'Cross-listing verified winning products to Walmart, eBay, and FB.' },
         { label: 'Operational Optimization', detail: 'Negotiating direct volume pricing discounts with top manufacturers.' },
@@ -124,7 +124,7 @@ export default function ProcessSection({ onOpenApplication }: ProcessSectionProp
   return (
     <section id="how-it-works" className="relative py-24 lg:py-32 bg-[#0B0D0F] overflow-hidden">
       {/* Ambient background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-64 bg-[#A79CC8]/06 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-64 bg-[#4A7BFF]/06 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeading
@@ -151,12 +151,12 @@ export default function ProcessSection({ onOpenApplication }: ProcessSectionProp
                   {isActive && (
                     <motion.div
                       layoutId="activeStepIndicator"
-                      className="absolute inset-0 rounded-2xl bg-[#222428] border border-white/15 shadow-[0_0_20px_rgba(167,156,200,0.15)]"
+                      className="absolute inset-0 rounded-2xl bg-[#222428] border border-white/15 shadow-[0_0_20px_rgba(74,123,255,0.15)]"
                       transition={{ type: 'spring', damping: 25, stiffness: 300 }}
                     />
                   )}
 
-                  <span className="relative z-10 font-mono text-xs text-[#A79CC8] hidden sm:inline">
+                  <span className="relative z-10 font-mono text-xs text-[#4A7BFF] hidden sm:inline">
                     {step.id}
                   </span>
                   <span className="relative z-10 text-xs sm:text-sm tracking-tight truncate">
@@ -189,7 +189,7 @@ export default function ProcessSection({ onOpenApplication }: ProcessSectionProp
                     {current.id}
                   </span>
                   <div>
-                    <span className="text-[11px] font-mono text-[#A79CC8] uppercase tracking-wider block">
+                    <span className="text-[11px] font-mono text-[#4A7BFF] uppercase tracking-wider block">
                       Execution Phase
                     </span>
                     <h3 className="text-2xl sm:text-3xl font-medium text-[#F3F3F1] mt-0.5">
@@ -210,7 +210,7 @@ export default function ProcessSection({ onOpenApplication }: ProcessSectionProp
                       className="p-3.5 rounded-2xl bg-[#111315] border border-white/5 hover:border-white/15 transition-colors"
                     >
                       <div className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-[#D7A6B8] shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-[#6B96FF] shrink-0" />
                         <h4 className="text-sm font-semibold text-[#F3F3F1]">{item.label}</h4>
                       </div>
                       <p className="mt-1 text-xs text-[#96989F] pl-6 leading-relaxed">
@@ -230,24 +230,12 @@ export default function ProcessSection({ onOpenApplication }: ProcessSectionProp
               />
 
               <div>
-                <div className="flex items-center justify-between pb-4 border-b border-white/[0.08] mb-6">
-                  <div>
-                    <span className="text-[10px] font-mono text-[#6E7078] uppercase block">
-                      TELEMETRY SIMULATION
-                    </span>
-                    <span className="text-base font-semibold text-[#F3F3F1] tracking-tight">
-                      {current.visual.heading}
-                    </span>
-                  </div>
-                  <span
-                    className="text-xs font-mono px-3 py-1 rounded-full border"
-                    style={{
-                      borderColor: `${current.color}40`,
-                      color: current.color,
-                      backgroundColor: `${current.color}10`,
-                    }}
-                  >
-                    {current.visual.badge}
+                <div className="pb-4 border-b border-white/[0.08] mb-6">
+                  <span className="text-[10px] font-mono text-[#6E7078] uppercase block">
+                    TELEMETRY SIMULATION
+                  </span>
+                  <span className="text-base font-semibold text-[#F3F3F1] tracking-tight">
+                    {current.visual.heading}
                   </span>
                 </div>
 
@@ -267,7 +255,7 @@ export default function ProcessSection({ onOpenApplication }: ProcessSectionProp
 
                 {/* Visual Checklist Progression */}
                 <div className="p-4 rounded-2xl bg-[#111316] border border-white/5 space-y-3">
-                  <span className="text-[11px] font-mono text-[#A79CC8] uppercase tracking-wider block mb-2">
+                  <span className="text-[11px] font-mono text-[#4A7BFF] uppercase tracking-wider block mb-2">
                     Milestone Progress Tracker
                   </span>
                   {current.visual.stepsVisual.map((s, i) => (
@@ -293,7 +281,7 @@ export default function ProcessSection({ onOpenApplication }: ProcessSectionProp
                 </span>
                 <button
                   onClick={onOpenApplication}
-                  className="px-5 py-2 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-xs font-semibold text-[#F3F3F1] border border-white/10 transition-all cursor-pointer"
+                  className="px-5 py-2 rounded-md bg-white/[0.06] hover:bg-white/[0.12] text-xs font-semibold text-[#F3F3F1] border border-white/10 transition-all cursor-pointer"
                 >
                   Deploy Phase {current.id} →
                 </button>

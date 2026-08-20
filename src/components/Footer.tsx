@@ -77,7 +77,7 @@ export default function Footer() {
   return (
     <footer className="relative bg-[#08090B] border-t border-white/[0.08] pt-20 pb-12 overflow-hidden text-[#96989F]">
       {/* Subtle bottom lighting */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-[#A79CC8]/05 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-[rgba(107,150,255,0.05)] rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 pb-16 border-b border-white/[0.06]">
@@ -85,11 +85,11 @@ export default function Footer() {
           <div className="lg:col-span-4 space-y-5">
             <div className="flex items-center gap-3">
               <div className="relative w-9 h-9 rounded-xl bg-[#1A1C1F] border border-white/10 flex items-center justify-center">
-                <div className="w-4 h-4 bg-gradient-to-tr from-[#D7A6B8] to-[#7F89C5] rounded-md" />
+                <div className="w-4 h-4 bg-gradient-to-tr from-[#4A7BFF] to-[#2D5ADB] rounded-md" />
               </div>
               <div className="flex flex-col">
                 <span className="text-base font-semibold tracking-tight text-[#F3F3F1] leading-none">
-                  ECOM<span className="text-[#A79CC8] font-light ml-1">SOLUTIONS</span>
+                  ECOM<span className="text-[#6B96FF] font-light ml-1">SOLUTIONS</span>
                 </span>
                 <span className="text-[10px] tracking-widest text-[#6E7078] uppercase font-mono mt-0.5">
                   Managed DFY Systems
@@ -105,14 +105,14 @@ export default function Footer() {
             <div className="p-3.5 rounded-2xl bg-[#111316] border border-white/5 space-y-2 max-w-sm">
               <div className="flex items-center justify-between text-xs font-mono">
                 <span className="flex items-center gap-1.5 text-[#6E7078]">
-                  <Clock className="w-3.5 h-3.5 text-[#D7A6B8]" />
+                  <Clock className="w-3.5 h-3.5 text-[#4A7BFF]" />
                   Dhaka Ops HQ:
                 </span>
                 <span className="text-[#F3F3F1] font-semibold">{dhakaTime || 'Loading...'} (GMT+6)</span>
               </div>
               <div className="flex items-center justify-between text-xs font-mono">
                 <span className="flex items-center gap-1.5 text-[#6E7078]">
-                  <Clock className="w-3.5 h-3.5 text-[#A79CC8]" />
+                  <Clock className="w-3.5 h-3.5 text-[#6B96FF]" />
                   US Markets Desk:
                 </span>
                 <span className="text-[#F3F3F1] font-semibold">{nyTime || 'Loading...'} (EST)</span>
@@ -158,27 +158,27 @@ export default function Footer() {
             </h4>
             <div className="space-y-3 text-sm">
               <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#D7A6B8] shrink-0 mt-1" />
+                <MapPin className="w-4 h-4 text-[#4A7BFF] shrink-0 mt-1" />
                 <p className="text-xs text-[#96989F] leading-snug">
                   H-68/1, Omor Ali Lane, West Rampura, Dhaka-1219, Bangladesh
                 </p>
               </div>
 
               <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-[#A79CC8] shrink-0" />
+                <Phone className="w-4 h-4 text-[#6B96FF] shrink-0" />
                 <a
                   href="tel:+8801710910594"
-                  className="text-xs text-[#F3F3F1] hover:text-[#D7A6B8] transition-colors font-mono"
+                  className="text-xs text-[#F3F3F1] hover:text-[#4A7BFF] transition-colors font-mono"
                 >
                   +880 1710 910594
                 </a>
               </div>
 
               <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#7F89C5] shrink-0" />
+                <Mail className="w-4 h-4 text-[#2D5ADB] shrink-0" />
                 <a
                   href="mailto:info@ecomsolutionsbd.com"
-                  className="text-xs text-[#F3F3F1] hover:text-[#A79CC8] transition-colors font-mono"
+                  className="text-xs text-[#F3F3F1] hover:text-[#6B96FF] transition-colors font-mono"
                 >
                   info@ecomsolutionsbd.com
                 </a>
@@ -195,11 +195,11 @@ export default function Footer() {
                   placeholder="Enter your email address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-3.5 pr-28 py-2.5 bg-[#14161A] border border-white/10 rounded-xl text-xs text-[#F3F3F1] placeholder-[#6E7078] focus:outline-none focus:border-[#A79CC8] transition-colors"
+                  className="w-full pl-3.5 pr-28 py-2.5 bg-[#14161A] border border-white/10 rounded-md text-xs text-[#F3F3F1] placeholder-[#6E7078] focus:outline-none focus:border-[#6B96FF] transition-colors"
                 />
                 <button
                   type="submit"
-                  className="absolute right-1 top-1 bottom-1 px-4 rounded-lg bg-gradient-to-r from-[#D7A6B8] to-[#8B90C9] text-[#0B0D0F] font-bold text-xs hover:shadow-md transition-all flex items-center gap-1 cursor-pointer"
+                  className="absolute right-1 top-1 bottom-1 px-4 rounded-md bg-gradient-to-r from-[#4A7BFF] to-[#2D5ADB] text-[#0B0D0F] font-bold text-xs hover:shadow-md transition-all flex items-center gap-1 cursor-pointer"
                 >
                   {subscribed ? (
                     <span className="flex items-center gap-1 text-[11px]">

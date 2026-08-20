@@ -60,7 +60,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
       gridClass: 'lg:col-span-8',
       cardVariant: 'large-horiz',
       icon: '/work/amazon.png',
-      color: '#D7A6B8',
+      color: '#4A7BFF',
       highlightDetails: [
         'Proprietary US supplier integration to guarantee strict 2-3 day shipping compliance',
         'Algorithmic Buy-Box repricer operating 24/7 across thousands of fast-moving products',
@@ -82,7 +82,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
       gridClass: 'lg:col-span-4',
       cardVariant: 'square',
       icon: '/work/amazon.png',
-      color: '#A79CC8',
+      color: '#6B96FF',
       highlightDetails: [
         'Direct relationship building with top US distributors & brand authorizations',
         'Comprehensive freight forwarding, barcode labeling, and FBA warehouse dispatch',
@@ -104,7 +104,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
       gridClass: 'lg:col-span-4',
       cardVariant: 'tall',
       icon: '/work/ebay.png',
-      color: '#7F89C5',
+      color: '#2D5ADB',
       highlightDetails: [
         'Automated product sync across trending consumer electronics, tools, and home goods',
         'Top Rated Seller maintenance strategy to minimize selling fees and rank #1 in search',
@@ -126,7 +126,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
       gridClass: 'lg:col-span-8',
       cardVariant: 'medium',
       icon: '/work/fb-shop.png',
-      color: '#D7A6B8',
+      color: '#4A7BFF',
       highlightDetails: [
         'Harness Meta algorithmic recommendations to drive repeat organic checkout sales',
         'Direct connection to US supplier fulfillment networks with instant order injection',
@@ -148,7 +148,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
       gridClass: 'lg:col-span-7',
       cardVariant: 'wide-bottom',
       icon: '/work/walmart.png',
-      color: '#7F89C5',
+      color: '#2D5ADB',
       highlightDetails: [
         'Walmart seller account approval assistance and corporate structure onboarding',
         'Strict adherence to Walmart Seller Performance standards (OTD, VTR, PCR)',
@@ -170,7 +170,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
       gridClass: 'lg:col-span-5',
       cardVariant: 'small-accent',
       icon: '/work/walmart.png',
-      color: '#A79CC8',
+      color: '#6B96FF',
       highlightDetails: [
         'Complete inventory prep and shipment dispatch directly into Walmart WFS hubs',
         'Automatic 2-day delivery badge on all product listings for superior conversion rates',
@@ -187,7 +187,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
       description: 'Build, operate, and scale your Amazon store with our full DFY management team. From product research to Prime-compliant fulfillment.',
       image: '/work/amazon.png',
       tag: 'Most Popular',
-      tagColor: '#D7A6B8',
+      tagColor: '#4A7BFF',
       marketplace: 'Amazon FBA & Dropship',
       metric: '$84.9K /mo Avg.',
     },
@@ -197,7 +197,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
       description: "Tap into Walmart's 120M+ monthly shoppers. Less competition, higher average order value — we handle everything from approval to scaling.",
       image: '/work/walmart.png',
       tag: '2-Day Badge',
-      tagColor: '#7F89C5',
+      tagColor: '#2D5ADB',
       marketplace: 'Walmart WFS',
       metric: '1/10th Competition',
     },
@@ -207,7 +207,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
       description: 'High buyer volume with minimal seller restrictions. Our team manages full store operations, listings, and Top Rated Seller compliance.',
       image: '/work/ebay.png',
       tag: 'Top Rated Plus',
-      tagColor: '#A79CC8',
+      tagColor: '#6B96FF',
       marketplace: 'eBay Global',
       metric: '135M+ Active Buyers',
     },
@@ -217,7 +217,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
       description: 'Social commerce with organic reach. We run your Facebook Shop with zero ad spend models, viral catalog placement, and hands-free checkout.',
       image: '/work/fb-shop.png',
       tag: 'Viral Organic',
-      tagColor: '#D7A6B8',
+      tagColor: '#4A7BFF',
       marketplace: 'Meta Commerce',
       metric: '2.9B+ Reach',
     },
@@ -235,8 +235,8 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
   return (
     <section id="services" className="relative py-24 lg:py-32 bg-[#0b0c0e] overflow-hidden border-t border-white/[0.05]">
       {/* Background ambient lighting */}
-      <div className="absolute top-1/4 -right-40 w-96 h-96 bg-[#a7a0cc]/04 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-1/3 -left-40 w-96 h-96 bg-[#d8a6b8]/04 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/4 -right-40 w-96 h-96 bg-[#6B96FF]/04 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-1/3 -left-40 w-96 h-96 bg-[#4A7BFF]/04 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeading
@@ -258,9 +258,9 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
                 key={fs.id}
                 type="button"
                 onClick={() => setFeaturedActive(idx)}
-                className={`px-4 py-2 rounded-full text-xs font-medium border transition-all duration-300 cursor-pointer ${
+                className={`px-4 py-2 rounded-md text-xs font-medium border transition-all duration-300 cursor-pointer ${
                   featuredActive === idx
-                    ? 'bg-[#111111] border-[#D7A6B8]/40 text-[#F3F3F1] shadow-[0_0_16px_rgba(215,166,184,0.2)]'
+                    ? 'bg-[#111111] border-[#4A7BFF]/40 text-[#F3F3F1] shadow-[0_0_16px_rgba(74,123,255,0.2)]'
                     : 'bg-transparent border-white/[0.07] text-[#555760] hover:text-[#8A8C94] hover:border-white/[0.14]'
                 }`}
                 style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}
@@ -306,7 +306,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
                   >
                     {/* Accent top bar on active */}
                     {isActive && (
-                      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#D7A6B8]/60 to-transparent" />
+                      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#4A7BFF]/60 to-transparent" />
                     )}
 
                     {/* Image */}
@@ -324,28 +324,15 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
 
                     {/* Card content */}
                     <div className="p-6 space-y-3">
-                      <div className="flex items-center justify-between gap-2">
-                        <span
-                          className="text-[10px] font-semibold uppercase tracking-wider"
-                          style={{
-                            color: fs.tagColor,
-                            fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
-                          }}
-                        >
-                          {fs.marketplace}
-                        </span>
-                        <span
-                          className="text-[9px] font-semibold px-2 py-0.5 rounded-full"
-                          style={{
-                            color: fs.tagColor,
-                            backgroundColor: `${fs.tagColor}15`,
-                            border: `1px solid ${fs.tagColor}25`,
-                            fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
-                          }}
-                        >
-                          {fs.tag}
-                        </span>
-                      </div>
+                      <span
+                        className="text-[10px] font-semibold uppercase tracking-wider"
+                        style={{
+                          color: fs.tagColor,
+                          fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
+                        }}
+                      >
+                        {fs.marketplace}
+                      </span>
 
                       <h3
                         className="text-xl lg:text-2xl font-semibold text-[#F3F3F1]"
@@ -379,7 +366,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
                               e.stopPropagation();
                               onOpenApplication(fs.title);
                             }}
-                            className="text-xs font-semibold px-4 py-2 rounded-full bg-gradient-to-r from-[#D7A6B8] via-[#A79CC8] to-[#7F89C5] text-black hover:shadow-[0_0_20px_rgba(215,166,184,0.4)] transition-all cursor-pointer"
+                            className="text-xs font-semibold px-4 py-2 rounded-md bg-gradient-to-r from-[#4A7BFF] via-[#6B96FF] to-[#2D5ADB] text-black hover:shadow-[0_0_20px_rgba(74,123,255,0.4)] transition-all cursor-pointer"
                             style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}
                           >
                             Apply Now
@@ -412,7 +399,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
                   </div>
                 </div>
                 <div className="p-4 space-y-2">
-                  <p className="text-[10px] text-[#A79CC8] uppercase tracking-wider font-semibold"
+                  <p className="text-[10px] text-[#6B96FF] uppercase tracking-wider font-semibold"
                      style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}>
                     {fs.marketplace}
                   </p>
@@ -436,15 +423,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
           className="text-center mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] mb-5">
-            <div className="w-1.5 h-1.5 rounded-full bg-[#8188c2]" />
-            <span
-              className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#a1a1aa]"
-              style={{ fontFamily: 'var(--font-sans)' }}
-            >
-              FULL CATALOG
-            </span>
-          </div>
+          
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl leading-[1.08] font-display tracking-tight text-[#f2f2f0]"
           >
@@ -481,11 +460,11 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
               <div>
                 <div className="flex items-center justify-between gap-4 mb-6">
                   <div className="flex items-center gap-3">
-                    <div className="relative w-12 h-12 rounded-2xl bg-[#1a1c1f] border border-white/10 flex items-center justify-center text-2xl group-hover:scale-110 group-hover:border-[#A79CC8]/40 transition-all">
+                    <div className="relative w-12 h-12 rounded-2xl bg-[#1a1c1f] border border-white/10 flex items-center justify-center text-2xl group-hover:scale-110 group-hover:border-[#6B96FF]/40 transition-all">
                       <Image src={service.icon} alt={service.marketplace} fill className="object-contain" sizes="40px" />
                     </div>
                     <div>
-                      <span className="text-[11px] font-mono text-[#A79CC8] uppercase tracking-wider block">
+                      <span className="text-[11px] font-mono text-[#6B96FF] uppercase tracking-wider block">
                         {service.marketplace}
                       </span>
                       <div className="text-[11px] text-[#6E7078]">{service.subtitle}</div>
@@ -493,7 +472,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
                   </div>
 
                   {/* Arrow Action Button */}
-                  <div className="w-10 h-10 rounded-full bg-white/[0.04] border border-white/10 flex items-center justify-center text-[#96989F] group-hover:text-[#0B0D0F] group-hover:bg-gradient-to-r group-hover:from-[#D7A6B8] group-hover:to-[#7F89C5] group-hover:border-transparent transition-all shrink-0">
+                  <div className="w-10 h-10 rounded-md bg-white/[0.04] border border-white/10 flex items-center justify-center text-[#96989F] group-hover:text-[#0B0D0F] group-hover:bg-gradient-to-r group-hover:from-[#4A7BFF] group-hover:to-[#2D5ADB] group-hover:border-transparent transition-all shrink-0">
                     <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </div>
                 </div>
@@ -525,17 +504,6 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
                   ))}
                 </div>
 
-                {/* Tags */}
-                <div className="flex flex-wrap items-center gap-2">
-                  {service.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2.5 py-1 rounded-lg bg-white/[0.03] text-[#96989F] text-[11px] font-medium border border-white/[0.04]"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
               </div>
             </motion.div>
           ))}
@@ -560,11 +528,11 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               className="relative w-full max-w-2xl bg-[#080808] border border-white/[0.10] rounded-2xl p-6 sm:p-9 shadow-2xl z-10 my-8 overflow-hidden"
             >
-              <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#D7A6B8] via-[#A79CC8] to-[#7F89C5]" />
+              <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#4A7BFF] via-[#6B96FF] to-[#2D5ADB]" />
 
               <button
                 onClick={() => setSelectedService(null)}
-                className="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/[0.05] hover:bg-white/10 flex items-center justify-center text-[#96989F] hover:text-[#F3F3F1] transition-colors cursor-pointer"
+                className="absolute top-5 right-5 w-9 h-9 rounded-md bg-white/[0.05] hover:bg-white/10 flex items-center justify-center text-[#96989F] hover:text-[#F3F3F1] transition-colors cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -574,7 +542,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
                   <Image src={selectedService.icon} alt={selectedService.marketplace} fill className="object-contain" sizes="40px" />
                 </span>
                 <div>
-                  <span className="text-xs font-mono text-[#A79CC8] uppercase tracking-wider">
+                  <span className="text-xs font-mono text-[#6B96FF] uppercase tracking-wider">
                     {selectedService.marketplace}
                   </span>
                   <h3 className="text-2xl font-medium text-[#F3F3F1]">
@@ -589,7 +557,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
 
               {/* Highlights Breakdown */}
               <div className="my-6 space-y-3">
-                <h4 className="text-xs font-mono uppercase tracking-wider text-[#A79CC8]">
+                <h4 className="text-xs font-mono uppercase tracking-wider text-[#6B96FF]">
                   Operational Blueprint & Deliverables
                 </h4>
                 {selectedService.highlightDetails.map((h, i) => (
@@ -597,7 +565,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
                     key={i}
                     className="p-3.5 rounded-2xl bg-[#0F1114] border border-white/5 flex items-start gap-3"
                   >
-                    <CheckCircle className="w-4 h-4 text-[#D7A6B8] shrink-0 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 text-[#4A7BFF] shrink-0 mt-0.5" />
                     <p className="text-xs sm:text-sm text-[#F3F3F1] leading-snug">{h}</p>
                   </div>
                 ))}
@@ -610,7 +578,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
                 <div className="flex items-center gap-3">
                   <button
                     onClick={() => setSelectedService(null)}
-                    className="px-5 py-2.5 rounded-full text-xs text-[#96989F] hover:text-[#F3F3F1] cursor-pointer"
+                    className="px-5 py-2.5 rounded-md text-xs text-[#96989F] hover:text-[#F3F3F1] cursor-pointer"
                   >
                     Close
                   </button>
@@ -620,7 +588,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
                       setSelectedService(null);
                       onOpenApplication(name);
                     }}
-                    className="px-6 py-2.5 rounded-full bg-gradient-to-r from-[#D7A6B8] via-[#A79CC8] to-[#7F89C5] text-[#0B0D0F] font-bold text-xs shadow-lg hover:shadow-[0_0_25px_rgba(215,166,184,0.5)] transition-all cursor-pointer"
+                    className="px-6 py-2.5 rounded-md bg-gradient-to-r from-[#4A7BFF] via-[#6B96FF] to-[#2D5ADB] text-[#0B0D0F] font-bold text-xs shadow-lg hover:shadow-[0_0_25px_rgba(74,123,255,0.5)] transition-all cursor-pointer"
                   >
                     Apply for {selectedService.title.split(' ')[0]} Store
                   </button>

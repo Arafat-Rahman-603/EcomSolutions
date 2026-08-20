@@ -26,23 +26,6 @@ export default function SectionHeading({
         isCenter ? 'text-center mx-auto max-w-3xl' : 'max-w-2xl'
       } ${className}`}
     >
-      {label && (
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className={`inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] mb-4 ${
-            isCenter ? 'mx-auto' : ''
-          }`}
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-[#D7A6B8] to-[#7F89C5] animate-pulse" />
-          <span className="text-[11px] font-semibold tracking-widest uppercase text-[#A79CC8]">
-            {label}
-          </span>
-        </motion.div>
-      )}
-
       <motion.h2
         initial={{ opacity: 0, y: 20, filter: 'blur(6px)' }}
         whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}

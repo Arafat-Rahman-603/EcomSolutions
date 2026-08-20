@@ -56,7 +56,7 @@ export default function CustomCursor() {
     <div className="pointer-events-none fixed inset-0 z-50 overflow-hidden hidden md:block">
       {/* Outer Glow Halo */}
       <motion.div
-        className="fixed top-0 left-0 rounded-full bg-[#A79CC8]/15 blur-md"
+        className="fixed top-0 left-0 rounded-full bg-[#4A7BFF]/15 blur-md"
         animate={{
           x: mousePosition.x - (isHovered ? 28 : 16),
           y: mousePosition.y - (isHovered ? 28 : 16),
@@ -74,7 +74,7 @@ export default function CustomCursor() {
       <motion.div
         className={`fixed top-0 left-0 rounded-full ${
           isHovered
-            ? 'bg-gradient-to-r from-[#D7A6B8] to-[#7F89C5] shadow-[0_0_12px_rgba(215,166,184,0.8)]'
+            ? 'bg-gradient-to-r from-[#6B96FF] to-[#2D5ADB] shadow-[0_0_12px_rgba(107,150,255,0.8)]'
             : 'bg-white/80'
         }`}
         animate={{

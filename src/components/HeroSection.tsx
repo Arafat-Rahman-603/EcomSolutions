@@ -187,7 +187,7 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
       orders: '1,840',
       activeStatus: '99.9% Sync',
       profit: '28.4% Net Margin',
-      color: '#D7A6B8',
+      color: '#6B96FF',
       icon: '/work/amazon.png',
     },
     {
@@ -198,7 +198,7 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
       orders: '1,210',
       activeStatus: 'Express Sync',
       profit: '31.2% Net Margin',
-      color: '#7F89C5',
+      color: '#2D5ADB',
       icon: '/work/walmart.png',
     },
     {
@@ -209,7 +209,7 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
       orders: '980',
       activeStatus: 'Auto-Bidding Active',
       profit: '24.6% Net Margin',
-      color: '#A79CC8',
+      color: '#6B96FF',
       icon: '/work/ebay.png',
     },
     {
@@ -220,7 +220,7 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
       orders: '840',
       activeStatus: 'Catalog Live',
       profit: '36.8% Net Margin',
-      color: '#E0B5C4',
+      color: '#4A7BFF',
       icon: '/work/fb-shop.png',
     },
   ];
@@ -288,9 +288,9 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
       {/* Background Ambient Glows and Grid */}
       <div className="absolute inset-0 bg-[#0b0c0e] pointer-events-none">
         {/* Very soft ambient glows */}
-        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[650px] lg:w-[900px] h-[450px] bg-gradient-to-b from-[#a7a0cc]/08 via-[#d8a6b8]/05 to-transparent rounded-full blur-[160px] opacity-60" />
-        <div className="absolute top-1/3 right-[-10%] w-[450px] h-[450px] bg-[#8188c2]/06 rounded-full blur-[130px] opacity-50" />
-        <div className="absolute bottom-10 left-[-5%] w-[350px] h-[350px] bg-[#d8a6b8]/04 rounded-full blur-[110px] opacity-40" />
+        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[650px] lg:w-[900px] h-[450px] bg-gradient-to-b from-[#6B96FF]/08 via-[#4A7BFF]/05 to-transparent rounded-full blur-[160px] opacity-60" />
+        <div className="absolute top-1/3 right-[-10%] w-[450px] h-[450px] bg-[#2D5ADB]/06 rounded-full blur-[130px] opacity-50" />
+        <div className="absolute bottom-10 left-[-5%] w-[350px] h-[350px] bg-[#4A7BFF]/04 rounded-full blur-[110px] opacity-40" />
 
         {/* Minimal Grid Pattern */}
         <div
@@ -306,22 +306,6 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column — Text & CTAs */}
           <div className="lg:col-span-7 space-y-7">
-            {/* Small Label Pill */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md"
-            >
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D7A6B8] opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#D7A6B8]" />
-              </span>
-              <span className="text-[11px] font-semibold tracking-widest text-[#A79CC8] uppercase font-mono">
-                DONE-FOR-YOU E-COMMERCE AUTOMATION
-              </span>
-            </motion.div>
-
             {/* Large Headline */}
             <motion.h1
               initial={{ opacity: 0, y: 25 }}
@@ -331,7 +315,7 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
             >
               We do the{' '}
               <span className="text-gradient">heavy lifting</span> so you can do the{' '}
-              <span className="italic font-light text-[#F3F3F1] underline decoration-[#A79CC8]/40 decoration-1 underline-offset-8">
+              <span className="italic font-light text-[#F3F3F1] underline decoration-[#6B96FF]/40 decoration-1 underline-offset-8">
                 easy living.
               </span>
             </motion.h1>
@@ -357,7 +341,7 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
               <MagneticButton
                 variant="primary"
                 onClick={() => onOpenApplication(curr.name)}
-                className="!py-4 !px-8 text-base shadow-[0_0_35px_rgba(215,166,184,0.4)]"
+                className="!py-4 !px-8 text-base shadow-[0_0_35px_rgba(74,123,255,0.4)]"
               >
                 <span>Apply for a Store</span>
                 <Sparkles className="w-4 h-4" />
@@ -381,15 +365,15 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
               className="flex flex-wrap items-center gap-6 pt-4 border-t border-white/[0.06] text-xs text-[#6E7078]"
             >
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#A79CC8]" />
+                <CheckCircle2 className="w-4 h-4 text-[#6B96FF]" />
                 <span>100% Hands-Off DFY Model</span>
               </div>
               <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-[#D7A6B8]" />
+                <ShieldCheck className="w-4 h-4 text-[#6B96FF]" />
                 <span>Dedicated Account Manager</span>
               </div>
               <div className="flex items-center gap-2">
-                <Globe2 className="w-4 h-4 text-[#7F89C5]" />
+                <Globe2 className="w-4 h-4 text-[#2D5ADB]" />
                 <span>Multi-Marketplace Redundancy</span>
               </div>
             </motion.div>
@@ -509,7 +493,7 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
                 initial={{ opacity: 0, y: 6 }}
                 animate={hasEntered || reducedMotion ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.4, delay: reducedMotion ? 0 : 0.15 }}
-                className="relative grid grid-cols-4 gap-1 p-1 rounded-xl bg-[#0A0B0C]/80 border border-white/[0.05] mb-5"
+                className="relative grid grid-cols-4 gap-1 p-1 rounded-md bg-[#0A0B0C]/80 border border-white/[0.05] mb-5"
               >
                 {platforms.map((p, idx) => {
                   const isActive = activePlatform === idx;
@@ -518,7 +502,7 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
                       key={p.short}
                       type="button"
                       onClick={() => handleTabClick(idx)}
-                      className={`relative py-2 text-[11px] font-medium rounded-lg cursor-pointer transition-all duration-200 z-10 ${
+                      className={`relative py-2 text-[11px] font-medium rounded-md cursor-pointer transition-all duration-200 z-10 ${
                         isActive
                           ? 'text-[#F3F3F1]'
                           : 'text-[#6E7078] hover:text-[#96989F] hover:bg-white/[0.02]'
@@ -534,7 +518,7 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
                       {isActive && (
                         <motion.div
                           layoutId="activeTabBg"
-                          className="absolute inset-0 rounded-lg bg-[#1A1B1E] border border-white/[0.08]"
+                          className="absolute inset-0 rounded-md bg-[#1A1B1E] border border-white/[0.08]"
                           style={{
                             boxShadow:
                               '0 1px 0 rgba(255,255,255,0.03) inset, 0 1px 2px rgba(0,0,0,0.3)',
@@ -561,7 +545,7 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
                   {/* Active Platform Header */}
                   <div className="flex items-start justify-between mb-5">
                     <div>
-                      <span className="text-[11px] font-mono text-[#A79CC8] uppercase tracking-wider">
+                      <span className="text-[11px] font-mono text-[#6B96FF] uppercase tracking-wider">
                         {curr.name}
                       </span>
                       <div className="flex items-baseline gap-2 mt-1">
@@ -612,7 +596,7 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
                   <div className="mb-5 p-4 rounded-xl bg-[#101113] border border-white/[0.06]">
                     <div className="flex items-center justify-between mb-3 text-[11px]">
                       <span className="flex items-center gap-1.5 text-[#96989F]">
-                        <Activity className="w-3.5 h-3.5 text-[#7F89C5]" />
+                        <Activity className="w-3.5 h-3.5 text-[#2D5ADB]" />
                         30-Day Trajectory
                       </span>
                       <span className="font-mono text-[#F3F3F1] text-[12px]">{curr.profit}</span>
@@ -754,7 +738,7 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
                   <div className="grid grid-cols-2 gap-3 mb-1">
                     <div className="p-3.5 rounded-xl bg-[#16171A] border border-white/[0.05]">
                       <div className="flex items-center gap-1.5 text-[11px] text-[#6E7078] mb-1">
-                        <Package className="w-3.5 h-3.5 text-[#A79CC8]" />
+                        <Package className="w-3.5 h-3.5 text-[#6B96FF]" />
                         <span>Dispatched Orders</span>
                       </div>
                       <div key={`ord-${activePlatform}`} className="text-lg font-semibold text-[#F3F3F1] font-mono tabular-nums">
@@ -764,7 +748,7 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
 
                     <div className="p-3.5 rounded-xl bg-[#16171A] border border-white/[0.05]">
                       <div className="flex items-center gap-1.5 text-[11px] text-[#6E7078] mb-1">
-                        <Zap className="w-3.5 h-3.5 text-[#D7A6B8]" />
+                        <Zap className="w-3.5 h-3.5 text-[#6B96FF]" />
                         <span>Sync Status</span>
                       </div>
                       <div className="mt-1 flex items-center gap-1">
@@ -824,12 +808,12 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
                     }}
                     className="absolute -bottom-5 -right-3 sm:-right-5 p-3.5 rounded-xl bg-[#151618] border border-white/[0.08] shadow-[0_10px_30px_rgba(0,0,0,0.6)] flex items-center gap-3 z-20"
                   >
-                    <div className="w-9 h-9 rounded-xl bg-[#2a2b2e] flex items-center justify-center text-[#A79CC8] text-sm">
+                    <div className="w-9 h-9 rounded-xl bg-[#2a2b2e] flex items-center justify-center text-[#6B96FF] text-sm">
                       ✓
                     </div>
                     <div>
                       <p className="text-xs font-medium text-[#F3F3F1]">Store Payout Released</p>
-                      <p className="text-[10px] font-mono text-[#A79CC8]">+$14,820.50 via Stripe Wire</p>
+                      <p className="text-[10px] font-mono text-[#6B96FF]">+$14,820.50 via Stripe Wire</p>
                     </div>
                   </motion.div>
                 </motion.div>

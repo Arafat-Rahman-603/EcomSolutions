@@ -18,8 +18,8 @@ export default function BenefitsSection({ onOpenApplication }: BenefitsSectionPr
       icon: Compass,
       cardBg: 'bg-[#121315]',
       bgTint: '',
-      borderHighlight: 'border-[#d8a6b8]/20',
-      accentColor: '#d8a6b8',
+      borderHighlight: 'border-[#4A7BFF]/20',
+      accentColor: '#4A7BFF',
       number: '01',
       highlights: ['Turnkey Account Setup', 'EIN & Reseller Cert Support', 'Dedicated Onboarding Director'],
     },
@@ -28,10 +28,10 @@ export default function BenefitsSection({ onOpenApplication }: BenefitsSectionPr
       description:
         'Once your business is running, our team manages the daily operations so you can focus on your time and priorities. Product sourcing, inventory replenishment, and customer support run autonomously.',
       icon: Clock,
-      cardBg: 'bg-[#a7a0cc]/08',
-      bgTint: 'bg-[#a7a0cc]/05',
-      borderHighlight: 'border-[#a7a0cc]/25',
-      accentColor: '#a7a0cc',
+      cardBg: 'bg-[#6B96FF]/08',
+      bgTint: 'bg-[#6B96FF]/05',
+      borderHighlight: 'border-[#6B96FF]/25',
+      accentColor: '#6B96FF',
       number: '02',
       highlights: ['24/7 Automated Repricing', 'US Warehousing & Prep', 'Zero Daily Manual Work'],
     },
@@ -42,8 +42,8 @@ export default function BenefitsSection({ onOpenApplication }: BenefitsSectionPr
       icon: Shield,
       cardBg: 'bg-[#121315]',
       bgTint: '',
-      borderHighlight: 'border-[#8188c2]/20',
-      accentColor: '#8188c2',
+      borderHighlight: 'border-[#2D5ADB]/20',
+      accentColor: '#2D5ADB',
       number: '03',
       highlights: ['Live Financial Dashboard', 'Audited Supplier Invoices', 'Strict Policy Compliance'],
     },
@@ -52,10 +52,10 @@ export default function BenefitsSection({ onOpenApplication }: BenefitsSectionPr
       description:
         'You work directly with our team. We maintain control over the operational process and do not rely on unnecessary outsourcing or third-party middlemen. Your account is handled by full-time vetted pros.',
       icon: Users,
-      cardBg: 'bg-[#d8a6b8]/06',
-      bgTint: 'bg-[#d8a6b8]/04',
-      borderHighlight: 'border-[#d8a6b8]/25',
-      accentColor: '#d8a6b8',
+      cardBg: 'bg-[#4A7BFF]/06',
+      bgTint: 'bg-[#4A7BFF]/04',
+      borderHighlight: 'border-[#4A7BFF]/25',
+      accentColor: '#4A7BFF',
       number: '04',
       highlights: ['In-House 300+ Operators', 'No Low-Quality Outsourcing', 'Dedicated Slack / WhatsApp Channel'],
     },
@@ -64,8 +64,8 @@ export default function BenefitsSection({ onOpenApplication }: BenefitsSectionPr
   return (
     <section id="benefits" className="relative py-24 lg:py-32 bg-[#0b0c0e] overflow-hidden border-t border-white/[0.06]">
       {/* Background ambient lighting */}
-      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-[#A79CC8]/06 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-10 right-1/4 w-[400px] h-[400px] bg-[#D7A6B8]/06 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-[#6B96FF]/06 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-10 right-1/4 w-[400px] h-[400px] bg-[#4A7BFF]/06 rounded-full blur-[130px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeading
@@ -100,7 +100,7 @@ export default function BenefitsSection({ onOpenApplication }: BenefitsSectionPr
                     >
                       <Icon className="w-6 h-6" />
                     </div>
-                    <span className="text-xs font-mono text-[#A79CC8] uppercase tracking-wider">
+                    <span className="text-xs font-mono text-[#6B96FF] uppercase tracking-wider">
                       Core Advantage
                     </span>
                   </div>
@@ -117,7 +117,7 @@ export default function BenefitsSection({ onOpenApplication }: BenefitsSectionPr
                 <div className="mt-8 pt-6 border-t border-white/[0.06] space-y-2.5">
                   {b.highlights.map((h, i) => (
                     <div key={i} className="flex items-center gap-2.5 text-xs text-[#F3F3F1]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#D7A6B8]" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#4A7BFF]" />
                       <span>{h}</span>
                     </div>
                   ))}

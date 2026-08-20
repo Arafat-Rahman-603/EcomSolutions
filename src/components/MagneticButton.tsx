@@ -50,11 +50,11 @@ export default function MagneticButton({
   };
 
   const baseStyles =
-    'relative inline-flex items-center justify-center font-medium tracking-tight rounded-full transition-all duration-300 select-none overflow-hidden cursor-pointer';
+    'relative inline-flex items-center justify-center font-medium tracking-tight rounded-md transition-all duration-300 select-none overflow-hidden cursor-pointer';
 
   const variantStyles = {
     primary:
-      'bg-gradient-to-r from-[#D7A6B8] via-[#A79CC8] to-[#7F89C5] text-[#0B0D0F] font-semibold shadow-[0_0_25px_rgba(167,156,200,0.35)] hover:shadow-[0_0_40px_rgba(215,166,184,0.6)] px-7 py-3.5 text-[15px]',
+      'bg-gradient-to-r from-[#6B96FF] via-[#4A7BFF] to-[#2D5ADB] text-[#0B0D0F] font-semibold shadow-[0_0_25px_rgba(74,123,255,0.35)] hover:shadow-[0_0_40px_rgba(107,150,255,0.6)] px-7 py-3.5 text-[15px]',
     secondary:
       'bg-[#1A1C1F]/90 hover:bg-[#222426] text-[#F3F3F1] border border-white/10 hover:border-white/25 px-6 py-3.5 text-[15px] backdrop-blur-md',
     ghost:

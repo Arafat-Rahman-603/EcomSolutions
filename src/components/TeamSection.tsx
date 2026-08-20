@@ -40,11 +40,11 @@ const teamMembers: TeamMember[] = [
     role: 'Executive & Strategy',
     department: 'Executive',
     tagline: 'Focused on building scalable systems and long-term strategy.',
-    gradientFrom: '#d8a6b8',
-    gradientTo: '#a7a0cc',
+    gradientFrom: '#4A7BFF',
+    gradientTo: '#6B96FF',
     icon: Crown,
-    iconColor: '#d8a6b8',
-    accent: '#d8a6b8',
+    iconColor: '#4A7BFF',
+    accent: '#4A7BFF',
   },
   {
     id: 'op',
@@ -53,11 +53,11 @@ const teamMembers: TeamMember[] = [
     role: 'Daily Store Operations',
     department: 'Operations',
     tagline: 'Dedicated operators ensuring seamless day-to-day store performance.',
-    gradientFrom: '#a7a0cc',
-    gradientTo: '#8188c2',
+    gradientFrom: '#6B96FF',
+    gradientTo: '#2D5ADB',
     icon: Cpu,
-    iconColor: '#a7a0cc',
-    accent: '#a7a0cc',
+    iconColor: '#6B96FF',
+    accent: '#6B96FF',
   },
   {
     id: 'sr',
@@ -66,11 +66,11 @@ const teamMembers: TeamMember[] = [
     role: 'Product & Supplier Research',
     department: 'Supply Chain',
     tagline: 'Verified supplier partnerships and catalog curation specialists.',
-    gradientFrom: '#8188c2',
-    gradientTo: '#a7a0cc',
+    gradientFrom: '#2D5ADB',
+    gradientTo: '#6B96FF',
     icon: Search,
-    iconColor: '#8188c2',
-    accent: '#8188c2',
+    iconColor: '#2D5ADB',
+    accent: '#2D5ADB',
   },
   {
     id: 'ta',
@@ -79,11 +79,11 @@ const teamMembers: TeamMember[] = [
     role: 'Systems & Automation',
     department: 'Engineering',
     tagline: 'Custom automation stack, real-time sync, and algorithmic pipelines.',
-    gradientFrom: '#d8a6b8',
-    gradientTo: '#8188c2',
+    gradientFrom: '#4A7BFF',
+    gradientTo: '#2D5ADB',
     icon: Code2,
-    iconColor: '#d8a6b8',
-    accent: '#d8a6b8',
+    iconColor: '#4A7BFF',
+    accent: '#4A7BFF',
   },
   {
     id: 'cs',
@@ -92,11 +92,11 @@ const teamMembers: TeamMember[] = [
     role: 'Client Communication & Support',
     department: 'Partner Relations',
     tagline: 'Your direct line — dedicated support from onboarding to scale.',
-    gradientFrom: '#a7a0cc',
-    gradientTo: '#d8a6b8',
+    gradientFrom: '#6B96FF',
+    gradientTo: '#4A7BFF',
     icon: Users,
-    iconColor: '#a7a0cc',
-    accent: '#a7a0cc',
+    iconColor: '#6B96FF',
+    accent: '#6B96FF',
   },
   {
     id: 'gr',
@@ -105,11 +105,11 @@ const teamMembers: TeamMember[] = [
     role: 'Marketing & Scaling',
     department: 'Growth',
     tagline: 'Proven scaling playbooks and sustainable growth engineering.',
-    gradientFrom: '#8188c2',
-    gradientTo: '#d8a6b8',
+    gradientFrom: '#2D5ADB',
+    gradientTo: '#4A7BFF',
     icon: TrendingUp,
-    iconColor: '#8188c2',
-    accent: '#8188c2',
+    iconColor: '#2D5ADB',
+    accent: '#2D5ADB',
   },
 ];
 
@@ -139,7 +139,7 @@ function TeamCard({ member, index }: { member: TeamMember; index: number }) {
       whileInView="visible"
       viewport={{ once: true, margin: '-50px' }}
       whileHover={{ y: -5, transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } }}
-      className="group relative rounded-2xl bg-[#121315] border border-white/[0.08] overflow-hidden hover:border-white/[0.16] transition-all duration-400 hover:shadow-[0_20px_50px_rgba(0,0,0,0.7),0_0_25px_rgba(167,160,204,0.05)] cursor-default"
+      className="group relative rounded-2xl bg-[#121315] border border-white/[0.08] overflow-hidden hover:border-white/[0.16] transition-all duration-400 hover:shadow-[0_20px_50px_rgba(0,0,0,0.7),0_0_25px_rgba(107,150,255,0.05)] cursor-default"
     >
       {/* Hover glow overlay */}
       <div
@@ -281,29 +281,14 @@ export default function TeamSection() {
       className="relative py-24 lg:py-32 bg-[#0b0c0e] overflow-hidden border-t border-white/[0.05]"
     >
       {/* Ambient glows */}
-      <div className="absolute top-1/4 left-1/3 w-[600px] h-[600px] bg-[#a7a0cc]/03 rounded-full blur-[200px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/3 w-[400px] h-[400px] bg-[#d8a6b8]/03 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/3 w-[600px] h-[600px] bg-[#6B96FF]/03 rounded-full blur-[200px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/3 w-[400px] h-[400px] bg-[#4A7BFF]/03 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Section Header */}
         <div className="text-center mb-16 lg:mb-20 max-w-3xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.03] border border-white/[0.07] mb-5"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-[#d8a6b8] to-[#8188c2] animate-pulse" />
-            <span
-              className="text-[11px] font-semibold tracking-widest uppercase text-[#a7a0cc]"
-              style={{ fontFamily: 'var(--font-sans)' }}
-            >
-              THE PEOPLE BEHIND THE OPERATIONS
-            </span>
-          </motion.div>
-
+        
           <motion.h2
             initial={{ opacity: 0, y: 20, filter: 'blur(6px)' }}
             whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}

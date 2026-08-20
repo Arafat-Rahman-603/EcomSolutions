@@ -23,13 +23,13 @@ interface WhyInvestSectionProps {
 
 export default function WhyInvestSection({ onOpenApplication }: WhyInvestSectionProps) {
   const operations = [
-    { name: 'Store Operations', icon: Cpu, status: 'Active 24/7', color: '#D7A6B8' },
-    { name: 'Product Research', icon: Search, status: 'AI Algorithmic', color: '#A79CC8' },
-    { name: 'Supplier Management', icon: Truck, status: 'US Verified Feeds', color: '#7F89C5' },
-    { name: 'Pricing Strategy', icon: DollarSign, status: 'Real-time Reprice', color: '#D7A6B8' },
-    { name: 'Returns & Resolution', icon: RotateCcw, status: 'Fully Managed', color: '#A79CC8' },
-    { name: 'Risk Monitoring', icon: ShieldAlert, status: '0 Policy Strikes', color: '#7F89C5' },
-    { name: 'Financial Reports', icon: BarChart3, status: 'Transparent Ledger', color: '#D7A6B8' },
+    { name: 'Store Operations', icon: Cpu, status: 'Active 24/7', color: '#4A7BFF' },
+    { name: 'Product Research', icon: Search, status: 'AI Algorithmic', color: '#6B96FF' },
+    { name: 'Supplier Management', icon: Truck, status: 'US Verified Feeds', color: '#2D5ADB' },
+    { name: 'Pricing Strategy', icon: DollarSign, status: 'Real-time Reprice', color: '#4A7BFF' },
+    { name: 'Returns & Resolution', icon: RotateCcw, status: 'Fully Managed', color: '#6B96FF' },
+    { name: 'Risk Monitoring', icon: ShieldAlert, status: '0 Policy Strikes', color: '#2D5ADB' },
+    { name: 'Financial Reports', icon: BarChart3, status: 'Transparent Ledger', color: '#4A7BFF' },
   ];
 
   const benefitsList = [
@@ -44,14 +44,14 @@ export default function WhyInvestSection({ onOpenApplication }: WhyInvestSection
   return (
     <section id="why-invest" className="relative py-24 lg:py-32 bg-[#0b0c0e] overflow-hidden border-t border-white/[0.05]">
       {/* Ambient background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-[#A79CC8]/04 rounded-full blur-[180px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-[#6B96FF]/04 rounded-full blur-[180px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Headline */}
         <div className="max-w-3xl mb-16 lg:mb-20">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#D7A6B8]" />
-            <span className="text-[11px] font-semibold tracking-widest uppercase text-[#A79CC8] font-mono">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#4A7BFF]" />
+            <span className="text-[11px] font-semibold tracking-widest uppercase text-[#6B96FF] font-mono">
               INVESTOR CONFIDENCE ARCHITECTURE
             </span>
           </div>
@@ -72,17 +72,17 @@ export default function WhyInvestSection({ onOpenApplication }: WhyInvestSection
             className="lg:col-span-4 p-8 sm:p-10 rounded-2xl bg-[#080808] border border-white/[0.07] flex flex-col justify-between"
           >
             <div className="space-y-6">
-              <div className="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-[#D7A6B8]">
+              <div className="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-[#4A7BFF]">
                 <Layers className="w-6 h-6" />
               </div>
               <h3 className="text-2xl sm:text-3xl font-medium text-[#F3F3F1] leading-snug">
                 We build your store from the ground up.
               </h3>
               <div className="space-y-3 text-base text-[#96989F]">
-                <p className="border-l-2 border-[#D7A6B8] pl-3 text-[#F3F3F1] font-medium">
+                <p className="border-l-2 border-[#4A7BFF] pl-3 text-[#F3F3F1] font-medium">
                   Ready for operation.
                 </p>
-                <p className="border-l-2 border-[#A79CC8] pl-3 text-[#F3F3F1] font-medium">
+                <p className="border-l-2 border-[#6B96FF] pl-3 text-[#F3F3F1] font-medium">
                   Designed for long-term growth.
                 </p>
               </div>
@@ -104,20 +104,20 @@ export default function WhyInvestSection({ onOpenApplication }: WhyInvestSection
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="lg:col-span-4 p-6 sm:p-8 rounded-2xl bg-[#0d0d0d] border border-[#A79CC8]/15 shadow-[0_0_40px_rgba(167,156,200,0.07)] flex flex-col justify-between relative overflow-hidden"
+            className="lg:col-span-4 p-6 sm:p-8 rounded-2xl bg-[#0d0d0d] border border-[#6B96FF]/15 shadow-[0_0_40px_rgba(107,150,255,0.07)] flex flex-col justify-between relative overflow-hidden"
           >
             {/* Ambient glowing beam */}
-            <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-64 h-32 bg-[#A79CC8]/15 rounded-full blur-2xl pointer-events-none" />
+            <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-64 h-32 bg-[#6B96FF]/15 rounded-full blur-2xl pointer-events-none" />
 
             <div>
               <div className="flex items-center justify-between pb-4 border-b border-white/[0.08] mb-5">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#D7A6B8] animate-pulse" />
+                  <span className="w-2 h-2 rounded-full bg-[#4A7BFF] animate-pulse" />
                   <span className="text-xs font-mono text-[#F3F3F1] font-medium tracking-wider">
                     OPERATIONAL MATRIX
                   </span>
                 </div>
-                <span className="text-[10px] font-mono text-[#A79CC8] bg-[#A79CC8]/10 px-2 py-0.5 rounded-full border border-[#A79CC8]/20">
+                <span className="text-[10px] font-mono text-[#6B96FF] bg-[#6B96FF]/10 px-2 py-0.5 rounded-full border border-[#6B96FF]/20">
                   REAL-TIME SYNC
                 </span>
               </div>
@@ -168,13 +168,13 @@ export default function WhyInvestSection({ onOpenApplication }: WhyInvestSection
             className="lg:col-span-4 p-8 sm:p-10 rounded-2xl bg-[#080808] border border-white/[0.07] flex flex-col justify-between"
           >
             <div>
-              <h4 className="text-xs font-mono uppercase tracking-wider text-[#A79CC8] mb-6">
+              <h4 className="text-xs font-mono uppercase tracking-wider text-[#6B96FF] mb-6">
                 Direct Investor Advantages
               </h4>
               <div className="space-y-4">
                 {benefitsList.map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-[#D7A6B8]/15 border border-[#D7A6B8]/30 flex items-center justify-center text-[#D7A6B8] shrink-0 mt-0.5">
+                    <div className="w-5 h-5 rounded-full bg-[#4A7BFF]/15 border border-[#4A7BFF]/30 flex items-center justify-center text-[#4A7BFF] shrink-0 mt-0.5">
                       <Check className="w-3 h-3 stroke-[3]" />
                     </div>
                     <span className="text-sm text-[#96989F] leading-snug hover:text-[#F3F3F1] transition-colors">

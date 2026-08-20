@@ -153,7 +153,7 @@ export default function StoreBuilder({ onOpenApplication }: StoreBuilderProps) {
   return (
     <section id="store-builder" className="relative py-24 lg:py-32 bg-[#0E1012] overflow-hidden border-t border-white/[0.06]">
       {/* Ambient background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-72 bg-[#A79CC8]/06 rounded-full blur-[170px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-72 bg-[#4A7BFF]/06 rounded-full blur-[170px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeading
@@ -168,7 +168,7 @@ export default function StoreBuilder({ onOpenApplication }: StoreBuilderProps) {
             <div className="space-y-6">
               {/* Marketplace Selection */}
               <div>
-                <label className="block text-xs font-mono uppercase tracking-wider text-[#A79CC8] mb-3">
+                <label className="block text-xs font-mono uppercase tracking-wider text-[#4A7BFF] mb-3">
                   1. Choose Target Marketplace
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
@@ -177,9 +177,9 @@ export default function StoreBuilder({ onOpenApplication }: StoreBuilderProps) {
                       key={m}
                       type="button"
                       onClick={() => setMarketplace(m)}
-                      className={`py-3 px-2 rounded-2xl text-xs font-medium border transition-all text-center cursor-pointer ${
+                      className={`py-3 px-2 rounded-md text-xs font-medium border transition-all text-center cursor-pointer ${
                         marketplace === m
-                          ? 'bg-[#22252A] border-[#D7A6B8] text-[#F3F3F1] shadow-[0_0_20px_rgba(215,166,184,0.25)]'
+                          ? 'bg-[#22252A] border-[#6B96FF] text-[#F3F3F1] shadow-[0_0_20px_rgba(74,123,255,0.25)]'
                           : 'bg-[#101214] border-white/5 text-[#96989F] hover:border-white/20'
                       }`}
                     >
@@ -191,7 +191,7 @@ export default function StoreBuilder({ onOpenApplication }: StoreBuilderProps) {
 
               {/* Business Model Selection */}
               <div>
-                <label className="block text-xs font-mono uppercase tracking-wider text-[#A79CC8] mb-3">
+                <label className="block text-xs font-mono uppercase tracking-wider text-[#4A7BFF] mb-3">
                   2. Select Operational Model
                 </label>
                 <div className="grid grid-cols-3 gap-2.5">
@@ -200,9 +200,9 @@ export default function StoreBuilder({ onOpenApplication }: StoreBuilderProps) {
                       key={mod}
                       type="button"
                       onClick={() => setModel(mod)}
-                      className={`py-3 px-3 rounded-2xl text-xs font-medium border transition-all text-center cursor-pointer ${
+                      className={`py-3 px-3 rounded-md text-xs font-medium border transition-all text-center cursor-pointer ${
                         model === mod
-                          ? 'bg-[#22252A] border-[#A79CC8] text-[#F3F3F1] shadow-[0_0_20px_rgba(167,156,200,0.25)]'
+                          ? 'bg-[#22252A] border-[#4A7BFF] text-[#F3F3F1] shadow-[0_0_20px_rgba(74,123,255,0.25)]'
                           : 'bg-[#101214] border-white/5 text-[#96989F] hover:border-white/20'
                       }`}
                     >
@@ -214,7 +214,7 @@ export default function StoreBuilder({ onOpenApplication }: StoreBuilderProps) {
 
               {/* Growth Stage Selection */}
               <div>
-                <label className="block text-xs font-mono uppercase tracking-wider text-[#A79CC8] mb-3">
+                <label className="block text-xs font-mono uppercase tracking-wider text-[#4A7BFF] mb-3">
                   3. Select Growth Stage Objective
                 </label>
                 <div className="grid grid-cols-3 gap-2.5">
@@ -223,9 +223,9 @@ export default function StoreBuilder({ onOpenApplication }: StoreBuilderProps) {
                       key={stage}
                       type="button"
                       onClick={() => setGrowthStage(stage)}
-                      className={`py-3 px-3 rounded-2xl text-xs font-medium border transition-all text-center cursor-pointer ${
+                      className={`py-3 px-3 rounded-md text-xs font-medium border transition-all text-center cursor-pointer ${
                         growthStage === stage
-                          ? 'bg-[#22252A] border-[#7F89C5] text-[#F3F3F1] shadow-[0_0_20px_rgba(127,137,197,0.25)]'
+                          ? 'bg-[#22252A] border-[#2D5ADB] text-[#F3F3F1] shadow-[0_0_20px_rgba(45,90,219,0.25)]'
                           : 'bg-[#101214] border-white/5 text-[#96989F] hover:border-white/20'
                       }`}
                     >
@@ -238,7 +238,7 @@ export default function StoreBuilder({ onOpenApplication }: StoreBuilderProps) {
               {/* Working Capital Range Slider */}
               <div>
                 <div className="flex items-center justify-between text-xs mb-3">
-                  <span className="font-mono uppercase tracking-wider text-[#A79CC8]">
+                  <span className="font-mono uppercase tracking-wider text-[#4A7BFF]">
                     4. Planned Capital Allocation
                   </span>
                   <span className="font-mono text-[#F3F3F1] font-bold text-sm bg-white/[0.04] px-2.5 py-1 rounded-lg border border-white/10">
@@ -252,7 +252,7 @@ export default function StoreBuilder({ onOpenApplication }: StoreBuilderProps) {
                   step={5000}
                   value={targetCapital}
                   onChange={(e) => setTargetCapital(Number(e.target.value))}
-                  className="w-full h-2 bg-[#22252A] rounded-lg appearance-none cursor-pointer accent-[#D7A6B8]"
+                  className="w-full h-2 bg-[#22252A] rounded-lg appearance-none cursor-pointer accent-[#6B96FF]"
                 />
                 <div className="flex justify-between text-[10px] font-mono text-[#6E7078] mt-2">
                   <span>$15k (Starter)</span>
@@ -266,15 +266,15 @@ export default function StoreBuilder({ onOpenApplication }: StoreBuilderProps) {
               <span className="text-xs text-[#6E7078]">
                 Vetting status: <strong className="text-emerald-400">Available Quota Open</strong>
               </span>
-              <span className="text-[11px] font-mono text-[#A79CC8]">Live Algorithmic Estimate</span>
+              <span className="text-[11px] font-mono text-[#4A7BFF]">Live Algorithmic Estimate</span>
             </div>
           </div>
 
           {/* Right Column: Dynamic Live Dashboard Preview */}
           <div className="lg:col-span-6 p-7 sm:p-9 rounded-3xl bg-[#17191E] border border-white/[0.12] shadow-2xl flex flex-col justify-between relative overflow-hidden">
             {/* Soft Glowing Rings around preview */}
-            <div className="absolute -top-12 -right-12 w-64 h-64 rounded-full bg-[#D7A6B8]/15 blur-3xl pointer-events-none" />
-            <div className="absolute -bottom-12 -left-12 w-64 h-64 rounded-full bg-[#7F89C5]/15 blur-3xl pointer-events-none" />
+            <div className="absolute -top-12 -right-12 w-64 h-64 rounded-full bg-[#6B96FF]/15 blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-12 -left-12 w-64 h-64 rounded-full bg-[#2D5ADB]/15 blur-3xl pointer-events-none" />
 
             <div>
               {/* Header preview telemetry */}
@@ -301,29 +301,24 @@ export default function StoreBuilder({ onOpenApplication }: StoreBuilderProps) {
                 </div>
                 <div className="p-3 rounded-2xl bg-[#101215] border border-white/5">
                   <span className="text-[10px] font-mono text-[#6E7078] block">Business Model</span>
-                  <span className="text-xs font-bold text-[#D7A6B8] mt-1 block truncate">{model}</span>
+                  <span className="text-xs font-bold text-[#6B96FF] mt-1 block truncate">{model}</span>
                 </div>
                 <div className="p-3 rounded-2xl bg-[#101215] border border-white/5">
                   <span className="text-[10px] font-mono text-[#6E7078] block">Growth Stage</span>
-                  <span className="text-xs font-bold text-[#A79CC8] mt-1 block truncate">{growthStage}</span>
+                  <span className="text-xs font-bold text-[#4A7BFF] mt-1 block truncate">{growthStage}</span>
                 </div>
                 <div className="p-3 rounded-2xl bg-[#101215] border border-white/5">
                   <span className="text-[10px] font-mono text-[#6E7078] block">Allocation</span>
-                  <span className="text-xs font-bold text-[#7F89C5] mt-1 block truncate font-mono">${(targetCapital/1000).toFixed(0)}k</span>
+                  <span className="text-xs font-bold text-[#2D5ADB] mt-1 block truncate font-mono">${(targetCapital/1000).toFixed(0)}k</span>
                 </div>
               </div>
 
               {/* Dynamic Metrics Cards */}
               <div className="p-5 rounded-2xl bg-[#111316] border border-white/5 space-y-4 mb-6">
-                <div className="flex items-baseline justify-between border-b border-white/[0.05] pb-3">
-                  <div>
-                    <span className="text-xs text-[#96989F] block">Projected Monthly Revenue Run-Rate</span>
-                    <span className="text-3xl font-bold font-mono text-[#F3F3F1] mt-0.5 block">
-                      {currentStats.estRevenue}
-                    </span>
-                  </div>
-                  <span className="text-xs font-mono text-[#D7A6B8] bg-[#D7A6B8]/10 px-2.5 py-1 rounded-full border border-[#D7A6B8]/20">
-                    {currentStats.badge}
+                <div className="border-b border-white/[0.05] pb-3">
+                  <span className="text-xs text-[#96989F] block">Projected Monthly Revenue Run-Rate</span>
+                  <span className="text-3xl font-bold font-mono text-[#F3F3F1] mt-0.5 block">
+                    {currentStats.estRevenue}
                   </span>
                 </div>
 
@@ -338,7 +333,7 @@ export default function StoreBuilder({ onOpenApplication }: StoreBuilderProps) {
                   </div>
                   <div>
                     <span className="text-[10px] font-mono text-[#6E7078] uppercase">Launch Readiness</span>
-                    <p className="text-sm font-semibold text-[#A79CC8] font-mono mt-0.5">{currentStats.onboardingDays}</p>
+                    <p className="text-sm font-semibold text-[#4A7BFF] font-mono mt-0.5">{currentStats.onboardingDays}</p>
                   </div>
                 </div>
               </div>
@@ -346,11 +341,11 @@ export default function StoreBuilder({ onOpenApplication }: StoreBuilderProps) {
               {/* Team Allocation & Safeguards */}
               <div className="p-3.5 rounded-2xl bg-[#111316] border border-white/5 flex items-center justify-between text-xs">
                 <div className="flex items-center gap-2 text-[#96989F]">
-                  <Users className="w-4 h-4 text-[#D7A6B8]" />
+                  <Users className="w-4 h-4 text-[#6B96FF]" />
                   <span>Team Allocation: <strong className="text-[#F3F3F1]">{currentStats.teamAllocated}</strong></span>
                 </div>
                 <div className="flex items-center gap-2 text-[#96989F]">
-                  <ShieldCheck className="w-4 h-4 text-[#A79CC8]" />
+                  <ShieldCheck className="w-4 h-4 text-[#4A7BFF]" />
                   <span>Risk Level: <strong className="text-emerald-400">{currentStats.riskIndex}</strong></span>
                 </div>
               </div>
@@ -361,7 +356,7 @@ export default function StoreBuilder({ onOpenApplication }: StoreBuilderProps) {
               <MagneticButton
                 variant="primary"
                 onClick={() => onOpenApplication(`${marketplace} ${model} Automation`)}
-                className="w-full !py-4 text-base font-bold shadow-[0_0_35px_rgba(215,166,184,0.4)]"
+                className="w-full !py-4 text-base font-bold shadow-[0_0_35px_rgba(74,123,255,0.4)]"
               >
                 <span>Reserve This Configuration</span>
                 <ArrowRight className="w-4 h-4" />

@@ -58,7 +58,7 @@ export default function FAQSection({ onOpenApplication }: FAQSectionProps) {
   return (
     <section id="faq" className="relative py-24 lg:py-32 bg-[#0b0c0e] overflow-hidden border-t border-white/[0.06]">
       {/* Ambient background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-80 bg-[#A79CC8]/05 rounded-full blur-[170px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-80 bg-[#6B96FF]/05 rounded-full blur-[170px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeading
@@ -80,7 +80,7 @@ export default function FAQSection({ onOpenApplication }: FAQSectionProps) {
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 className={`rounded-3xl border transition-all duration-300 overflow-hidden ${
                   isOpen
-                    ? 'bg-[#16181C] border-[#A79CC8]/40 shadow-[0_10px_30px_rgba(0,0,0,0.5)]'
+                    ? 'bg-[#16181C] border-[#6B96FF]/40 shadow-[0_10px_30px_rgba(0,0,0,0.5)]'
                     : 'bg-[#121417] border-white/[0.06] hover:border-white/15'
                 }`}
               >
@@ -93,9 +93,9 @@ export default function FAQSection({ onOpenApplication }: FAQSectionProps) {
                     {faq.question}
                   </span>
                   <div
-                    className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 border transition-all ${
+                    className={`w-8 h-8 rounded-md flex items-center justify-center shrink-0 border transition-all ${
                       isOpen
-                        ? 'bg-gradient-to-r from-[#D7A6B8] to-[#7F89C5] text-[#0B0D0F] border-transparent rotate-180'
+                        ? 'bg-gradient-to-r from-[#4A7BFF] to-[#2D5ADB] text-[#0B0D0F] border-transparent rotate-180'
                         : 'bg-white/[0.04] text-[#96989F] border-white/10'
                     }`}
                   >

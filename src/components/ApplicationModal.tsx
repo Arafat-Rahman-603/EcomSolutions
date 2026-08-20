@@ -60,7 +60,7 @@ export default function ApplicationModal({
           particleCount: 80,
           spread: 70,
           origin: { y: 0.6 },
-          colors: ['#D7A6B8', '#A79CC8', '#7F89C5', '#F3F3F1'],
+          colors: ['#4A7BFF', '#6B96FF', '#2D5ADB', '#F3F3F1'],
         });
       } catch (err) {
         // Confetti fallback
@@ -97,13 +97,13 @@ export default function ApplicationModal({
           className="relative w-full max-w-2xl overflow-hidden rounded-3xl bg-[#121417] border border-white/10 shadow-[0_25px_70px_rgba(0,0,0,0.8)] z-10 my-8"
         >
           {/* Ambient Top Glow */}
-          <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#D7A6B8] via-[#A79CC8] to-[#7F89C5]" />
-          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-48 bg-[#A79CC8]/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#4A7BFF] via-[#6B96FF] to-[#2D5ADB]" />
+          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-48 bg-[#6B96FF]/15 rounded-full blur-3xl pointer-events-none" />
 
           {/* Close Button */}
           <button
             onClick={handleReset}
-            className="absolute top-5 right-5 w-10 h-10 rounded-full bg-white/[0.04] hover:bg-white/[0.1] border border-white/10 flex items-center justify-center text-[#96989F] hover:text-[#F3F3F1] transition-colors z-20 cursor-pointer"
+            className="absolute top-5 right-5 w-10 h-10 rounded-md bg-white/[0.04] hover:bg-white/[0.1] border border-white/10 flex items-center justify-center text-[#96989F] hover:text-[#F3F3F1] transition-colors z-20 cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -113,12 +113,6 @@ export default function ApplicationModal({
               <>
                 {/* Header */}
                 <div className="mb-8">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] mb-3">
-                    <Sparkles className="w-3.5 h-3.5 text-[#D7A6B8]" />
-                    <span className="text-xs font-semibold tracking-wider text-[#A79CC8] uppercase">
-                      Private Store Allocation
-                    </span>
-                  </div>
                   <h3 className="text-2xl sm:text-3xl font-medium tracking-tight text-[#F3F3F1]">
                     Apply for an Automated Store
                   </h3>
@@ -127,9 +121,9 @@ export default function ApplicationModal({
                   </p>
 
                   {/* Progress Bar */}
-                  <div className="w-full bg-white/[0.06] h-1.5 rounded-full mt-5 overflow-hidden">
+                  <div className="w-full bg-white/[0.06] h-1.5 rounded-md mt-5 overflow-hidden">
                     <motion.div
-                      className="h-full bg-gradient-to-r from-[#D7A6B8] to-[#7F89C5]"
+                      className="h-full bg-gradient-to-r from-[#4A7BFF] to-[#2D5ADB]"
                       initial={{ width: '33%' }}
                       animate={{ width: step === 1 ? '33%' : step === 2 ? '66%' : '100%' }}
                       transition={{ duration: 0.3 }}
@@ -158,18 +152,17 @@ export default function ApplicationModal({
                               onClick={() => setFormData({ ...formData, marketplace: m.id })}
                               className={`p-3.5 rounded-2xl text-left border transition-all flex items-center justify-between cursor-pointer ${
                                 formData.marketplace === m.id
-                                  ? 'bg-[#1E2126] border-[#A79CC8] text-[#F3F3F1] shadow-[0_0_20px_rgba(167,156,200,0.15)]'
+                                  ? 'bg-[#1E2126] border-[#6B96FF] text-[#F3F3F1] shadow-[0_0_20px_rgba(107,150,255,0.15)]'
                                   : 'bg-[#15171B] border-white/5 text-[#96989F] hover:border-white/15 hover:text-[#F3F3F1]'
                               }`}
                             >
                               <div className="pr-2">
                                 <p className="text-sm font-medium text-[#F3F3F1]">{m.name}</p>
-                                <span className="text-[11px] text-[#A79CC8] font-mono">{m.badge}</span>
                               </div>
                               <div
-                                className={`w-5 h-5 rounded-full flex items-center justify-center border ${
+                                className={`w-5 h-5 rounded-md flex items-center justify-center border ${
                                   formData.marketplace === m.id
-                                    ? 'border-[#A79CC8] bg-[#A79CC8] text-[#0B0D0F]'
+                                    ? 'border-[#6B96FF] bg-[#6B96FF] text-[#0B0D0F]'
                                     : 'border-white/20'
                                 }`}
                               >
@@ -192,7 +185,7 @@ export default function ApplicationModal({
                               onClick={() => setFormData({ ...formData, capital: cap })}
                               className={`py-3 px-2 rounded-xl text-center text-xs font-medium border transition-all cursor-pointer ${
                                 formData.capital === cap
-                                  ? 'bg-[#1E2126] border-[#D7A6B8] text-[#F3F3F1] shadow-[0_0_15px_rgba(215,166,184,0.2)]'
+                                  ? 'bg-[#1E2126] border-[#4A7BFF] text-[#F3F3F1] shadow-[0_0_15px_rgba(74,123,255,0.2)]'
                                   : 'bg-[#15171B] border-white/5 text-[#96989F] hover:border-white/20'
                               }`}
                             >
@@ -206,7 +199,7 @@ export default function ApplicationModal({
                         <button
                           type="button"
                           onClick={() => setStep(2)}
-                          className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#D7A6B8] to-[#8B90C9] text-[#0B0D0F] font-semibold text-sm hover:shadow-[0_0_25px_rgba(215,166,184,0.4)] transition-all cursor-pointer"
+                          className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-gradient-to-r from-[#4A7BFF] to-[#6B96FF] text-[#0B0D0F] font-semibold text-sm hover:shadow-[0_0_25px_rgba(74,123,255,0.4)] transition-all cursor-pointer"
                         >
                           Next: Investor Profile
                           <ArrowRight className="w-4 h-4" />
@@ -238,7 +231,7 @@ export default function ApplicationModal({
                               onClick={() => setFormData({ ...formData, experience: lvl })}
                               className={`p-3 rounded-xl text-left text-xs font-medium border transition-all cursor-pointer ${
                                 formData.experience === lvl
-                                  ? 'bg-[#1E2126] border-[#A79CC8] text-[#F3F3F1]'
+                                  ? 'bg-[#1E2126] border-[#6B96FF] text-[#F3F3F1]'
                                   : 'bg-[#15171B] border-white/5 text-[#96989F] hover:border-white/20'
                               }`}
                             >
@@ -264,7 +257,7 @@ export default function ApplicationModal({
                               onClick={() => setFormData({ ...formData, timeline: t })}
                               className={`p-3 rounded-xl text-left text-xs font-medium border transition-all cursor-pointer ${
                                 formData.timeline === t
-                                  ? 'bg-[#1E2126] border-[#A79CC8] text-[#F3F3F1]'
+                                  ? 'bg-[#1E2126] border-[#6B96FF] text-[#F3F3F1]'
                                   : 'bg-[#15171B] border-white/5 text-[#96989F] hover:border-white/20'
                               }`}
                             >
@@ -278,7 +271,7 @@ export default function ApplicationModal({
                         <button
                           type="button"
                           onClick={() => setStep(1)}
-                          className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-sm text-[#96989F] hover:text-[#F3F3F1] transition-colors cursor-pointer"
+                          className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-md text-sm text-[#96989F] hover:text-[#F3F3F1] transition-colors cursor-pointer"
                         >
                           <ArrowLeft className="w-4 h-4" />
                           Back
@@ -286,7 +279,7 @@ export default function ApplicationModal({
                         <button
                           type="button"
                           onClick={() => setStep(3)}
-                          className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#D7A6B8] to-[#8B90C9] text-[#0B0D0F] font-semibold text-sm hover:shadow-[0_0_25px_rgba(215,166,184,0.4)] transition-all cursor-pointer"
+                          className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-gradient-to-r from-[#4A7BFF] to-[#6B96FF] text-[#0B0D0F] font-semibold text-sm hover:shadow-[0_0_25px_rgba(74,123,255,0.4)] transition-all cursor-pointer"
                         >
                           Next: Contact Information
                           <ArrowRight className="w-4 h-4" />
@@ -314,7 +307,7 @@ export default function ApplicationModal({
                             placeholder="e.g. Alexander Mitchell"
                             value={formData.fullName}
                             onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                            className="w-full pl-10 pr-4 py-3 bg-[#15171B] border border-white/10 rounded-xl text-sm text-[#F3F3F1] placeholder-[#6E7078] focus:outline-none focus:border-[#A79CC8] transition-colors"
+                            className="w-full pl-10 pr-4 py-3 bg-[#15171B] border border-white/10 rounded-xl text-sm text-[#F3F3F1] placeholder-[#6E7078] focus:outline-none focus:border-[#6B96FF] transition-colors"
                           />
                         </div>
                       </div>
@@ -332,7 +325,7 @@ export default function ApplicationModal({
                               placeholder="alex@company.com"
                               value={formData.email}
                               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                              className="w-full pl-10 pr-4 py-3 bg-[#15171B] border border-white/10 rounded-xl text-sm text-[#F3F3F1] placeholder-[#6E7078] focus:outline-none focus:border-[#A79CC8] transition-colors"
+                              className="w-full pl-10 pr-4 py-3 bg-[#15171B] border border-white/10 rounded-xl text-sm text-[#F3F3F1] placeholder-[#6E7078] focus:outline-none focus:border-[#6B96FF] transition-colors"
                             />
                           </div>
                         </div>
@@ -349,7 +342,7 @@ export default function ApplicationModal({
                               placeholder="+1 (555) 000-0000"
                               value={formData.phone}
                               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                              className="w-full pl-10 pr-4 py-3 bg-[#15171B] border border-white/10 rounded-xl text-sm text-[#F3F3F1] placeholder-[#6E7078] focus:outline-none focus:border-[#A79CC8] transition-colors"
+                              className="w-full pl-10 pr-4 py-3 bg-[#15171B] border border-white/10 rounded-xl text-sm text-[#F3F3F1] placeholder-[#6E7078] focus:outline-none focus:border-[#6B96FF] transition-colors"
                             />
                           </div>
                         </div>
@@ -364,12 +357,12 @@ export default function ApplicationModal({
                           placeholder="Tell us about your portfolio goals, previous seller accounts, or specific marketplace preferences..."
                           value={formData.notes}
                           onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                          className="w-full px-4 py-2.5 bg-[#15171B] border border-white/10 rounded-xl text-sm text-[#F3F3F1] placeholder-[#6E7078] focus:outline-none focus:border-[#A79CC8] transition-colors resize-none"
+                          className="w-full px-4 py-2.5 bg-[#15171B] border border-white/10 rounded-xl text-sm text-[#F3F3F1] placeholder-[#6E7078] focus:outline-none focus:border-[#6B96FF] transition-colors resize-none"
                         />
                       </div>
 
                       <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5 flex items-start gap-2.5">
-                        <ShieldCheck className="w-5 h-5 text-[#A79CC8] shrink-0 mt-0.5" />
+                        <ShieldCheck className="w-5 h-5 text-[#6B96FF] shrink-0 mt-0.5" />
                         <p className="text-[12px] text-[#96989F] leading-tight">
                           Strict NDA Protected. Ecom Solutions does not share investor contact information with third parties.
                         </p>
@@ -379,7 +372,7 @@ export default function ApplicationModal({
                         <button
                           type="button"
                           onClick={() => setStep(2)}
-                          className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-sm text-[#96989F] hover:text-[#F3F3F1] transition-colors cursor-pointer"
+                          className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-md text-sm text-[#96989F] hover:text-[#F3F3F1] transition-colors cursor-pointer"
                         >
                           <ArrowLeft className="w-4 h-4" />
                           Back
@@ -387,11 +380,11 @@ export default function ApplicationModal({
                         <button
                           type="submit"
                           disabled={isSubmitting}
-                          className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#D7A6B8] via-[#A79CC8] to-[#7F89C5] text-[#0B0D0F] font-bold text-sm shadow-[0_0_30px_rgba(215,166,184,0.4)] hover:shadow-[0_0_45px_rgba(215,166,184,0.7)] transition-all cursor-pointer disabled:opacity-50"
+                          className="inline-flex items-center gap-2 px-8 py-3.5 rounded-md bg-gradient-to-r from-[#4A7BFF] via-[#6B96FF] to-[#2D5ADB] text-[#0B0D0F] font-bold text-sm shadow-[0_0_30px_rgba(74,123,255,0.4)] hover:shadow-[0_0_45px_rgba(74,123,255,0.7)] transition-all cursor-pointer disabled:opacity-50"
                         >
                           {isSubmitting ? (
                             <span className="inline-flex items-center gap-2">
-                              <span className="w-4 h-4 border-2 border-[#0B0D0F] border-t-transparent rounded-full animate-spin" />
+                              <span className="w-4 h-4 border-2 border-[#0B0D0F] border-t-transparent rounded-md animate-spin" />
                               Allocating Desk...
                             </span>
                           ) : (
@@ -413,7 +406,7 @@ export default function ApplicationModal({
                 animate={{ opacity: 1, scale: 1 }}
                 className="py-10 text-center space-y-6"
               >
-                <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-tr from-[#D7A6B8]/20 to-[#A79CC8]/20 border border-[#A79CC8]/40 flex items-center justify-center text-[#D7A6B8] shadow-[0_0_40px_rgba(167,156,200,0.3)]">
+                <div className="w-20 h-20 mx-auto rounded-md bg-gradient-to-tr from-[#4A7BFF]/20 to-[#6B96FF]/20 border border-[#6B96FF]/40 flex items-center justify-center text-[#4A7BFF] shadow-[0_0_40px_rgba(107,150,255,0.3)]">
                   <Check className="w-10 h-10 stroke-[2.5]" />
                 </div>
 
@@ -422,7 +415,7 @@ export default function ApplicationModal({
                     Application Received
                   </h3>
                   <p className="text-sm text-[#96989F] leading-relaxed">
-                    Thank you, <span className="text-[#F3F3F1] font-semibold">{formData.fullName || 'Partner'}</span>. A Senior Portfolio Director has been assigned to your request for <span className="text-[#D7A6B8] font-medium">{formData.marketplace}</span>.
+                    Thank you, <span className="text-[#F3F3F1] font-semibold">{formData.fullName || 'Partner'}</span>. A Senior Portfolio Director has been assigned to your request for <span className="text-[#4A7BFF] font-medium">{formData.marketplace}</span>.
                   </p>
                 </div>
 
@@ -437,14 +430,14 @@ export default function ApplicationModal({
                   </div>
                   <div className="flex justify-between">
                     <span>Response Time:</span>
-                    <span className="text-[#A79CC8] font-semibold">Under 4 Hours</span>
+                    <span className="text-[#6B96FF] font-semibold">Under 4 Hours</span>
                   </div>
                 </div>
 
                 <div>
                   <button
                     onClick={handleReset}
-                    className="px-8 py-3 rounded-full bg-white/[0.08] hover:bg-white/[0.15] text-[#F3F3F1] text-sm font-medium border border-white/10 transition-all cursor-pointer"
+                    className="px-8 py-3 rounded-md bg-white/[0.08] hover:bg-white/[0.15] text-[#F3F3F1] text-sm font-medium border border-white/10 transition-all cursor-pointer"
                   >
                     Return to Website
                   </button>

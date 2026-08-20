@@ -74,16 +74,16 @@ export default function Navbar({ onOpenApplication }: NavbarProps) {
           </a>
 
           {/* Desktop Center Navigation */}
-          <nav className="hidden lg:flex items-center gap-0.5 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] backdrop-blur-md">
+          <nav className="hidden lg:flex items-center gap-0.5 px-3 py-1.5 rounded-md bg-white/[0.03] border border-white/[0.06] backdrop-blur-md">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="relative px-3.5 py-1.5 text-xs font-medium text-[#8A8C94] hover:text-[#F3F3F1] rounded-full transition-all duration-200 hover:bg-white/[0.04] group"
+                className="relative px-3.5 py-1.5 text-xs font-medium text-[#8A8C94] hover:text-[#F3F3F1] rounded-md transition-all duration-200 hover:bg-white/[0.04] group"
                 style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}
               >
                 {link.label}
-                <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-0 h-px bg-gradient-to-r from-[#D7A6B8] to-[#7F89C5] group-hover:w-4 transition-all duration-300 rounded-full" />
+                <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-0 h-px bg-gradient-to-r from-[#4A7BFF] to-[#2D5ADB] group-hover:w-4 transition-all duration-300 rounded-full" />
               </a>
             ))}
           </nav>
@@ -105,7 +105,7 @@ export default function Navbar({ onOpenApplication }: NavbarProps) {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-xl bg-white/[0.04] border border-white/[0.07] text-[#F3F3F1] hover:bg-white/[0.08] transition-colors cursor-pointer"
+              className="lg:hidden p-2 rounded-md bg-white/[0.04] border border-white/[0.07] text-[#F3F3F1] hover:bg-white/[0.08] transition-colors cursor-pointer"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -137,7 +137,7 @@ export default function Navbar({ onOpenApplication }: NavbarProps) {
               className="fixed inset-x-0 top-20 mx-3 sm:mx-4 z-30 max-h-[calc(100vh-6rem)] overflow-y-auto rounded-3xl bg-[#121315]/98 backdrop-blur-2xl border border-white/[0.08] shadow-[0_30px_80px_rgba(0,0,0,0.8)] lg:hidden"
             >
               {/* Ambient Glow */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-72 h-72 bg-[#a7a0cc]/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-72 h-72 bg-[#6B96FF]/10 rounded-full blur-3xl pointer-events-none" />
 
               <div className="space-y-1.5 relative z-10 p-4 sm:p-5">
                 <div className="text-[10px] tracking-widest text-[#6b6b73] uppercase px-3 mb-3 pt-1 font-medium">
@@ -152,10 +152,10 @@ export default function Navbar({ onOpenApplication }: NavbarProps) {
                     exit={{ opacity: 0, y: -8, filter: 'blur(4px)' }}
                     transition={{ delay: idx * 0.05 + 0.1, ease: [0.22, 1, 0.36, 1], duration: 0.35 }}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-between px-4 py-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.05] text-[#f2f2f0] hover:bg-[#1a1b1e] hover:border-[#a7a0cc]/25 transition-all duration-200 group"
+                    className="flex items-center justify-between px-4 py-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.05] text-[#f2f2f0] hover:bg-[#1a1b1e] hover:border-[#6B96FF]/25 transition-all duration-200 group"
                   >
                     <span className="text-base font-medium">{link.label}</span>
-                    <ChevronRight className="w-4 h-4 text-[#6b6b73] group-hover:text-[#a7a0cc] group-hover:translate-x-0.5 transition-all" />
+                    <ChevronRight className="w-4 h-4 text-[#6b6b73] group-hover:text-[#6B96FF] group-hover:translate-x-0.5 transition-all" />
                   </motion.a>
                 ))}
               </div>
@@ -173,7 +173,7 @@ export default function Navbar({ onOpenApplication }: NavbarProps) {
                     setMobileMenuOpen(false);
                     onOpenApplication();
                   }}
-                  className="w-full py-4 rounded-2xl bg-gradient-to-r from-[#d8a6b8] via-[#a7a0cc] to-[#8188c2] text-black font-bold text-sm shadow-[0_0_30px_rgba(216,166,184,0.30)] flex items-center justify-center gap-2 cursor-pointer transition-all hover:shadow-[0_0_40px_rgba(216,166,184,0.5)] active:scale-[0.98]"
+                  className="w-full py-4 rounded-md bg-gradient-to-r from-[#4A7BFF] via-[#6B96FF] to-[#2D5ADB] text-black font-bold text-sm shadow-[0_0_30px_rgba(74,123,255,0.30)] flex items-center justify-center gap-2 cursor-pointer transition-all hover:shadow-[0_0_40px_rgba(74,123,255,0.5)] active:scale-[0.98]"
                 >
                   <span>Apply for a Store</span>
                   <ArrowUpRight className="w-4 h-4" />
