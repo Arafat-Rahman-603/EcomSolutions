@@ -80,7 +80,7 @@ export default function Navbar({ onOpenApplication }: NavbarProps) {
                 key={link.label}
                 href={link.href}
                 className="relative px-3.5 py-1.5 text-xs font-medium text-[#8A8C94] hover:text-[#F3F3F1] rounded-md transition-all duration-200 hover:bg-white/[0.04] group"
-                style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}
+
               >
                 {link.label}
                 <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-0 h-px bg-gradient-to-r from-[#4A7BFF] to-[#2D5ADB] group-hover:w-4 transition-all duration-300 rounded-full" />

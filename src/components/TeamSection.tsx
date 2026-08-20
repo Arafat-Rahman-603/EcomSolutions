@@ -203,19 +203,6 @@ function TeamCard({ member, index }: { member: TeamMember; index: number }) {
           <Icon className="w-4 h-4" style={{ color: member.iconColor }} />
         </div>
 
-        {/* Department label */}
-        <div className="absolute top-4 right-4">
-          <span
-            className="text-[10px] font-semibold px-2.5 py-1 rounded-full"
-            style={{
-              color: member.gradientFrom,
-              backgroundColor: `${member.gradientFrom}12`,
-              border: `1px solid ${member.gradientFrom}22`,
-            }}
-          >
-            {member.department}
-          </span>
-        </div>
 
         {/* Gradient fade to card body */}
         <div className="absolute bottom-0 inset-x-0 h-12 bg-gradient-to-t from-[#121315] to-transparent" />
@@ -247,7 +234,7 @@ function TeamCard({ member, index }: { member: TeamMember; index: number }) {
         {/* Bottom divider + initials row */}
         <div className="pt-3 border-t border-white/[0.05] flex items-center justify-between">
           <div
-            className="text-[10px] font-mono tracking-wider text-[#6b6b73] group-hover:text-[#a1a1aa] transition-colors"
+            className="text-[10px] font-display tracking-wider text-[#6b6b73] group-hover:text-[#a1a1aa] transition-colors"
           >
             ECOM SOLUTIONS / {member.department.toUpperCase()}
           </div>

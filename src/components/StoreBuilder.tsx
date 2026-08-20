@@ -168,7 +168,7 @@ export default function StoreBuilder({ onOpenApplication }: StoreBuilderProps) {
             <div className="space-y-6">
               {/* Marketplace Selection */}
               <div>
-                <label className="block text-xs font-mono uppercase tracking-wider text-[#4A7BFF] mb-3">
+                <label className="block text-xs font-display uppercase tracking-wider text-[#4A7BFF] mb-3">
                   1. Choose Target Marketplace
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
@@ -191,7 +191,7 @@ export default function StoreBuilder({ onOpenApplication }: StoreBuilderProps) {
 
               {/* Business Model Selection */}
               <div>
-                <label className="block text-xs font-mono uppercase tracking-wider text-[#4A7BFF] mb-3">
+                <label className="block text-xs font-display uppercase tracking-wider text-[#4A7BFF] mb-3">
                   2. Select Operational Model
                 </label>
                 <div className="grid grid-cols-3 gap-2.5">
@@ -214,7 +214,7 @@ export default function StoreBuilder({ onOpenApplication }: StoreBuilderProps) {
 
               {/* Growth Stage Selection */}
               <div>
-                <label className="block text-xs font-mono uppercase tracking-wider text-[#4A7BFF] mb-3">
+                <label className="block text-xs font-display uppercase tracking-wider text-[#4A7BFF] mb-3">
                   3. Select Growth Stage Objective
                 </label>
                 <div className="grid grid-cols-3 gap-2.5">
@@ -238,11 +238,8 @@ export default function StoreBuilder({ onOpenApplication }: StoreBuilderProps) {
               {/* Working Capital Range Slider */}
               <div>
                 <div className="flex items-center justify-between text-xs mb-3">
-                  <span className="font-mono uppercase tracking-wider text-[#4A7BFF]">
+                  <span className="font-display uppercase tracking-wider text-[#4A7BFF]">
                     4. Planned Capital Allocation
-                  </span>
-                  <span className="font-mono text-[#F3F3F1] font-bold text-sm bg-white/[0.04] px-2.5 py-1 rounded-lg border border-white/10">
-                    ${targetCapital.toLocaleString()} USD
                   </span>
                 </div>
                 <input
@@ -254,7 +251,7 @@ export default function StoreBuilder({ onOpenApplication }: StoreBuilderProps) {
                   onChange={(e) => setTargetCapital(Number(e.target.value))}
                   className="w-full h-2 bg-[#22252A] rounded-lg appearance-none cursor-pointer accent-[#6B96FF]"
                 />
-                <div className="flex justify-between text-[10px] font-mono text-[#6E7078] mt-2">
+                <div className="flex justify-between text-[10px] font-display text-[#6E7078] mt-2">
                   <span>$15k (Starter)</span>
                   <span>$50k (Growth)</span>
                   <span>$100k+ (Enterprise)</span>
@@ -266,7 +263,7 @@ export default function StoreBuilder({ onOpenApplication }: StoreBuilderProps) {
               <span className="text-xs text-[#6E7078]">
                 Vetting status: <strong className="text-emerald-400">Available Quota Open</strong>
               </span>
-              <span className="text-[11px] font-mono text-[#4A7BFF]">Live Algorithmic Estimate</span>
+              <span className="text-[11px] font-display text-[#4A7BFF]">Live Algorithmic Estimate</span>
             </div>
           </div>
 
@@ -280,36 +277,32 @@ export default function StoreBuilder({ onOpenApplication }: StoreBuilderProps) {
               {/* Header preview telemetry */}
               <div className="flex items-center justify-between pb-5 border-b border-white/[0.08] mb-6">
                 <div>
-                  <span className="text-[10px] font-mono text-[#6E7078] uppercase tracking-wider block">
+                  <span className="text-[10px] font-display text-[#6E7078] uppercase tracking-wider block">
                     PROJECTED ARCHITECTURE
                   </span>
                   <h3 className="text-xl sm:text-2xl font-semibold text-[#F3F3F1] mt-0.5">
                     {marketplace} Store Blueprint
                   </h3>
                 </div>
-                <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-                  <span>Status: Active DFY</span>
-                </div>
               </div>
 
               {/* Dynamic Parameter Grid */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-6">
                 <div className="p-3 rounded-2xl bg-[#101215] border border-white/5">
-                  <span className="text-[10px] font-mono text-[#6E7078] block">Marketplace</span>
+                  <span className="text-[10px] font-display text-[#6E7078] block">Marketplace</span>
                   <span className="text-xs font-bold text-[#F3F3F1] mt-1 block truncate">{marketplace}</span>
                 </div>
                 <div className="p-3 rounded-2xl bg-[#101215] border border-white/5">
-                  <span className="text-[10px] font-mono text-[#6E7078] block">Business Model</span>
+                  <span className="text-[10px] font-display text-[#6E7078] block">Business Model</span>
                   <span className="text-xs font-bold text-[#6B96FF] mt-1 block truncate">{model}</span>
                 </div>
                 <div className="p-3 rounded-2xl bg-[#101215] border border-white/5">
-                  <span className="text-[10px] font-mono text-[#6E7078] block">Growth Stage</span>
+                  <span className="text-[10px] font-display text-[#6E7078] block">Growth Stage</span>
                   <span className="text-xs font-bold text-[#4A7BFF] mt-1 block truncate">{growthStage}</span>
                 </div>
                 <div className="p-3 rounded-2xl bg-[#101215] border border-white/5">
-                  <span className="text-[10px] font-mono text-[#6E7078] block">Allocation</span>
-                  <span className="text-xs font-bold text-[#2D5ADB] mt-1 block truncate font-mono">${(targetCapital/1000).toFixed(0)}k</span>
+                  <span className="text-[10px] font-display text-[#6E7078] block">Allocation</span>
+                  <span className="text-xs font-bold text-[#2D5ADB] mt-1 block truncate font-display">${(targetCapital/1000).toFixed(0)}k</span>
                 </div>
               </div>
 
@@ -317,23 +310,23 @@ export default function StoreBuilder({ onOpenApplication }: StoreBuilderProps) {
               <div className="p-5 rounded-2xl bg-[#111316] border border-white/5 space-y-4 mb-6">
                 <div className="border-b border-white/[0.05] pb-3">
                   <span className="text-xs text-[#96989F] block">Projected Monthly Revenue Run-Rate</span>
-                  <span className="text-3xl font-bold font-mono text-[#F3F3F1] mt-0.5 block">
+                  <span className="text-3xl font-bold font-display text-[#F3F3F1] mt-0.5 block">
                     {currentStats.estRevenue}
                   </span>
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-1">
                   <div>
-                    <span className="text-[10px] font-mono text-[#6E7078] uppercase">Target Net Margin</span>
-                    <p className="text-sm font-semibold text-emerald-400 font-mono mt-0.5">{currentStats.netMargin}</p>
+                    <span className="text-[10px] font-display text-[#6E7078] uppercase">Target Net Margin</span>
+                    <p className="text-sm font-semibold text-emerald-400 font-display mt-0.5">{currentStats.netMargin}</p>
                   </div>
                   <div>
-                    <span className="text-[10px] font-mono text-[#6E7078] uppercase">Est. Daily Orders</span>
-                    <p className="text-sm font-semibold text-[#F3F3F1] font-mono mt-0.5">{currentStats.dailyOrders}</p>
+                    <span className="text-[10px] font-display text-[#6E7078] uppercase">Est. Daily Orders</span>
+                    <p className="text-sm font-semibold text-[#F3F3F1] font-display mt-0.5">{currentStats.dailyOrders}</p>
                   </div>
                   <div>
-                    <span className="text-[10px] font-mono text-[#6E7078] uppercase">Launch Readiness</span>
-                    <p className="text-sm font-semibold text-[#4A7BFF] font-mono mt-0.5">{currentStats.onboardingDays}</p>
+                    <span className="text-[10px] font-display text-[#6E7078] uppercase">Launch Readiness</span>
+                    <p className="text-sm font-semibold text-[#4A7BFF] font-display mt-0.5">{currentStats.onboardingDays}</p>
                   </div>
                 </div>
               </div>

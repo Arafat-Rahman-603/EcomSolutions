@@ -49,12 +49,6 @@ export default function WhyInvestSection({ onOpenApplication }: WhyInvestSection
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Headline */}
         <div className="max-w-3xl mb-16 lg:mb-20">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#4A7BFF]" />
-            <span className="text-[11px] font-semibold tracking-widest uppercase text-[#6B96FF] font-mono">
-              INVESTOR CONFIDENCE ARCHITECTURE
-            </span>
-          </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display tracking-tight text-[#F3F3F1] leading-[1.12]">
             We put your money to work, so you can put your{' '}
             <span className="text-gradient">mind at ease.</span>
@@ -92,7 +86,7 @@ export default function WhyInvestSection({ onOpenApplication }: WhyInvestSection
             </div>
 
             <div className="pt-8 border-t border-white/[0.06] mt-6 flex items-center gap-3">
-              <div className="text-xs text-[#6E7078] font-mono">
+              <div className="text-xs text-[#6E7078] font-display">
                 UPTIME GUARANTEE: <span className="text-emerald-400 font-semibold">99.98%</span>
               </div>
             </div>
@@ -110,15 +104,9 @@ export default function WhyInvestSection({ onOpenApplication }: WhyInvestSection
             <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-64 h-32 bg-[#6B96FF]/15 rounded-full blur-2xl pointer-events-none" />
 
             <div>
-              <div className="flex items-center justify-between pb-4 border-b border-white/[0.08] mb-5">
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#4A7BFF] animate-pulse" />
-                  <span className="text-xs font-mono text-[#F3F3F1] font-medium tracking-wider">
-                    OPERATIONAL MATRIX
-                  </span>
-                </div>
-                <span className="text-[10px] font-mono text-[#6B96FF] bg-[#6B96FF]/10 px-2 py-0.5 rounded-full border border-[#6B96FF]/20">
-                  REAL-TIME SYNC
+              <div className="pb-4 border-b border-white/[0.08] mb-5">
+                <span className="text-xs font-display text-[#F3F3F1] font-medium tracking-wider">
+                  OPERATIONAL MATRIX
                 </span>
               </div>
 
@@ -144,19 +132,12 @@ export default function WhyInvestSection({ onOpenApplication }: WhyInvestSection
                         </div>
                         <span className="text-xs font-medium text-[#F3F3F1]">{op.name}</span>
                       </div>
-                      <span className="text-[10px] font-mono text-[#96989F] bg-white/[0.03] px-2 py-0.5 rounded">
-                        {op.status}
-                      </span>
                     </motion.div>
                   );
                 })}
               </div>
             </div>
 
-            <div className="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between text-[11px] text-[#6E7078] font-mono">
-              <span>ACTIVE SYSTEM THREADS: 14</span>
-              <span className="text-emerald-400">STATUS: HEALTHY</span>
-            </div>
           </motion.div>
 
           {/* Right Column — Benefits List & CTA */}
@@ -168,7 +149,7 @@ export default function WhyInvestSection({ onOpenApplication }: WhyInvestSection
             className="lg:col-span-4 p-8 sm:p-10 rounded-2xl bg-[#080808] border border-white/[0.07] flex flex-col justify-between"
           >
             <div>
-              <h4 className="text-xs font-mono uppercase tracking-wider text-[#6B96FF] mb-6">
+              <h4 className="text-xs font-display uppercase tracking-wider text-[#6B96FF] mb-6">
                 Direct Investor Advantages
               </h4>
               <div className="space-y-4">

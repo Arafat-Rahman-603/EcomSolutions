@@ -31,9 +31,9 @@
     --accent-glow: rgba(74, 123, 255, 0.12);
 
     /* Font families */
-    --font-sans: "Helvetica Neue", Helvetica, Arial, "Geist", "Inter", system-ui, -apple-system, sans-serif;
-    --font-display: "Helvetica Neue", "Geist", "Inter", system-ui, -apple-system, sans-serif;
-    --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', Menlo, Monaco, Consolas, monospace;
+    --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+    --font-display: var(--font-inter), system-ui, -apple-system, sans-serif;
+    --font-mono: Menlo, Monaco, Consolas, 'Courier New', monospace;
   }
 
   * {
@@ -72,7 +72,7 @@
     line-height: 1;
   }
 
-  /* UI / body text uses Helvetica Neue fallback stack */
+  /* UI / body text uses Inter font */
   .font-ui,
   .font-body {
     font-family: var(--font-sans);

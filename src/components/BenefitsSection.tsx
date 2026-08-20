@@ -88,7 +88,7 @@ export default function BenefitsSection({ onOpenApplication }: BenefitsSectionPr
                 className={`group relative rounded-3xl p-8 sm:p-10 ${b.cardBg} border border-white/[0.08] hover:${b.borderHighlight} transition-all duration-400 flex flex-col justify-between overflow-hidden shadow-[0_10px_35px_rgba(0,0,0,0.5)]`}
               >
                 {/* Number Watermark */}
-                <span className="absolute top-6 right-8 text-6xl font-light tracking-tighter text-white/[0.03] group-hover:text-white/[0.08] transition-colors font-mono select-none pointer-events-none">
+                <span className="absolute top-6 right-8 text-6xl font-light tracking-tighter text-white/[0.03] group-hover:text-white/[0.08] transition-colors font-display select-none pointer-events-none">
                   {b.number}
                 </span>
 
@@ -100,7 +100,7 @@ export default function BenefitsSection({ onOpenApplication }: BenefitsSectionPr
                     >
                       <Icon className="w-6 h-6" />
                     </div>
-                    <span className="text-xs font-mono text-[#6B96FF] uppercase tracking-wider">
+                    <span className="text-xs font-display text-[#6B96FF] uppercase tracking-wider">
                       Core Advantage
                     </span>
                   </div>

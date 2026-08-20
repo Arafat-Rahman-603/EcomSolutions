@@ -29,12 +29,7 @@ export default function AboutSection({ onOpenApplication }: AboutSectionProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Narrative */}
           <div className="lg:col-span-6 space-y-7">
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#4A7BFF]" />
-              <span className="text-[11px] font-semibold tracking-widest text-[#6B96FF] uppercase font-mono">
-                ABOUT ECOM SOLUTIONS
-              </span>
-            </div>
+          
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium tracking-tight text-[#F3F3F1] leading-[1.14]">
               We do the hard work.{' '}
@@ -99,9 +94,6 @@ export default function AboutSection({ onOpenApplication }: AboutSectionProps) {
                     </span>
                   </div>
                 </div>
-                <span className="text-[11px] font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">
-                  ONLINE 24/7
-                </span>
               </div>
 
               {/* Live telemetry list */}
@@ -128,9 +120,6 @@ export default function AboutSection({ onOpenApplication }: AboutSectionProps) {
                           {dept.title}
                         </span>
                       </div>
-                      <span className="text-xs font-mono font-semibold text-[#6B96FF] bg-white/[0.04] px-2.5 py-1 rounded-lg">
-                        {dept.count}
-                      </span>
                     </div>
                   );
                 })}
@@ -142,7 +131,7 @@ export default function AboutSection({ onOpenApplication }: AboutSectionProps) {
                   <Lock className="w-4 h-4 text-[#4A7BFF]" />
                   <span>Institutional Seller Protection Protocol v4</span>
                 </div>
-                <span className="text-[10px] font-mono text-emerald-400 font-bold">100% SECURE</span>
+                <span className="text-[10px] font-display text-emerald-400 font-bold">100% SECURE</span>
               </div>
             </div>
           </div>

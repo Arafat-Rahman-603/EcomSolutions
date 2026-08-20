@@ -422,7 +422,7 @@ export default function ApplicationModal({
                 <div className="p-4 rounded-2xl bg-[#16181C] border border-white/5 max-w-md mx-auto text-left text-xs space-y-2 text-[#96989F]">
                   <div className="flex justify-between border-b border-white/5 pb-1.5">
                     <span>Assigned Desk:</span>
-                    <span className="text-[#F3F3F1] font-mono">Ecom VIP Operations</span>
+                    <span className="text-[#F3F3F1] font-display">Ecom VIP Operations</span>
                   </div>
                   <div className="flex justify-between border-b border-white/5 pb-1.5">
                     <span>Contact Channel:</span>

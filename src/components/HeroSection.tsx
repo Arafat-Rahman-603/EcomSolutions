@@ -326,7 +326,7 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="text-base sm:text-lg lg:text-xl text-[#8A8C94] font-normal leading-relaxed max-w-2xl"
-              style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}
+
             >
               We build, operate, and scale your e-commerce business from the ground up—so you can focus on your freedom while our dedicated operations team handles product research, supplier logistics, listings, and customer fulfillment.
             </motion.p>
@@ -476,15 +476,12 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
               >
                 <div className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                  <span className="text-[11px] font-mono text-[#6E7078] tracking-wide">
+                  <span className="text-[11px] font-display text-[#6E7078] tracking-wide">
                     Ecom Engine
                   </span>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <span className="text-[10px] font-mono text-[#6E7078]">{currentTime}</span>
-                  <span className="inline-flex items-center px-1.5 py-0.5 rounded bg-emerald-400/10 text-emerald-400 text-[10px] font-mono uppercase tracking-wider">
-                    Live
-                  </span>
+                  <span className="text-[10px] font-display text-[#6E7078]">{currentTime}</span>
                 </div>
               </motion.div>
 
@@ -545,29 +542,16 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
                   {/* Active Platform Header */}
                   <div className="flex items-start justify-between mb-5">
                     <div>
-                      <span className="text-[11px] font-mono text-[#6B96FF] uppercase tracking-wider">
+                      <span className="text-[11px] font-display text-[#6B96FF] uppercase tracking-wider">
                         {curr.name}
                       </span>
                       <div className="flex items-baseline gap-2 mt-1">
                         <span
                           key={`rev-${activePlatform}`}
-                          className="text-3xl sm:text-4xl font-semibold tracking-tight text-[#F3F3F1] font-mono tabular-nums"
+                          className="text-3xl sm:text-4xl font-semibold tracking-tight text-[#F3F3F1] font-display tabular-nums"
                         >
                           {formatCurrency(revenueValue)}
                         </span>
-                        <motion.span
-                          initial={reducedMotion ? {} : { opacity: 0, x: -6 }}
-                          animate={hasEntered || reducedMotion ? { opacity: 1, x: 0 } : {}}
-                          transition={{
-                            duration: 0.25,
-                            delay: reducedMotion ? 0 : 1.3,
-                            ease: [0.22, 1, 0.36, 1],
-                          }}
-                          className="text-[11px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md flex items-center gap-0.5 whitespace-nowrap"
-                        >
-                          <TrendingUp className="w-3 h-3" />
-                          {curr.growth}
-                        </motion.span>
                       </div>
                     </div>
                     <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-[#151618] border border-white/[0.08] flex items-center justify-center flex-shrink-0 overflow-visible">
@@ -599,7 +583,7 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
                         <Activity className="w-3.5 h-3.5 text-[#2D5ADB]" />
                         30-Day Trajectory
                       </span>
-                      <span className="font-mono text-[#F3F3F1] text-[12px]">{curr.profit}</span>
+                      <span className="font-display text-[#F3F3F1] text-[12px]">{curr.profit}</span>
                     </div>
 
                     <motion.div
@@ -741,7 +725,7 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
                         <Package className="w-3.5 h-3.5 text-[#6B96FF]" />
                         <span>Dispatched Orders</span>
                       </div>
-                      <div key={`ord-${activePlatform}`} className="text-lg font-semibold text-[#F3F3F1] font-mono tabular-nums">
+                      <div key={`ord-${activePlatform}`} className="text-lg font-semibold text-[#F3F3F1] font-display tabular-nums">
                         {formatNumber(ordersValue)} <span className="text-[11px] text-[#6E7078] font-normal">/mo</span>
                       </div>
                     </div>
@@ -777,7 +761,7 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
                             initial={reducedMotion ? {} : { opacity: 0 }}
                             animate={hasEntered || reducedMotion ? { opacity: 1 } : {}}
                             transition={{ duration: 0.3, delay: reducedMotion ? 0 : 1.5 }}
-                            className="text-xs font-semibold text-emerald-400 font-mono"
+                            className="text-xs font-semibold text-emerald-400 font-display"
                           >
                             {syncNumeric.toFixed(1)}% Sync
                           </motion.span>
@@ -787,7 +771,7 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
                             initial={reducedMotion ? {} : { opacity: 0 }}
                             animate={hasEntered || reducedMotion ? { opacity: 1 } : {}}
                             transition={{ duration: 0.3, delay: reducedMotion ? 0 : 1.5 }}
-                            className="text-xs font-semibold text-emerald-400 font-mono"
+                            className="text-xs font-semibold text-emerald-400 font-display"
                           >
                             {curr.activeStatus}
                           </motion.span>
@@ -813,14 +797,14 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
                     </div>
                     <div>
                       <p className="text-xs font-medium text-[#F3F3F1]">Store Payout Released</p>
-                      <p className="text-[10px] font-mono text-[#6B96FF]">+$14,820.50 via Stripe Wire</p>
+                      <p className="text-[10px] font-display text-[#6B96FF]">+$14,820.50 via Stripe Wire</p>
                     </div>
                   </motion.div>
                 </motion.div>
               </AnimatePresence>
 
               {/* Bottom Bar */}
-              <div className="mt-1 pt-3 border-t border-white/[0.05] flex items-center justify-between text-[10px] font-mono text-[#6E7078]">
+              <div className="mt-1 pt-3 border-t border-white/[0.05] flex items-center justify-between text-[10px] font-display text-[#6E7078]">
                 <span>v4.8.2 · Production</span>
                 <span>US-East-1 · 38ms</span>
               </div>

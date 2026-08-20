@@ -355,7 +355,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
 
                       <div className="flex items-center justify-between pt-3 border-t border-white/[0.05]">
                         <span
-                          className="text-xs font-mono text-[#555760]"
+                          className="text-xs font-display text-[#555760]"
                         >
                           {fs.metric}
                         </span>
@@ -464,7 +464,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
                       <Image src={service.icon} alt={service.marketplace} fill className="object-contain" sizes="40px" />
                     </div>
                     <div>
-                      <span className="text-[11px] font-mono text-[#6B96FF] uppercase tracking-wider block">
+                      <span className="text-[11px] font-display text-[#6B96FF] uppercase tracking-wider block">
                         {service.marketplace}
                       </span>
                       <div className="text-[11px] text-[#6E7078]">{service.subtitle}</div>
@@ -494,10 +494,10 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                   {service.metrics.map((metric, i) => (
                     <div key={i} className="p-2.5 rounded-xl bg-[#111315]/80 border border-white/5">
-                      <span className="text-[10px] uppercase font-mono text-[#6E7078] block">
+                      <span className="text-[10px] uppercase font-display text-[#6E7078] block">
                         {metric.label}
                       </span>
-                      <span className="text-xs font-semibold text-[#F3F3F1] font-mono mt-0.5 block">
+                      <span className="text-xs font-semibold text-[#F3F3F1] font-display mt-0.5 block">
                         {metric.value}
                       </span>
                     </div>
@@ -542,7 +542,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
                   <Image src={selectedService.icon} alt={selectedService.marketplace} fill className="object-contain" sizes="40px" />
                 </span>
                 <div>
-                  <span className="text-xs font-mono text-[#6B96FF] uppercase tracking-wider">
+                  <span className="text-xs font-display text-[#6B96FF] uppercase tracking-wider">
                     {selectedService.marketplace}
                   </span>
                   <h3 className="text-2xl font-medium text-[#F3F3F1]">
@@ -557,7 +557,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
 
               {/* Highlights Breakdown */}
               <div className="my-6 space-y-3">
-                <h4 className="text-xs font-mono uppercase tracking-wider text-[#6B96FF]">
+                <h4 className="text-xs font-display uppercase tracking-wider text-[#6B96FF]">
                   Operational Blueprint & Deliverables
                 </h4>
                 {selectedService.highlightDetails.map((h, i) => (
@@ -573,7 +573,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
 
               <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-white/10">
                 <div className="text-xs text-[#6E7078]">
-                  Turnaround: <span className="text-[#F3F3F1] font-mono">7-14 Days Onboarding</span>
+                  Turnaround: <span className="text-[#F3F3F1] font-display">7-14 Days Onboarding</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <button

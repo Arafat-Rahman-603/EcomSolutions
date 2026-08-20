@@ -91,7 +91,7 @@ export default function Footer() {
                 <span className="text-base font-semibold tracking-tight text-[#F3F3F1] leading-none">
                   ECOM<span className="text-[#6B96FF] font-light ml-1">SOLUTIONS</span>
                 </span>
-                <span className="text-[10px] tracking-widest text-[#6E7078] uppercase font-mono mt-0.5">
+                <span className="text-[10px] tracking-widest text-[#6E7078] uppercase font-display mt-0.5">
                   Managed DFY Systems
                 </span>
               </div>
@@ -103,16 +103,16 @@ export default function Footer() {
 
             {/* Live Operational Time Clocks */}
             <div className="p-3.5 rounded-2xl bg-[#111316] border border-white/5 space-y-2 max-w-sm">
-              <div className="flex items-center justify-between text-xs font-mono">
+              <div className="flex items-center justify-between text-xs font-display">
                 <span className="flex items-center gap-1.5 text-[#6E7078]">
                   <Clock className="w-3.5 h-3.5 text-[#4A7BFF]" />
                   Dhaka Ops HQ:
                 </span>
                 <span className="text-[#F3F3F1] font-semibold">{dhakaTime || 'Loading...'} (GMT+6)</span>
               </div>
-              <div className="flex items-center justify-between text-xs font-mono">
+              <div className="flex items-center justify-between text-xs font-display">
                 <span className="flex items-center gap-1.5 text-[#6E7078]">
-                  <Clock className="w-3.5 h-3.5 text-[#6B96FF]" />
+                  <Clock className="w-3.5 h-3.5 text-[#4A7BFF]" />
                   US Markets Desk:
                 </span>
                 <span className="text-[#F3F3F1] font-semibold">{nyTime || 'Loading...'} (EST)</span>
@@ -122,7 +122,7 @@ export default function Footer() {
 
           {/* Services Column */}
           <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-mono uppercase tracking-wider text-[#F3F3F1]">Services</h4>
+            <h4 className="text-xs font-display uppercase tracking-wider text-[#F3F3F1]">Services</h4>
             <ul className="space-y-2.5 text-sm">
               {services.map((item) => (
                 <li key={item.label}>
@@ -139,7 +139,7 @@ export default function Footer() {
 
           {/* Company Column */}
           <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-mono uppercase tracking-wider text-[#F3F3F1]">Company</h4>
+            <h4 className="text-xs font-display uppercase tracking-wider text-[#F3F3F1]">Company</h4>
             <ul className="space-y-2.5 text-sm">
               {company.map((item) => (
                 <li key={item.label}>
@@ -153,7 +153,7 @@ export default function Footer() {
 
           {/* Contact Column */}
           <div className="lg:col-span-4 space-y-4">
-            <h4 className="text-xs font-mono uppercase tracking-wider text-[#F3F3F1]">
+            <h4 className="text-xs font-display uppercase tracking-wider text-[#F3F3F1]">
               Contact & HQ
             </h4>
             <div className="space-y-3 text-sm">
@@ -168,7 +168,7 @@ export default function Footer() {
                 <Phone className="w-4 h-4 text-[#6B96FF] shrink-0" />
                 <a
                   href="tel:+8801710910594"
-                  className="text-xs text-[#F3F3F1] hover:text-[#4A7BFF] transition-colors font-mono"
+                  className="text-xs text-[#F3F3F1] hover:text-[#4A7BFF] transition-colors font-display"
                 >
                   +880 1710 910594
                 </a>
@@ -178,7 +178,7 @@ export default function Footer() {
                 <Mail className="w-4 h-4 text-[#2D5ADB] shrink-0" />
                 <a
                   href="mailto:info@ecomsolutionsbd.com"
-                  className="text-xs text-[#F3F3F1] hover:text-[#6B96FF] transition-colors font-mono"
+                  className="text-xs text-[#F3F3F1] hover:text-[#6B96FF] transition-colors font-display"
                 >
                   info@ecomsolutionsbd.com
                 </a>

@@ -156,7 +156,7 @@ export default function ProcessSection({ onOpenApplication }: ProcessSectionProp
                     />
                   )}
 
-                  <span className="relative z-10 font-mono text-xs text-[#4A7BFF] hidden sm:inline">
+                  <span className="relative z-10 font-display text-xs text-[#4A7BFF] hidden sm:inline">
                     {step.id}
                   </span>
                   <span className="relative z-10 text-xs sm:text-sm tracking-tight truncate">
@@ -183,13 +183,13 @@ export default function ProcessSection({ onOpenApplication }: ProcessSectionProp
               <div>
                 <div className="flex items-center gap-3 mb-6">
                   <span
-                    className="text-2xl font-mono font-bold px-3.5 py-1 rounded-xl bg-white/[0.04] border border-white/10"
+                    className="text-2xl font-display font-bold px-3.5 py-1 rounded-xl bg-white/[0.04] border border-white/10"
                     style={{ color: current.color }}
                   >
                     {current.id}
                   </span>
                   <div>
-                    <span className="text-[11px] font-mono text-[#4A7BFF] uppercase tracking-wider block">
+                    <span className="text-[11px] font-display text-[#4A7BFF] uppercase tracking-wider block">
                       Execution Phase
                     </span>
                     <h3 className="text-2xl sm:text-3xl font-medium text-[#F3F3F1] mt-0.5">
@@ -231,7 +231,7 @@ export default function ProcessSection({ onOpenApplication }: ProcessSectionProp
 
               <div>
                 <div className="pb-4 border-b border-white/[0.08] mb-6">
-                  <span className="text-[10px] font-mono text-[#6E7078] uppercase block">
+                  <span className="text-[10px] font-display text-[#6E7078] uppercase block">
                     TELEMETRY SIMULATION
                   </span>
                   <span className="text-base font-semibold text-[#F3F3F1] tracking-tight">
@@ -243,10 +243,10 @@ export default function ProcessSection({ onOpenApplication }: ProcessSectionProp
                 <div className="grid grid-cols-3 gap-3 mb-6">
                   {current.visual.metrics.map((m, i) => (
                     <div key={i} className="p-3 rounded-2xl bg-[#111316] border border-white/5 text-center">
-                      <span className="text-[10px] font-mono text-[#6E7078] uppercase block truncate">
+                      <span className="text-[10px] font-display text-[#6E7078] uppercase block truncate">
                         {m.label}
                       </span>
-                      <span className="text-sm font-bold text-[#F3F3F1] font-mono mt-1 block">
+                      <span className="text-sm font-bold text-[#F3F3F1] font-display mt-1 block">
                         {m.value}
                       </span>
                     </div>
@@ -255,21 +255,12 @@ export default function ProcessSection({ onOpenApplication }: ProcessSectionProp
 
                 {/* Visual Checklist Progression */}
                 <div className="p-4 rounded-2xl bg-[#111316] border border-white/5 space-y-3">
-                  <span className="text-[11px] font-mono text-[#4A7BFF] uppercase tracking-wider block mb-2">
+                  <span className="text-[11px] font-display text-[#4A7BFF] uppercase tracking-wider block mb-2">
                     Milestone Progress Tracker
                   </span>
                   {current.visual.stepsVisual.map((s, i) => (
                     <div key={i} className="flex items-center justify-between text-xs py-1.5 border-b border-white/[0.03] last:border-none">
                       <span className="text-[#96989F] pr-2">{s.text}</span>
-                      <span
-                        className={`text-[10px] font-mono font-semibold px-2 py-0.5 rounded ${
-                          s.done
-                            ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
-                            : 'bg-yellow-500/10 text-yellow-400 border border-yellow-500/20'
-                        }`}
-                      >
-                        {s.done ? 'COMPLETED' : 'IN PROGRESS'}
-                      </span>
                     </div>
                   ))}
                 </div>

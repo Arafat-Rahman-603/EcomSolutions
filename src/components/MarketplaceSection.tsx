@@ -176,7 +176,7 @@ export default function MarketplaceSection({ onOpenApplication }: MarketplaceSec
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2 mb-0.5">
                       <span
-                        className="text-[11px] font-mono uppercase tracking-wider"
+                        className="text-[11px] font-display uppercase tracking-wider"
                         style={{ color: p.color }}
                       >
                         {p.subtitle}
@@ -189,7 +189,7 @@ export default function MarketplaceSection({ onOpenApplication }: MarketplaceSec
                       <ArrowRight className="w-4 h-4 text-[#555760] group-hover:text-[#F3F3F1] group-hover:translate-x-0.5 transition-all shrink-0" />
                     </div>
                     <div className="flex items-baseline gap-1.5 mt-1.5">
-                      <span className="text-sm font-semibold text-[#F3F3F1] font-mono">
+                      <span className="text-sm font-semibold text-[#F3F3F1] font-display">
                         {p.metric}
                       </span>
                       <span className="text-[10px] text-[#555760]">{p.metricLabel}</span>
@@ -296,7 +296,7 @@ export default function MarketplaceSection({ onOpenApplication }: MarketplaceSec
                         </div>
                         <div className="min-w-0">
                           <span
-                            className="text-[11px] font-mono uppercase tracking-[0.18em]"
+                            className="text-[11px] font-display uppercase tracking-[0.18em]"
                             style={{ color: active.color }}
                           >
                             {active.subtitle}
@@ -311,7 +311,7 @@ export default function MarketplaceSection({ onOpenApplication }: MarketplaceSec
                     {/* Description */}
                     <p
                       className="text-sm sm:text-[15px] leading-relaxed text-[#8A8C94]"
-                      style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}
+
                     >
                       {active.description}
                     </p>
@@ -319,18 +319,18 @@ export default function MarketplaceSection({ onOpenApplication }: MarketplaceSec
                     {/* KPI row */}
                     <div className="grid grid-cols-2 gap-3">
                       <div className="rounded-2xl bg-[#0a0c0e] border border-white/[0.05] p-4">
-                        <div className="text-[10px] uppercase tracking-wider text-[#555760] font-mono">
+                        <div className="text-[10px] uppercase tracking-wider text-[#555760] font-display">
                           {active.metricLabel}
                         </div>
-                        <div className="mt-1 text-xl sm:text-2xl font-semibold text-[#F3F3F1] font-mono tracking-tight">
+                        <div className="mt-1 text-xl sm:text-2xl font-semibold text-[#F3F3F1] font-display tracking-tight">
                           {active.metric}
                         </div>
                       </div>
                       <div className="rounded-2xl bg-[#0a0c0e] border border-white/[0.05] p-4">
-                        <div className="text-[10px] uppercase tracking-wider text-[#555760] font-mono">
+                        <div className="text-[10px] uppercase tracking-wider text-[#555760] font-display">
                           {active.secondaryLabel}
                         </div>
-                        <div className="mt-1 text-xl sm:text-2xl font-semibold text-[#F3F3F1] font-mono tracking-tight">
+                        <div className="mt-1 text-xl sm:text-2xl font-semibold text-[#F3F3F1] font-display tracking-tight">
                           {active.secondaryMetric}
                         </div>
                       </div>
@@ -353,9 +353,7 @@ export default function MarketplaceSection({ onOpenApplication }: MarketplaceSec
                             className="mt-1 w-1.5 h-1.5 rounded-full shrink-0"
                             style={{ backgroundColor: active.color }}
                           />
-                          <span style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}>
-                            {b}
-                          </span>
+                          {b}
                         </motion.li>
                       ))}
                     </ul>
@@ -367,7 +365,7 @@ export default function MarketplaceSection({ onOpenApplication }: MarketplaceSec
                         onClick={() => onOpenApplication(`${active.name} Automation`)}
                         className="w-full sm:w-auto !py-3.5 !px-7 text-sm shadow-[0_0_30px_rgba(74,123,255,0.25)]"
                       >
-                        <span style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}>
+                        <span >
                           Launch {active.name} Store
                         </span>
                         <ArrowRight className="w-4 h-4" />
@@ -425,7 +423,7 @@ export default function MarketplaceSection({ onOpenApplication }: MarketplaceSec
                   </div>
                   <span
                     className="text-xs sm:text-sm text-[#8A8C94]"
-                    style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}
+                    
                   >
                     {text}
                   </span>
@@ -448,12 +446,12 @@ export default function MarketplaceSection({ onOpenApplication }: MarketplaceSec
             >
               <div className="absolute -top-20 -right-20 w-44 h-44 rounded-full blur-3xl bg-[#6B96FF]/20 pointer-events-none" />
               <div className="relative">
-                <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#6B96FF] mb-2">
+                <div className="text-[10px] font-display uppercase tracking-[0.2em] text-[#6B96FF] mb-2">
                   Unified Control Plane
                 </div>
                 <div
                   className="text-sm sm:text-[15px] leading-relaxed text-[#c5c6ce]"
-                  style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}
+                  
                 >
                   One dashboard, one ops team, one payout rhythm — across all stores. No
                   juggling vendor dashboards.
@@ -494,7 +492,7 @@ export default function MarketplaceSection({ onOpenApplication }: MarketplaceSec
               </div>
               <p className="text-xs font-semibold text-[#F3F3F1]">{p.name}</p>
               <p className="text-[10px] text-[#555760] mt-0.5">{p.subtitle}</p>
-              <p className="text-[11px] font-mono text-[#a1a1aa] mt-2">{p.metric}</p>
+              <p className="text-[11px] font-display text-[#a1a1aa] mt-2">{p.metric}</p>
             </button>
           ))}
         </div>

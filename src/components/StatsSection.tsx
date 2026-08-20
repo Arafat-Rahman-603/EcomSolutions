@@ -30,7 +30,7 @@ function Counter({ end, suffix = '+', duration = 2 }: { end: number; suffix?: st
   }, [isInView, end, duration]);
 
   return (
-    <span ref={ref} className="font-mono">
+    <span ref={ref} className="font-display">
       {count}
       {suffix}
     </span>
@@ -111,41 +111,75 @@ export default function StatsSection() {
         {/* Marketplace Logos / Partners Ticker */}
         <div className="mt-16 pt-10 border-t border-white/[0.04]">
           <div className="text-center mb-6">
-            <span className="text-[11px] font-mono tracking-widest text-[#6E7078] uppercase">
+            <span className="text-[11px] font-display tracking-widest text-[#6E7078] uppercase">
               Official Marketplace Integration & Infrastructure
             </span>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 opacity-80 text-white">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 opacity-80 text-white"
+          >
             {/* Amazon */}
-            <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.10] transition-colors">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05, borderColor: 'rgba(255,255,255,0.2)' }}
+              transition={{ duration: 0.3, delay: 0.25 }}
+              className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.10] transition-colors cursor-pointer"
+            >
               <div className="relative w-16 h-6">
                 <Image src="/work/amazon.png" alt="Amazon" fill className="object-contain" sizes="64px" />
               </div>
-              <span className="text-[10px] font-mono text-gray-200 bg-white/[0.03] px-1.5 py-0.5 rounded">FBA & DS</span>
-            </div>
+              <span className="text-[10px] font-display text-gray-200 bg-white/[0.03] px-1.5 py-0.5 rounded">FBA & DS</span>
+            </motion.div>
             {/* Walmart */}
-            <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.10] transition-colors">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05, borderColor: 'rgba(255,255,255,0.2)' }}
+              transition={{ duration: 0.3, delay: 0.3 }}
+              className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.10] transition-colors cursor-pointer"
+            >
               <div className="relative w-16 h-6">
                 <Image src="/work/walmart.png" alt="Walmart" fill className="object-contain" sizes="64px" />
               </div>
-              <span className="text-[10px] font-mono text-white bg-white/[0.03] px-1.5 py-0.5 rounded">WFS Verified</span>
-            </div>
+              <span className="text-[10px] font-display text-white bg-white/[0.03] px-1.5 py-0.5 rounded">WFS Verified</span>
+            </motion.div>
             {/* eBay */}
-            <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.10] transition-colors">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05, borderColor: 'rgba(255,255,255,0.2)' }}
+              transition={{ duration: 0.3, delay: 0.35 }}
+              className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.10] transition-colors cursor-pointer"
+            >
               <div className="relative w-16 h-6">
                 <Image src="/work/ebay.png" alt="eBay" fill className="object-contain" sizes="64px" />
               </div>
-              <span className="text-[10px] font-mono text-white bg-white/[0.03] px-1.5 py-0.5 rounded">Top Rated+</span>
-            </div>
+              <span className="text-[10px] font-display text-white bg-white/[0.03] px-1.5 py-0.5 rounded">Top Rated+</span>
+            </motion.div>
             {/* Facebook */}
-            <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.10] transition-colors">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05, borderColor: 'rgba(255,255,255,0.2)' }}
+              transition={{ duration: 0.3, delay: 0.4 }}
+              className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.10] transition-colors cursor-pointer"
+            >
               <div className="relative w-20 h-6">
                 <Image src="/work/fb-shop.png" alt="Facebook Shop" fill className="object-contain" sizes="80px" />
               </div>
-              <span className="text-[10px] font-mono text-white bg-white/[0.03] px-1.5 py-0.5 rounded">Meta Verified</span>
-            </div>
-          </div>
+              <span className="text-[10px] font-display text-white bg-white/[0.03] px-1.5 py-0.5 rounded">Meta Verified</span>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -1,26 +1,12 @@
 import type { Metadata } from 'next';
-import { Geist, Inter, JetBrains_Mono } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import CustomCursor from '@/components/CustomCursor';
 
-const geist = Geist({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-geist',
-  display: 'swap',
-});
-
 const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['300', '400', '500', '600', '700'],
   variable: '--font-inter',
-  display: 'swap',
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-mono',
   display: 'swap',
 });
 
@@ -67,7 +53,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geist.variable} ${inter.variable} ${jetbrainsMono.variable} scroll-smooth dark`}
+      className={`${inter.variable} scroll-smooth dark`}
     >
       <head />
       <body
