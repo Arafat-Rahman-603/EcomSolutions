@@ -294,6 +294,149 @@
   to { transform: translateX(-50%); }
 }
 
+/* Marquee — seamless horizontal infinite scroll; pauses on hover */
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Register marquee as a Tailwind utility (v4 @theme) */
+@theme {
+  --animate-marquee-x: marquee-x 42s linear infinite;
+}
+
+.animate-marquee-x {
+  animation: marquee-x 42s linear infinite;
+}
+.animate-marquee-x:hover {
+  animation-play-state: paused;
+}
+
+/* 3D carousel spin — seamless 360° Y-axis rotation for cylindrical card orbit */
+@keyframes carousel-spin {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(-360deg); }
+}
+
+@theme {
+  --animate-carousel-spin: carousel-spin 40s linear infinite;
+}
+
+.animate-carousel-spin {
+  animation: carousel-spin 40s linear infinite;
+  animation-play-state: running;
+}
+.animate-carousel-spin:hover {
+  animation-play-state: paused;
+}
+
+/* ─────────────────────────────────────────────────────
+   Team Floating Cloud — organic 4-channel animation
+   Each float-card has custom CSS variables:
+     --f-dx, --f-dy       static anchor offset from stage center
+     --f-rot              static base rotation
+     --f-orbit-dur        full orbit loop duration (per card 60..120s)
+     --f-orbit-radius     drift radius of orbit (2..4% of stage)
+     --f-bob-amp          extra sine bob amplitude (2..4%)
+     --f-wobble           tilt wobble magnitude (± deg)
+     --f-breath           breathing scale magnitude (±0.02 scale)
+     --f-ph1..4           phase offsets so cards don't synchronize
+───────────────────────────────────────────────────── */
+
+@keyframes float-orbit-x {
+  0%   { --o-x:  0%; }
+  25%  { --o-x:  var(--f-orbit-radius); }
+  50%  { --o-x:  0%; }
+  75%  { --o-x:  calc(-1 * var(--f-orbit-radius)); }
+  100% { --o-x:  0%; }
+}
+
+@keyframes float-orbit-y {
+  0%   { --o-y:  calc(-1 * var(--f-orbit-radius)); }
+  25%  { --o-y:  0%; }
+  50%  { --o-y:  var(--f-orbit-radius); }
+  75%  { --o-y:  0%; }
+  100% { --o-y:  calc(-1 * var(--f-orbit-radius)); }
+}
+
+@keyframes float-bob {
+  0%, 100% { --b-y: 0%; }
+  50%      { --b-y: var(--f-bob-amp); }
+}
+
+@keyframes float-wobble {
+  0%, 100% { --w-r: calc(-1 * var(--f-wobble)); }
+  50%      { --w-r: var(--f-wobble); }
+}
+
+@keyframes float-breath {
+  0%, 100% { --br-s: calc(1 - var(--f-breath)); }
+  50%      { --br-s: calc(1 + var(--f-breath)); }
+}
+
+@property --o-x { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+@property --o-y { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+@property --b-y { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+@property --w-r { syntax: '<angle>';      inherits: false; initial-value: 0deg; }
+@property --br-s { syntax: '<number>';     inherits: false; initial-value: 1; }
+
+.float-card {
+  --o-x: 0%;
+  --o-y: 0%;
+  --b-y: 0%;
+  --w-r: 0deg;
+  --br-s: 1;
+  transform: translate3d(
+      calc(-50% + var(--f-dx) + var(--o-x)),
+      calc(-50% + var(--f-dy) + var(--o-y) + var(--b-y)),
+      0
+    )
+    rotate(calc(var(--f-rot) + var(--w-r)))
+    scale(var(--br-s));
+  transform-origin: center center;
+  will-change: transform;
+  animation-name: float-orbit-x, float-orbit-y, float-bob, float-wobble, float-breath;
+  animation-duration: var(--f-orbit-dur), var(--f-orbit-dur), calc(var(--f-orbit-dur) * 0.56), calc(var(--f-orbit-dur) * 0.42), calc(var(--f-orbit-dur) * 0.74);
+  animation-timing-function: ease-in-out, ease-in-out, ease-in-out, ease-in-out, ease-in-out;
+  animation-iteration-count: infinite, infinite, infinite, infinite, infinite;
+  animation-direction: normal, normal, alternate, alternate, alternate;
+  animation-delay: var(--f-ph1), var(--f-ph2), var(--f-ph3), var(--f-ph4), var(--f-ph2);
+  animation-play-state: running, running, running, running, running;
+  backface-visibility: hidden;
+}
+
+/* ── Team-stage hover → freeze ALL float-card animations from exact progress ── */
+.team-stage:hover .float-card {
+  animation-play-state: paused, paused, paused, paused, paused;
+}
+
+/* ── Hovered card individual pop (extra shadow + slight scale boost via :has) ── */
+.team-stage .float-card:hover {
+  transform: translate3d(
+      calc(-50% + var(--f-dx) + var(--o-x)),
+      calc(-58% + var(--f-dy) + var(--o-y) + var(--b-y)),
+      0
+    )
+    rotate(0deg)
+    scale(calc(var(--br-s) * 1.045));
+  z-index: 99 !important;
+  filter: blur(0) !important;
+  opacity: 1 !important;
+}
+
+/* ── Accessibility: reduced motion = static layout, no keyframe motion ── */
+.team-stage-static .float-card {
+  animation-name: none !important;
+  animation: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float-card {
+    animation-name: none !important;
+    animation: none !important;
+  }
+}
+
 /* Radial glow pulse */
 @keyframes glow-pulse-radial {
   0%, 100% { opacity: 0.5; transform: scale(1); }

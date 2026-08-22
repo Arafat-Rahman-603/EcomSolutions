@@ -1,19 +1,15 @@
 'use client';
 
-import React, { useState, useEffect, useRef, useMemo } from 'react';
-import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
+import React, { useState, useEffect, useRef, useMemo, useSyncExternalStore } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowRight,
-  TrendingUp,
   ShieldCheck,
   Zap,
   Activity,
-  DollarSign,
   Package,
-  Layers,
   Sparkles,
   CheckCircle2,
-  BarChart3,
   Globe2,
 } from 'lucide-react';
 import MagneticButton from './MagneticButton';
@@ -39,10 +35,22 @@ const formatCurrency = (n: number): string =>
 const formatNumber = (n: number): string =>
   new Intl.NumberFormat('en-US').format(Math.round(n));
 
-const reducedMotion =
-  typeof window !== 'undefined'
-    ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    : false;
+function useReducedMotion(): boolean {
+  return useSyncExternalStore(
+    (cb) => {
+      if (typeof window === 'undefined') return () => {};
+      const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const listener = () => cb();
+      mql.addEventListener('change', listener);
+      return () => mql.removeEventListener('change', listener);
+    },
+    () => {
+      if (typeof window === 'undefined') return false;
+      return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    },
+    () => false,
+  );
+}
 
 function useInViewOnce(threshold = 0.2): [React.MutableRefObject<HTMLDivElement | null>, boolean] {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -93,29 +101,43 @@ function useCountUp(
   target: number,
   start: boolean,
   duration: number,
-  resetKey: string | number
+  resetKey: string | number,
+  reducedMotion: boolean
 ): number {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState<number>(() =>
+    !start || reducedMotion ? target : 0
+  );
   const rafRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
-    setValue(reducedMotion ? target : 0);
+    let mounted = true;
     if (!start || reducedMotion) {
-      setValue(target);
-      return;
+      rafRef.current = requestAnimationFrame(() => {
+        if (mounted) setValue(target);
+      });
+      return () => {
+        mounted = false;
+        if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      };
     }
-    const startTime = performance.now();
-    const tick = (now: number) => {
-      const elapsed = now - startTime;
-      const t = Math.min(1, elapsed / duration);
-      const eased = easeOutExpo(t);
-      setValue(target * eased);
-      if (t < 1) {
-        rafRef.current = requestAnimationFrame(tick);
-      }
-    };
-    rafRef.current = requestAnimationFrame(tick);
+    rafRef.current = requestAnimationFrame(() => {
+      if (!mounted) return;
+      setValue(0);
+      const startTime = performance.now();
+      const tick = (now: number) => {
+        if (!mounted) return;
+        const elapsed = now - startTime;
+        const t = Math.min(1, elapsed / duration);
+        const eased = easeOutExpo(t);
+        setValue(target * eased);
+        if (t < 1) {
+          rafRef.current = requestAnimationFrame(tick);
+        }
+      };
+      rafRef.current = requestAnimationFrame(tick);
+    });
     return () => {
+      mounted = false;
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, [target, start, duration, resetKey]);
@@ -123,16 +145,29 @@ function useCountUp(
   return value;
 }
 
+/* Deterministic seeded PRNG (mulberry32) so SSR and client produce identical chart data */
+function mulberry32(seed: number): () => number {
+  let t = seed >>> 0;
+  return function () {
+    t = (t + 0x6d2b79f5) >>> 0;
+    let r = t;
+    r = Math.imul(r ^ (r >>> 15), r | 1);
+    r ^= r + Math.imul(r ^ (r >>> 7), r | 61);
+    return ((r ^ (r >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
 function generateChartData(platformIdx: number): number[] {
   const points = 30;
   const data: number[] = [];
-  const baseStart = 0.2 + Math.random() * 0.1;
+  const rand = mulberry32(1000 + platformIdx * 7919);
+  const baseStart = 0.2 + rand() * 0.1;
   let val = baseStart;
   for (let i = 0; i < points; i++) {
     const progress = i / (points - 1);
-    let noise = (Math.random() - 0.48) * 0.06;
+    const noise = (rand() - 0.48) * 0.06;
     if (i > 0) {
-      const drift = (Math.random() - 0.45) * 0.04;
+      const drift = (rand() - 0.45) * 0.04;
       val += noise + drift;
     }
     if (platformIdx === 0) {
@@ -173,8 +208,10 @@ function smoothPath(points: number[], w: number, h: number): string {
 }
 
 export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
+  const reducedMotion = useReducedMotion();
   const [activePlatform, setActivePlatform] = useState(0);
-  const userInteractedUntil = useRef<number>(0);
+  const interactedRef = useRef<boolean>(false);
+  const interactTimerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const [dashboardSectionRef, hasEntered] = useInViewOnce(0.2);
   const [cycleRef, sectionInView] = useInViewToggle(0.2);
 
@@ -229,20 +266,26 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
     if (!sectionInView || reducedMotion) return;
     let timerId: ReturnType<typeof setTimeout>;
     const loop = () => {
-      const now = Date.now();
-      if (now >= userInteractedUntil.current) {
+      if (!interactedRef.current) {
         setActivePlatform((prev) => (prev + 1) % platforms.length);
       }
       timerId = setTimeout(loop, 5000);
     };
     const initialDelay = hasEntered ? 2500 : 5000;
     timerId = setTimeout(loop, initialDelay);
-    return () => clearTimeout(timerId);
+    return () => {
+      clearTimeout(timerId);
+      if (interactTimerRef.current) clearTimeout(interactTimerRef.current);
+    };
   }, [sectionInView, hasEntered, platforms.length]);
 
   const handleTabClick = (idx: number) => {
     setActivePlatform(idx);
-    userInteractedUntil.current = Date.now() + 12000;
+    interactedRef.current = true;
+    if (interactTimerRef.current) clearTimeout(interactTimerRef.current);
+    interactTimerRef.current = setTimeout(() => {
+      interactedRef.current = false;
+    }, 12000);
   };
 
   const curr = platforms[activePlatform];
@@ -252,17 +295,17 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
   const revenueStart = hasEntered;
   const ordersStart = hasEntered;
 
-  const revenueValue = useCountUp(targetRevenue, revenueStart, 1600, `rev-${activePlatform}`);
-  const ordersValue = useCountUp(targetOrders, ordersStart, 1200, `ord-${activePlatform}`);
+  const revenueValue = useCountUp(targetRevenue, revenueStart, 1600, `rev-${activePlatform}`, reducedMotion);
+  const ordersValue = useCountUp(targetOrders, ordersStart, 1200, `ord-${activePlatform}`, reducedMotion);
 
   const syncIsPercent = curr.activeStatus.includes('99.9%');
-  const syncNumeric = useCountUp(99.9, hasEntered, 1400, `sync-${activePlatform}`);
+  const syncNumeric = useCountUp(99.9, hasEntered, 1400, `sync-${activePlatform}`, reducedMotion);
 
   const chartData = useMemo(() => generateChartData(activePlatform), [activePlatform]);
   const strokePath = smoothPath(chartData, 600, 96);
   const areaPath = `${strokePath} L 600 96 L 0 96 Z`;
 
-  const [currentTime, setCurrentTime] = useState('Aug 20, 14:32 UTC');
+  const [currentTime, setCurrentTime] = useState('');
   useEffect(() => {
     const update = () => {
       const now = new Date();
@@ -277,8 +320,6 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
     const i = setInterval(update, 60000);
     return () => clearInterval(i);
   }, []);
-
-  const stagger = reducedMotion ? { staggerChildren: 0 } : { staggerChildren: 0.04 };
 
   return (
     <section
@@ -382,9 +423,7 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
           {/* Right Column — Premium Dashboard */}
           <div
             ref={(node) => {
-              // @ts-ignore combine refs
               dashboardSectionRef.current = node;
-              // @ts-ignore
               cycleRef.current = node;
             }}
             className="lg:col-span-5 relative flex items-center justify-center"
@@ -475,7 +514,6 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
                 className="flex items-center justify-between pb-4"
               >
                 <div className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                   <span className="text-[11px] font-display text-[#6E7078] tracking-wide">
                     Ecom Engine
                   </span>

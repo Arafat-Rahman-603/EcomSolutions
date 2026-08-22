@@ -5,15 +5,6 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image';
 import {
   ArrowUpRight,
-  TrendingUp,
-  Package,
-  Layers,
-  Sparkles,
-  Zap,
-  ShoppingBag,
-  ShieldCheck,
-  Truck,
-  RotateCcw,
   CheckCircle,
   X,
 } from 'lucide-react';
@@ -311,15 +302,13 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
     },
   ];
 
-  // Featured services for the layered card carousel
+  // Featured services for the 3-card centered showcase
   const featuredServices = [
     {
       id: 'feat-amazon',
       title: 'Amazon Automation',
       description: 'Build, operate, and scale your Amazon store with our full DFY management team. From product research to Prime-compliant fulfillment.',
       image: '/work/amazon.png',
-      tag: 'Most Popular',
-      tagColor: '#4A7BFF',
       marketplace: 'Amazon FBA & Dropship',
       metric: '$84.9K /mo Avg.',
     },
@@ -328,8 +317,6 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
       title: 'Walmart Automation',
       description: "Tap into Walmart's 120M+ monthly shoppers. Less competition, higher average order value — we handle everything from approval to scaling.",
       image: '/work/walmart.png',
-      tag: '2-Day Badge',
-      tagColor: '#2D5ADB',
       marketplace: 'Walmart WFS',
       metric: '1/10th Competition',
     },
@@ -338,8 +325,6 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
       title: 'eBay Automation',
       description: 'High buyer volume with minimal seller restrictions. Our team manages full store operations, listings, and Top Rated Seller compliance.',
       image: '/work/ebay.png',
-      tag: 'Top Rated Plus',
-      tagColor: '#6B96FF',
       marketplace: 'eBay Global',
       metric: '135M+ Active Buyers',
     },
@@ -348,20 +333,18 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
       title: 'Facebook Shop Automation',
       description: 'Social commerce with organic reach. We run your Facebook Shop with zero ad spend models, viral catalog placement, and hands-free checkout.',
       image: '/work/fb-shop.png',
-      tag: 'Viral Organic',
-      tagColor: '#4A7BFF',
       marketplace: 'Meta Commerce',
       metric: '2.9B+ Reach',
     },
   ];
 
-  /* Auto-advance featured carousel every 7s, pause on hover */
+  /* Auto-advance featured carousel every 4.5s, pause on hover */
   useEffect(() => {
     if (isPaused) return;
-    const timer = setInterval(() => {
+    const timer = window.setInterval(() => {
       setFeaturedActive((prev) => (prev + 1) % featuredServices.length);
-    }, 7000);
-    return () => clearInterval(timer);
+    }, 4500);
+    return () => window.clearInterval(timer);
   }, [isPaused, featuredServices.length]);
 
   return (
@@ -377,33 +360,33 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
           subtitle="Showcase and storytelling for our most in-demand automation programs."
         />
 
-        {/* ── FEATURED LAYERED CARD CAROUSEL ── */}
+        {/* ── FEATURED 3-CARD CENTERED SHOWCASE ── */}
         <div
           className="mb-20 lg:mb-28"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          {/* Platform tab selectors */}
-          <div className="flex items-center justify-center gap-2 mb-10 flex-wrap">
+          {/* Platform tab selectors — pill style */}
+          <div className="flex items-center justify-center gap-2 sm:gap-3 mb-12 flex-wrap">
             {featuredServices.map((fs, idx) => (
               <button
                 key={fs.id}
                 type="button"
                 onClick={() => setFeaturedActive(idx)}
-                className={`px-4 py-2 rounded-md text-xs font-medium border transition-all duration-300 cursor-pointer ${
+                className={`px-5 sm:px-7 py-2.5 sm:py-3 rounded-lg text-sm font-medium transition-all duration-300 cursor-pointer ${
                   featuredActive === idx
-                    ? 'bg-[#111111] border-[#4A7BFF]/40 text-[#F3F3F1] shadow-[0_0_16px_rgba(74,123,255,0.2)]'
-                    : 'bg-transparent border-white/[0.07] text-[#555760] hover:text-[#8A8C94] hover:border-white/[0.14]'
+                    ? 'bg-[#111315] border-2 border-[#4A7BFF]/60 text-white shadow-[0_0_24px_rgba(74,123,255,0.18)]'
+                    : 'bg-[#0f1012] border border-white/[0.06] text-[#6b6b73] hover:text-[#a1a1aa] hover:border-white/[0.12]'
                 }`}
-                style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}
+                style={{ fontFamily: 'var(--font-sans)' }}
               >
                 {fs.title.split(' ')[0]}
               </button>
             ))}
           </div>
 
-          {/* Layered card composition — desktop */}
-          <div className="hidden md:flex items-center justify-center relative h-[420px] lg:h-[460px]">
+          {/* 4-Card layout — absolute-positioned, all 4 visible on md/lg, centered with offsets */}
+          <div className="hidden md:block relative mx-auto w-full max-w-5xl h-[520px] md:h-[540px] lg:h-[600px] overflow-hidden">
             {featuredServices.map((fs, idx) => {
               const N = featuredServices.length;
               let offset = idx - featuredActive;
@@ -411,142 +394,225 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
               if (offset < -N / 2) offset += N;
               const absOffset = Math.abs(offset);
               const isActive = offset === 0;
-              const isVisible = absOffset <= 1;
+
+              let scale: number;
+              let opacity: number;
+              let yOffset: number;
+              let xPx: number;
+              let showFull: boolean;
+              let cardW: string;
+
+              if (isActive) {
+                scale = 1.02;
+                opacity = 1;
+                yOffset = 0;
+                xPx = 0;
+                showFull = true;
+                cardW = 'md:w-[300px] lg:w-[350px]';
+              } else if (absOffset === 1) {
+                scale = 0.9;
+                opacity = 0.78;
+                yOffset = 16;
+                xPx = offset * 250;
+                showFull = false;
+                cardW = 'md:w-[250px] lg:w-[290px]';
+              } else {
+                scale = 0.78;
+                opacity = 0.5;
+                yOffset = 30;
+                xPx = offset * 390;
+                showFull = false;
+                cardW = 'md:w-[220px] lg:w-[250px]';
+              }
 
               return (
                 <motion.div
                   key={fs.id}
                   animate={{
-                    x: offset * 280,
-                    scale: isActive ? 1 : 0.82,
-                    zIndex: isActive ? 10 : 5 - absOffset,
-                    opacity: isVisible ? (isActive ? 1 : 0.55) : 0,
-                    rotateY: offset * 8,
-                    pointerEvents: isVisible ? 'auto' : 'none',
+                    x: `calc(-50% + ${xPx}px)`,
+                    y: yOffset,
+                    scale,
+                    opacity,
                   }}
-                  transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-                  className="absolute w-[320px] lg:w-[380px] cursor-pointer"
-                  onClick={() => setFeaturedActive(idx)}
-                  style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  className={`absolute top-0 left-1/2 ${cardW} ${!isActive ? 'cursor-pointer' : ''}`}
+                  onClick={() => !isActive && setFeaturedActive(idx)}
+                  style={{ zIndex: 10 - absOffset }}
                 >
-                  <div
-                    className={`relative rounded-2xl overflow-hidden border transition-all duration-300 ${
-                      isActive
-                        ? 'bg-[#0a0a0a] border-white/[0.14] shadow-[0_30px_80px_rgba(0,0,0,0.8)]'
-                        : 'bg-[#080808] border-white/[0.06]'
-                    }`}
-                  >
-                    {/* Accent top bar on active */}
-                    {isActive && (
-                      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#4A7BFF]/60 to-transparent" />
-                    )}
+                  {showFull ? (
+                    <div className="relative rounded-3xl overflow-hidden border border-white/[0.12] bg-[#0a0b0d] shadow-[0_40px_100px_rgba(0,0,0,0.85),0_0_80px_rgba(74,123,255,0.08)]">
+                      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#4A7BFF]/50 to-transparent" />
 
-                    {/* Image */}
-                    <div className="relative h-44 lg:h-52 bg-gradient-to-b from-white/[0.025] to-transparent flex items-center justify-center p-8">
-                      <div className="relative w-full h-full">
-                        <Image
-                          src={fs.image}
-                          alt={fs.marketplace}
-                          fill
-                          className="object-contain drop-shadow-xl"
-                          sizes="380px"
-                        />
+                      <div className="relative h-36 md:h-40 lg:h-48 flex items-center justify-center pt-8 pb-3">
+                        <div className="relative w-20 md:w-24 h-20 md:h-24 lg:w-28 lg:h-28">
+                          <Image
+                            src={fs.image}
+                            alt={fs.marketplace}
+                            fill
+                            className="object-contain drop-shadow-2xl"
+                            sizes="(min-width: 1024px) 112px, (min-width: 768px) 96px, 80px"
+                          />
+                        </div>
                       </div>
-                    </div>
 
-                    {/* Card content */}
-                    <div className="p-6 space-y-3">
-                      <span
-                        className="text-[10px] font-semibold uppercase tracking-wider"
-                        style={{
-                          color: fs.tagColor,
-                          fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
-                        }}
-                      >
-                        {fs.marketplace}
-                      </span>
+                      <div className="px-6 md:px-7 lg:px-9 pb-8 md:pb-9 space-y-3 md:space-y-3.5">
+                        <span
+                          className="text-[11px] md:text-xs font-semibold uppercase tracking-[0.18em] text-[#4A7BFF] block"
+                          style={{ fontFamily: 'var(--font-sans)' }}
+                        >
+                          {fs.marketplace}
+                        </span>
 
-                      <h3
-                        className="text-xl lg:text-2xl font-semibold text-[#F3F3F1]"
-                        style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}
-                      >
-                        {fs.title}
-                      </h3>
+                        <h3
+                          className="text-xl md:text-2xl lg:text-3xl font-semibold text-white tracking-tight leading-tight"
+                          style={{ fontFamily: 'var(--font-display)' }}
+                        >
+                          {fs.title}
+                        </h3>
 
-                      {isActive && (
                         <motion.p
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{ duration: 0.4 }}
-                          className="text-sm text-[#8A8C94] leading-relaxed"
-                          style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}
+                          key={`${fs.id}-desc`}
+                          initial={{ opacity: 0, y: 6 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.5, delay: 0.1 }}
+                          className="text-xs md:text-sm lg:text-base text-[#a1a1aa] leading-relaxed"
+                          style={{ fontFamily: 'var(--font-sans)' }}
                         >
                           {fs.description}
                         </motion.p>
-                      )}
 
-                      <div className="flex items-center justify-between pt-3 border-t border-white/[0.05]">
-                        <span
-                          className="text-xs font-display text-[#555760]"
-                        >
-                          {fs.metric}
-                        </span>
-                        {isActive && (
+                        <div className="pt-4 md:pt-5 mt-4 md:mt-5 border-t border-white/[0.08] flex items-center justify-between">
+                          <span
+                            className="text-[11px] md:text-xs lg:text-sm text-[#6b6b73] font-medium"
+                            style={{ fontFamily: 'var(--font-sans)' }}
+                          >
+                            {fs.metric}
+                          </span>
                           <button
                             type="button"
                             onClick={(e) => {
                               e.stopPropagation();
                               onOpenApplication(fs.title);
                             }}
-                            className="text-xs font-semibold px-4 py-2 rounded-md bg-gradient-to-r from-[#4A7BFF] via-[#6B96FF] to-[#2D5ADB] text-black hover:shadow-[0_0_20px_rgba(74,123,255,0.4)] transition-all cursor-pointer"
-                            style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}
+                            className="px-4 md:px-5 py-2 md:py-2.5 rounded-xl bg-[#5a8cff] hover:bg-[#4A7BFF] text-black font-semibold text-[11px] md:text-xs lg:text-sm transition-all duration-300 hover:shadow-[0_0_28px_rgba(74,123,255,0.45)] cursor-pointer"
+                            style={{ fontFamily: 'var(--font-sans)' }}
                           >
                             Apply Now
                           </button>
-                        )}
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  ) : (
+                    <div className="relative rounded-3xl overflow-hidden border border-white/[0.06] bg-[#08090a]">
+                      <div className="relative h-32 md:h-36 lg:h-44 flex items-center justify-center pt-6 md:pt-7 pb-2">
+                        <div className="relative w-16 md:w-20 h-16 md:h-20 lg:w-24 lg:h-24">
+                          <Image
+                            src={fs.image}
+                            alt={fs.marketplace}
+                            fill
+                            className="object-contain"
+                            sizes="(min-width: 1024px) 96px, (min-width: 768px) 80px, 64px"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="px-5 md:px-6 lg:px-8 pb-7 md:pb-8 space-y-2 md:space-y-2.5">
+                        <span
+                          className="text-[10px] md:text-[11px] font-semibold uppercase tracking-[0.18em] text-[#4A7BFF]/70 block"
+                          style={{ fontFamily: 'var(--font-sans)' }}
+                        >
+                          {fs.marketplace}
+                        </span>
+
+                        <h3
+                          className="text-lg md:text-xl lg:text-2xl font-semibold text-[#9a9ba3] tracking-tight leading-tight"
+                          style={{ fontFamily: 'var(--font-display)' }}
+                        >
+                          {fs.title}
+                        </h3>
+                      </div>
+                    </div>
+                  )}
                 </motion.div>
               );
             })}
           </div>
 
-          {/* Mobile: horizontal scroll cards */}
+          {/* Mobile: 4-card horizontal scroll */}
           <div className="md:hidden flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory -mx-4 px-4">
-            {featuredServices.map((fs) => (
-              <div
-                key={fs.id}
-                className="shrink-0 w-[280px] snap-center rounded-2xl bg-[#0a0a0a] border border-white/[0.08] overflow-hidden"
-              >
-                <div className="relative h-36 bg-white/[0.02] flex items-center justify-center p-6">
-                  <div className="relative w-full h-full">
-                    <Image
-                      src={fs.image}
-                      alt={fs.marketplace}
-                      fill
-                      className="object-contain"
-                      sizes="280px"
-                    />
+            {featuredServices.map((fs, idx) => {
+              const isActive = featuredActive === idx;
+              return (
+                <div
+                  key={fs.id}
+                  onClick={() => setFeaturedActive(idx)}
+                  className={`shrink-0 w-[270px] snap-center rounded-3xl overflow-hidden border transition-all duration-300 ${
+                    isActive
+                      ? 'bg-[#0a0b0d] border-white/[0.12] shadow-[0_20px_60px_rgba(0,0,0,0.8)]'
+                      : 'bg-[#08090a] border-white/[0.06] cursor-pointer'
+                  }`}
+                >
+                  <div className="relative h-32 flex items-center justify-center pt-5 pb-2">
+                    <div className={`relative w-16 h-16 ${isActive ? '' : 'opacity-60'}`}>
+                      <Image
+                        src={fs.image}
+                        alt={fs.marketplace}
+                        fill
+                        className="object-contain"
+                        sizes="64px"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="px-5 pb-6 space-y-2">
+                    <span
+                      className={`text-[10px] font-semibold uppercase tracking-wider block ${
+                        isActive ? 'text-[#4A7BFF]' : 'text-[#4A7BFF]/60'
+                      }`}
+                      style={{ fontFamily: 'var(--font-sans)' }}
+                    >
+                      {fs.marketplace}
+                    </span>
+
+                    <h3
+                      className={`text-lg font-semibold tracking-tight leading-tight ${
+                        isActive ? 'text-white' : 'text-[#6b6b73]'
+                      }`}
+                      style={{ fontFamily: 'var(--font-display)' }}
+                    >
+                      {fs.title}
+                    </h3>
+
+                    {isActive && (
+                      <>
+                        <p className="text-xs text-[#a1a1aa] leading-relaxed mt-2" style={{ fontFamily: 'var(--font-sans)' }}>
+                          {fs.description}
+                        </p>
+                        <div className="pt-3 mt-3 border-t border-white/[0.08] flex items-center justify-between">
+                          <span className="text-[11px] text-[#6b6b73]" style={{ fontFamily: 'var(--font-sans)' }}>
+                            {fs.metric}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              onOpenApplication(fs.title);
+                            }}
+                            className="px-3.5 py-1.5 rounded-lg bg-[#5a8cff] text-black font-semibold text-[11px] cursor-pointer"
+                            style={{ fontFamily: 'var(--font-sans)' }}
+                          >
+                            Apply Now
+                          </button>
+                        </div>
+                      </>
+                    )}
                   </div>
                 </div>
-                <div className="p-4 space-y-2">
-                  <p className="text-[10px] text-[#6B96FF] uppercase tracking-wider font-semibold"
-                     style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}>
-                    {fs.marketplace}
-                  </p>
-                  <h3 className="text-base font-semibold text-[#F3F3F1]"
-                      style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}>
-                    {fs.title}
-                  </h3>
-                  <p className="text-xs text-[#8A8C94]" style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}>{fs.metric}</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
         {/* ── END FEATURED CAROUSEL ── */}
-      </div>
 
       {/* Explore All Services heading */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
