@@ -613,6 +613,7 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
           </div>
         </div>
         {/* ── END FEATURED CAROUSEL ── */}
+      </div>
 
       {/* Explore All Services heading */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

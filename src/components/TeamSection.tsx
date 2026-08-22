@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useSyncExternalStore, useState } from 'react';
+import React, { useSyncExternalStore, useState, useRef, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
@@ -196,9 +196,63 @@ function CarouselCard({
   );
 }
 
+function CarouselTrack({ reducedMotion }: { reducedMotion: boolean }) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const pausedRef = useRef(false);
+  const xRef = useRef(0);
+
+  const cycleWidth = wheelPhotos.length * (CARD_WIDTH_PX + CARD_GAP_PX);
+  const speed = cycleWidth / 30; // one full cycle in 30 seconds
+
+  useEffect(() => {
+    if (reducedMotion) return;
+
+    let rafId: number;
+    let lastTime = 0;
+
+    const tick = (time: number) => {
+      if (lastTime > 0 && !pausedRef.current) {
+        const delta = time - lastTime;
+        xRef.current -= (speed * delta) / 1000;
+
+        if (xRef.current <= -cycleWidth) {
+          xRef.current += cycleWidth;
+        }
+
+        if (trackRef.current) {
+          trackRef.current.style.transform = `translate3d(${xRef.current}px, 0, 0)`;
+        }
+      }
+      lastTime = time;
+      rafId = requestAnimationFrame(tick);
+    };
+
+    rafId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafId);
+  }, [reducedMotion, speed, cycleWidth]);
+
+  const pause = useCallback(() => { pausedRef.current = true; }, []);
+  const resume = useCallback(() => { pausedRef.current = false; }, []);
+
+  return (
+    <div
+      ref={trackRef}
+      className="flex"
+      style={{ willChange: 'transform' }}
+      onMouseEnter={pause}
+      onMouseLeave={resume}
+    >
+      {[...wheelPhotos, ...wheelPhotos, ...wheelPhotos].map((photo, i) => (
+        <div key={`${photo.id}-${i}`} style={{ marginRight: `${CARD_GAP_PX}px` }}>
+          <CarouselCard photo={photo} reducedMotion={reducedMotion} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function TeamSection() {
   const reducedMotion = useReducedMotion();
-  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <section
@@ -253,32 +307,7 @@ export default function TeamSection() {
           </div>
 
           <div className="relative overflow-hidden py-12">
-            <motion.div
-              className="flex"
-              animate={reducedMotion || isHovered ? {} : {
-                x: [0, -(wheelPhotos.length * (CARD_WIDTH_PX + CARD_GAP_PX))],
-              }}
-              transition={
-                reducedMotion || isHovered
-                  ? {}
-                  : {
-                      duration: 30,
-                      repeat: Infinity,
-                      ease: 'linear',
-                    }
-              }
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-            >
-              {[...wheelPhotos, ...wheelPhotos, ...wheelPhotos].map((photo, i) => (
-                <div key={`${photo.id}-${i}`} style={{ marginRight: `${CARD_GAP_PX}px` }}>
-                  <CarouselCard
-                    photo={photo}
-                    reducedMotion={reducedMotion}
-                  />
-                </div>
-              ))}
-            </motion.div>
+            <CarouselTrack reducedMotion={reducedMotion} />
           </div>
 
           <div

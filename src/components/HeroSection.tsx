@@ -209,7 +209,7 @@ function smoothPath(points: number[], w: number, h: number): string {
 
 export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
   const reducedMotion = useReducedMotion();
-  const [activePlatform, setActivePlatform] = useState(0);
+  const [activePlatform, setActivePlatform] = useState(2);
   const interactedRef = useRef<boolean>(false);
   const interactTimerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const [dashboardSectionRef, hasEntered] = useInViewOnce(0.2);
@@ -224,7 +224,7 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
       orders: '1,840',
       activeStatus: '99.9% Sync',
       profit: '28.4% Net Margin',
-      color: '#6B96FF',
+      color: '#5B8CFF',
       icon: '/work/amazon.png',
     },
     {
@@ -246,7 +246,7 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
       orders: '980',
       activeStatus: 'Auto-Bidding Active',
       profit: '24.6% Net Margin',
-      color: '#6B96FF',
+      color: '#5B8CFF',
       icon: '/work/ebay.png',
     },
     {
@@ -326,19 +326,28 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
       id="hero"
       className="relative min-h-[92vh] lg:min-h-screen flex items-center pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden"
     >
-      {/* Background Ambient Glows and Grid */}
-      <div className="absolute inset-0 bg-[#0b0c0e] pointer-events-none">
-        {/* Very soft ambient glows */}
-        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[650px] lg:w-[900px] h-[450px] bg-gradient-to-b from-[#6B96FF]/08 via-[#4A7BFF]/05 to-transparent rounded-full blur-[160px] opacity-60" />
-        <div className="absolute top-1/3 right-[-10%] w-[450px] h-[450px] bg-[#2D5ADB]/06 rounded-full blur-[130px] opacity-50" />
-        <div className="absolute bottom-10 left-[-5%] w-[350px] h-[350px] bg-[#4A7BFF]/04 rounded-full blur-[110px] opacity-40" />
+      {/* Device float animation */}
+      <style>{`
+        @keyframes deviceFloat {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-4px); }
+        }
+        .device-showcase {
+          animation: deviceFloat 8s ease-in-out infinite;
+        }
+        .device-showcase > * {
+          pointer-events: auto;
+        }
+      `}</style>
 
-        {/* Minimal Grid Pattern */}
+      {/* Background */}
+      <div className="absolute inset-0 bg-[#090B0F] pointer-events-none">
+        {/* Subtle dot pattern */}
         <div
-          className="absolute inset-0 opacity-[0.035]"
+          className="absolute inset-0 opacity-[0.025]"
           style={{
             backgroundImage: `radial-gradient(circle at 1px 1px, #ffffff 1px, transparent 0)`,
-            backgroundSize: '50px 50px',
+            backgroundSize: '56px 56px',
           }}
         />
       </div>
@@ -356,7 +365,7 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
             >
               We do the{' '}
               <span className="text-gradient">heavy lifting</span> so you can do the{' '}
-              <span className="italic font-light text-[#F3F3F1] underline decoration-[#6B96FF]/40 decoration-1 underline-offset-8">
+              <span className="italic font-light text-[#F3F3F1] underline decoration-[#5B8CFF]/40 decoration-1 underline-offset-8">
                 easy living.
               </span>
             </motion.h1>
@@ -403,14 +412,14 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.45 }}
-              className="flex flex-wrap items-center gap-6 pt-4 border-t border-white/[0.06] text-xs text-[#6E7078]"
+              className="flex flex-wrap items-center gap-6 pt-4 border-t border-white/[0.06] text-xs text-[#7C8492]"
             >
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#6B96FF]" />
+                <CheckCircle2 className="w-4 h-4 text-[#5B8CFF]" />
                 <span>100% Hands-Off DFY Model</span>
               </div>
               <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-[#6B96FF]" />
+                <ShieldCheck className="w-4 h-4 text-[#5B8CFF]" />
                 <span>Dedicated Account Manager</span>
               </div>
               <div className="flex items-center gap-2">
@@ -428,68 +437,27 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
             }}
             className="lg:col-span-5 relative flex items-center justify-center"
           >
-            {/* Subtle elliptical path background */}
-            <svg
-              className="absolute z-0 pointer-events-none"
-              width="600"
-              height="380"
-              viewBox="0 0 600 380"
-              style={{ transform: 'rotate(-6deg)' }}
-              aria-hidden
-            >
-              <ellipse
-                cx="300"
-                cy="190"
-                rx="290"
-                ry="180"
-                stroke="rgba(255,255,255,0.04)"
-                strokeWidth="1"
-                strokeDasharray="2 8"
-                fill="none"
-              />
-            </svg>
 
-            {/* 4 tiny orbiting data particles */}
-            {!reducedMotion && (
-              <>
-                <motion.div
-                  className="absolute z-0 w-[2px] h-[2px] rounded-sm bg-white/30 pointer-events-none"
-                  animate={{
-                    x: [0, 110, 200, 150, 0, -140, -200, -90, 0],
-                    y: [0, 80, 20, -70, -120, -40, 40, 90, 0],
-                  }}
-                  transition={{ duration: 22, repeat: Infinity, repeatType: 'loop', ease: 'linear' }}
-                  style={{ top: '50%', left: '50%' }}
-                />
-                <motion.div
-                  className="absolute z-0 w-[2px] h-[2px] rounded-sm bg-white/30 pointer-events-none"
-                  animate={{
-                    x: [0, -130, -210, -100, 40, 170, 220, 100, 0],
-                    y: [0, -60, 30, 110, 60, -50, -90, -20, 0],
-                  }}
-                  transition={{ duration: 28, repeat: Infinity, repeatType: 'loop', ease: 'linear' }}
-                  style={{ top: '50%', left: '50%' }}
-                />
-                <motion.div
-                  className="absolute z-0 w-[2px] h-[2px] rounded-sm bg-white/30 pointer-events-none"
-                  animate={{
-                    x: [0, 90, 160, 40, -100, -180, -120, 20, 0],
-                    y: [0, -90, -20, 80, 100, 10, -80, -60, 0],
-                  }}
-                  transition={{ duration: 18, repeat: Infinity, repeatType: 'loop', ease: 'linear' }}
-                  style={{ top: '50%', left: '50%' }}
-                />
-                <motion.div
-                  className="absolute z-0 w-[2px] h-[2px] rounded-sm bg-white/30 pointer-events-none"
-                  animate={{
-                    x: [0, -80, -170, -80, 70, 180, 150, 30, 0],
-                    y: [0, 70, 0, -90, -100, -10, 80, 60, 0],
-                  }}
-                  transition={{ duration: 25, repeat: Infinity, repeatType: 'loop', ease: 'linear' }}
-                  style={{ top: '50%', left: '50%' }}
-                />
-              </>
-            )}
+            {/* Device Showcase */}
+            <motion.div
+              initial={reducedMotion ? { opacity: 0 } : { opacity: 0, y: 30, scale: 0.96 }}
+              animate={hasEntered || reducedMotion ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={reducedMotion ? { duration: 0.5 } : { duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              className="relative w-full device-showcase"
+            >
+              {/* Laptop Device Frame */}
+              <div
+                className="relative w-full max-w-[540px] mx-auto"
+                style={{
+                  filter: 'drop-shadow(0 25px 50px rgba(0,0,0,0.5)) drop-shadow(0 8px 16px rgba(0,0,0,0.3))',
+                }}
+              >
+                {/* Laptop Screen Bezel */}
+                <div className="relative rounded-xl overflow-hidden bg-[#1a1a1e] border border-white/[0.06]">
+                  {/* Camera dot */}
+                  <div className="absolute top-[6px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#2a2a2e] border border-[#333] z-20" />
+                  {/* Screen area */}
+                  <div className="relative pt-6">
 
             {/* Main Premium Dashboard Window */}
             <motion.div
@@ -500,11 +468,7 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
                   ? { duration: 0.5 }
                   : { duration: 0.7, ease: [0.22, 1, 0.36, 1] }
               }
-              className="relative w-full max-w-[480px] bg-[#0D0E10] border border-white/[0.08] rounded-2xl p-5 sm:p-6 z-10"
-              style={{
-                boxShadow:
-                  '0 30px 70px rgba(0,0,0,0.85), 0 2px 6px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.035)',
-              }}
+              className="relative w-full bg-[#11141A] border-x border-b border-white/[0.04] p-4 sm:p-5 z-10"
             >
               {/* Top Bar */}
               <motion.div
@@ -514,12 +478,12 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
                 className="flex items-center justify-between pb-4"
               >
                 <div className="flex items-center gap-2">
-                  <span className="text-[11px] font-display text-[#6E7078] tracking-wide">
+                  <span className="text-[11px] font-display text-[#7C8492] tracking-wide">
                     Ecom Engine
                   </span>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <span className="text-[10px] font-display text-[#6E7078]">{currentTime}</span>
+                  <span className="text-[10px] font-display text-[#7C8492]">{currentTime}</span>
                 </div>
               </motion.div>
 
@@ -540,7 +504,7 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
                       className={`relative py-2 text-[11px] font-medium rounded-md cursor-pointer transition-all duration-200 z-10 ${
                         isActive
                           ? 'text-[#F3F3F1]'
-                          : 'text-[#6E7078] hover:text-[#96989F] hover:bg-white/[0.02]'
+                          : 'text-[#7C8492] hover:text-[#96989F] hover:bg-white/[0.02]'
                       }`}
                       style={!isActive ? { transform: 'translateY(0)' } : undefined}
                       onMouseEnter={(e) => {
@@ -580,7 +544,7 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
                   {/* Active Platform Header */}
                   <div className="flex items-start justify-between mb-5">
                     <div>
-                      <span className="text-[11px] font-display text-[#6B96FF] uppercase tracking-wider">
+                      <span className="text-[11px] font-display text-[#5B8CFF] uppercase tracking-wider">
                         {curr.name}
                       </span>
                       <div className="flex items-baseline gap-2 mt-1">
@@ -669,10 +633,10 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
                         <line x1="36" y1="72" x2="598" y2="72" stroke="#ffffff" strokeOpacity="0.04" strokeWidth="1" />
 
                         {/* Y-axis labels */}
-                        <text x="2" y="27" fontFamily="ui-monospace, monospace" fontSize="9" fill="#6E7078" textAnchor="start">$90k</text>
-                        <text x="2" y="51" fontFamily="ui-monospace, monospace" fontSize="9" fill="#6E7078" textAnchor="start">$60k</text>
-                        <text x="2" y="75" fontFamily="ui-monospace, monospace" fontSize="9" fill="#6E7078" textAnchor="start">$30k</text>
-                        <text x="2" y="94" fontFamily="ui-monospace, monospace" fontSize="9" fill="#6E7078" textAnchor="start">$0</text>
+                        <text x="2" y="27" fontFamily="ui-monospace, monospace" fontSize="9" fill="#7C8492" textAnchor="start">$90k</text>
+                        <text x="2" y="51" fontFamily="ui-monospace, monospace" fontSize="9" fill="#7C8492" textAnchor="start">$60k</text>
+                        <text x="2" y="75" fontFamily="ui-monospace, monospace" fontSize="9" fill="#7C8492" textAnchor="start">$30k</text>
+                        <text x="2" y="94" fontFamily="ui-monospace, monospace" fontSize="9" fill="#7C8492" textAnchor="start">$0</text>
 
                         {/* Area fill */}
                         <motion.path
@@ -759,18 +723,18 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
                   {/* Data Metrics Grid */}
                   <div className="grid grid-cols-2 gap-3 mb-1">
                     <div className="p-3.5 rounded-xl bg-[#16171A] border border-white/[0.05]">
-                      <div className="flex items-center gap-1.5 text-[11px] text-[#6E7078] mb-1">
-                        <Package className="w-3.5 h-3.5 text-[#6B96FF]" />
+                      <div className="flex items-center gap-1.5 text-[11px] text-[#7C8492] mb-1">
+                        <Package className="w-3.5 h-3.5 text-[#5B8CFF]" />
                         <span>Dispatched Orders</span>
                       </div>
                       <div key={`ord-${activePlatform}`} className="text-lg font-semibold text-[#F3F3F1] font-display tabular-nums">
-                        {formatNumber(ordersValue)} <span className="text-[11px] text-[#6E7078] font-normal">/mo</span>
+                        {formatNumber(ordersValue)} <span className="text-[11px] text-[#7C8492] font-normal">/mo</span>
                       </div>
                     </div>
 
                     <div className="p-3.5 rounded-xl bg-[#16171A] border border-white/[0.05]">
-                      <div className="flex items-center gap-1.5 text-[11px] text-[#6E7078] mb-1">
-                        <Zap className="w-3.5 h-3.5 text-[#6B96FF]" />
+                      <div className="flex items-center gap-1.5 text-[11px] text-[#7C8492] mb-1">
+                        <Zap className="w-3.5 h-3.5 text-[#5B8CFF]" />
                         <span>Sync Status</span>
                       </div>
                       <div className="mt-1 flex items-center gap-1">
@@ -818,34 +782,128 @@ export default function HeroSection({ onOpenApplication }: HeroSectionProps) {
                     </div>
                   </div>
 
-                  {/* Floating Mini Notification Badge */}
-                  <motion.div
-                    key={`payout-${activePlatform}`}
-                    initial={{ opacity: 0, y: 10, scale: 0.98 }}
-                    animate={hasEntered || reducedMotion ? { opacity: 1, y: 0, scale: 1 } : {}}
-                    transition={{
-                      duration: 0.5,
-                      delay: reducedMotion ? 0 : 1.9,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    className="absolute -bottom-5 -right-3 sm:-right-5 p-3.5 rounded-xl bg-[#151618] border border-white/[0.08] shadow-[0_10px_30px_rgba(0,0,0,0.6)] flex items-center gap-3 z-20"
-                  >
-                    <div className="w-9 h-9 rounded-xl bg-[#2a2b2e] flex items-center justify-center text-[#6B96FF] text-sm">
-                      ✓
-                    </div>
-                    <div>
-                      <p className="text-xs font-medium text-[#F3F3F1]">Store Payout Released</p>
-                      <p className="text-[10px] font-display text-[#6B96FF]">+$14,820.50 via Stripe Wire</p>
-                    </div>
-                  </motion.div>
+
                 </motion.div>
               </AnimatePresence>
 
               {/* Bottom Bar */}
-              <div className="mt-1 pt-3 border-t border-white/[0.05] flex items-center justify-between text-[10px] font-display text-[#6E7078]">
+              <div className="mt-1 pt-3 border-t border-white/[0.05] flex items-center justify-between text-[10px] font-display text-[#7C8492]">
                 <span>v4.8.2 · Production</span>
                 <span>US-East-1 · 38ms</span>
               </div>
+            </motion.div>
+
+                  </div>
+                </div>
+                {/* Laptop Base */}
+                <div className="relative">
+                  <div
+                    className="h-[14px] bg-gradient-to-b from-[#2a2a2e] to-[#1e1e22] border-x border-b border-white/[0.04]"
+                    style={{
+                      borderRadius: '0 0 10px 10px',
+                      margin: '0 14%',
+                    }}
+                  />
+                  <div
+                    className="h-[5px] bg-gradient-to-b from-[#1a1a1e] to-[#161619]"
+                    style={{
+                      borderRadius: '0 0 14px 14px',
+                      margin: '0 8%',
+                    }}
+                  />
+                </div>
+              </div>
+
+              {/* Mobile Phone Device */}
+              <motion.div
+                initial={reducedMotion ? { opacity: 0 } : { opacity: 0, y: 16, scale: 0.96 }}
+                animate={hasEntered || reducedMotion ? { opacity: 1, y: 0, scale: 1 } : {}}
+                transition={reducedMotion ? { duration: 0.5, delay: 0.1 } : { duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute right-0 sm:right-[-8px] bottom-[18%] z-20"
+                style={{
+                  filter: 'drop-shadow(0 15px 30px rgba(0,0,0,0.6)) drop-shadow(0 5px 12px rgba(0,0,0,0.4))',
+                }}
+              >
+                <div className="w-[115px] sm:w-[132px] rounded-[22px] sm:rounded-[26px] bg-[#1a1a1e] border border-white/[0.08] p-[5px] sm:p-[6px]">
+                  <div className="relative rounded-[17px] sm:rounded-[20px] bg-[#0D0E10] overflow-hidden">
+                    {/* Dynamic Island */}
+                    <div className="flex justify-center pt-[6px] pb-[3px]">
+                      <div className="w-[34px] sm:w-[40px] h-[11px] sm:h-[13px] bg-black rounded-full" />
+                    </div>
+                    {/* Screen content */}
+                    <div className="px-2.5 sm:px-3 pb-3 sm:pb-4 pt-1">
+                      <div className="flex items-center justify-between mb-1.5">
+                        <span className="text-[7px] sm:text-[8px] text-[#7C8492] font-display">Ecom Engine</span>
+                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                      </div>
+                      <div className="text-[8px] sm:text-[9px] text-[#5B8CFF] font-display uppercase tracking-wider mb-0.5">Amazon FBA</div>
+                      <div className="text-base sm:text-lg font-semibold text-[#F3F3F1] font-display tabular-nums mb-0.5">$84,920</div>
+                      <div className="text-[8px] sm:text-[9px] text-emerald-400 font-display font-medium mb-2">↗ +314.8%</div>
+                      <div className="h-[36px] sm:h-[44px] rounded-[8px] sm:rounded-[10px] bg-[#101113] border border-white/[0.06] p-1.5 sm:p-2 mb-1.5">
+                        <svg viewBox="0 0 120 40" className="w-full h-full overflow-visible" preserveAspectRatio="none">
+                          <defs>
+                            <linearGradient id="phoneGrad" x1="0" y1="0" x2="0" y2="1">
+                              <stop offset="0%" stopColor="#5B8CFF" stopOpacity="0.15" />
+                              <stop offset="100%" stopColor="#5B8CFF" stopOpacity="0" />
+                            </linearGradient>
+                          </defs>
+                          <path
+                            d="M 0 34 C 8 30, 16 26, 24 22 C 32 18, 40 20, 48 16 C 56 12, 64 14, 72 10 C 80 7, 88 8, 96 4 C 104 2, 112 3, 120 1 L 120 40 L 0 40 Z"
+                            fill="url(#phoneGrad)"
+                          />
+                          <path
+                            d="M 0 34 C 8 30, 16 26, 24 22 C 32 18, 40 20, 48 16 C 56 12, 64 14, 72 10 C 80 7, 88 8, 96 4 C 104 2, 112 3, 120 1"
+                            fill="none"
+                            stroke="#5B8CFF"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                          />
+                        </svg>
+                      </div>
+                      <div className="grid grid-cols-2 gap-1 sm:gap-1.5">
+                        <div className="p-1.5 sm:p-2 rounded-[6px] sm:rounded-[8px] bg-[#16171A] border border-white/[0.05]">
+                          <div className="text-[6.5px] sm:text-[7px] text-[#7C8492] mb-0.5">Orders</div>
+                          <div className="text-[10px] sm:text-xs font-semibold text-[#F3F3F1] font-display tabular-nums">1,840</div>
+                        </div>
+                        <div className="p-1.5 sm:p-2 rounded-[6px] sm:rounded-[8px] bg-[#16171A] border border-white/[0.05]">
+                          <div className="text-[6.5px] sm:text-[7px] text-[#7C8492] mb-0.5">Sync</div>
+                          <div className="flex items-center gap-0.5">
+                            <div className="w-1 h-1 rounded-full bg-emerald-400" />
+                            <div className="text-[8px] sm:text-[10px] font-semibold text-emerald-400 font-display">99.9%</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="mt-1.5 p-1.5 sm:p-2 rounded-[6px] sm:rounded-[8px] bg-[#151618] border border-white/[0.06] flex items-center gap-1.5">
+                        <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-[4px] sm:rounded-[5px] bg-[#2a2b2e] flex items-center justify-center text-[#5B8CFF] text-[7px] sm:text-[8px]">✓</div>
+                        <div>
+                          <div className="text-[6.5px] sm:text-[7px] text-[#F3F3F1] font-medium">Payout Released</div>
+                          <div className="text-[6px] sm:text-[7px] text-[#5B8CFF] font-display">+$14,820.50</div>
+                        </div>
+                      </div>
+                    </div>
+                    {/* Home indicator */}
+                    <div className="flex justify-center pb-[6px] sm:pb-[8px]">
+                      <div className="w-[32px] sm:w-[36px] h-[3px] sm:h-[4px] bg-white/20 rounded-full" />
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Floating Payout Notification */}
+              <motion.div
+                initial={reducedMotion ? { opacity: 0 } : { opacity: 0, y: 15 }}
+                animate={hasEntered || reducedMotion ? { opacity: 1, y: 0 } : {}}
+                transition={reducedMotion ? { duration: 0.5, delay: 0.2 } : { duration: 0.6, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute -bottom-4 right-2 sm:right-4 z-30 p-3.5 rounded-xl bg-[#15181F] border border-white/[0.08] shadow-[0_10px_30px_rgba(0,0,0,0.6)] flex items-center gap-3"
+              >
+                <div className="w-9 h-9 rounded-xl bg-[#2a2b2e] flex items-center justify-center text-[#5B8CFF] text-sm">
+                  ✓
+                </div>
+                <div>
+                  <p className="text-xs font-medium text-[#F3F4F6]">Store Payout Released</p>
+                  <p className="text-[10px] font-display text-[#5B8CFF]">+$14,820.50 via Stripe Wire</p>
+                </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
