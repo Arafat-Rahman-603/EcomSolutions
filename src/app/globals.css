@@ -440,3 +440,33 @@ input[type='range']::-webkit-slider-thumb {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* ─────────────────────────────────────────────────────
+   SWIPER CUSTOM SCROLLBAR
+───────────────────────────────────────────────────── */
+.services-scrollbar {
+  --swiper-scrollbar-size: 4px !important;
+  --swiper-scrollbar-bg: rgba(255, 255, 255, 0.05) !important;
+  --swiper-scrollbar-drag-bg: rgba(107, 150, 255, 0.5) !important;
+}
+
+.services-scrollbar .swiper-scrollbar-drag {
+  background: var(--swiper-scrollbar-drag-bg) !important;
+  border-radius: 9999px;
+  cursor: grab;
+}
+
+.services-scrollbar .swiper-scrollbar-drag:active {
+  cursor: grabbing;
+  background: rgba(107, 150, 255, 0.7) !important;
+}
+
+.services-swiper .swiper-scrollbar {
+  position: absolute;
+  right: 8px;
+  top: 0;
+  bottom: 0;
+  width: var(--swiper-scrollbar-size) !important;
+  background: var(--swiper-scrollbar-bg) !important;
+  border-radius: 9999px;
+}

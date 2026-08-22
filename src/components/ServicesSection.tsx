@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import {
   ArrowUpRight,
@@ -18,6 +18,10 @@ import {
   X,
 } from 'lucide-react';
 import SectionHeading from './SectionHeading';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface ServicesSectionProps {
   onOpenApplication: (serviceName?: string) => void;
@@ -36,6 +40,134 @@ interface ServiceItem {
   icon: string;
   color: string;
   highlightDetails: string[];
+}
+
+interface HorizontalScrollShowcaseProps {
+  services: ServiceItem[];
+  onOpenApplication: (serviceName?: string) => void;
+}
+
+interface ServiceCardProps {
+  service: ServiceItem;
+  index: number;
+  onClick: () => void;
+}
+
+function HorizontalScrollShowcase({ services, onOpenApplication }: HorizontalScrollShowcaseProps) {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    const section = sectionRef.current;
+    const track = trackRef.current;
+    if (!section || !track) return;
+
+    const ctx = gsap.context(() => {
+      const getScrollDistance = () =>
+        Math.max(0, track.scrollWidth - section.clientWidth);
+
+      gsap.to(track, {
+        x: () => -getScrollDistance(),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: () => `+=${getScrollDistance()}`,
+          pin: true,
+          scrub: true,
+          invalidateOnRefresh: true,
+          anticipatePin: 1,
+        },
+      });
+    }, section);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <div ref={sectionRef}>
+      <div className="h-screen overflow-hidden flex items-center">
+        <div
+          ref={trackRef}
+          className="flex flex-nowrap gap-4 sm:gap-6 pl-4 sm:pl-6 lg:pl-8 pr-4 sm:pr-6 lg:pr-8"
+        >
+          {services.map((service, index) => (
+            <ServiceCard
+              key={service.id}
+              service={service}
+              index={index}
+              onClick={() => onOpenApplication(service.title)}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ServiceCard({ service, index, onClick }: ServiceCardProps) {
+  return (
+    <motion.div
+      whileHover={{ y: -8 }}
+      className={`group relative rounded-2xl p-5 sm:p-7 lg:p-9 bg-[#080808] border border-white/[0.07] hover:border-white/[0.18] hover:bg-[#0d0d0d] transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.6)] cursor-pointer shrink-0 w-[280px] sm:w-[320px] lg:w-[350px] ${service.gridClass}`}
+      onClick={onClick}
+    >
+      {/* Subtle hover gradient glow inside card */}
+      <div
+        className="absolute top-0 right-0 -mr-16 -mt-16 w-52 h-52 rounded-full blur-3xl opacity-0 group-hover:opacity-25 transition-opacity duration-500 pointer-events-none"
+        style={{ backgroundColor: service.color }}
+      />
+
+      {/* Card Header */}
+      <div>
+        <div className="flex items-center justify-between gap-4 mb-6">
+          <div className="flex items-center gap-3">
+            <div className="relative w-12 h-12 rounded-2xl bg-[#1a1c1f] border border-white/10 flex items-center justify-center text-2xl group-hover:scale-110 group-hover:border-[#6B96FF]/40 transition-all">
+              <Image src={service.icon} alt={service.marketplace} fill className="object-contain" sizes="40px" />
+            </div>
+            <div>
+              <span className="text-[11px] font-display text-[#6B96FF] uppercase tracking-wider block">
+                {service.marketplace}
+              </span>
+              <div className="text-[11px] text-[#6E7078]">{service.subtitle}</div>
+            </div>
+          </div>
+
+          {/* Arrow Action Button */}
+          <div className="w-10 h-10 rounded-md bg-white/[0.04] border border-white/10 flex items-center justify-center text-[#96989F] group-hover:text-[#0B0D0F] group-hover:bg-gradient-to-r group-hover:from-[#4A7BFF] group-hover:to-[#2D5ADB] group-hover:border-transparent transition-all shrink-0">
+            <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </div>
+        </div>
+
+        {/* Title */}
+        <h3 className="text-xl sm:text-2xl font-medium tracking-tight text-[#F3F3F1] group-hover:text-white transition-colors">
+          {service.title}
+        </h3>
+
+        {/* Description */}
+        <p className="mt-3 text-sm text-[#96989F] leading-relaxed line-clamp-3">
+          {service.description}
+        </p>
+      </div>
+
+      {/* Card Footer: Metrics & Tags */}
+      <div className="mt-8 pt-6 border-t border-white/[0.06] space-y-4">
+        {/* Metrics row */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          {service.metrics.map((metric, i) => (
+            <div key={i} className="p-2.5 rounded-xl bg-[#111315]/80 border border-white/5">
+              <span className="text-[10px] uppercase font-display text-[#6E7078] block">
+                {metric.label}
+              </span>
+              <span className="text-xs font-semibold text-[#F3F3F1] font-display mt-0.5 block">
+                {metric.value}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
 }
 
 export default function ServicesSection({ onOpenApplication }: ServicesSectionProps) {
@@ -414,8 +546,10 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
           </div>
         </div>
         {/* ── END FEATURED CAROUSEL ── */}
+      </div>
 
-        {/* Explore All Services heading */}
+      {/* Explore All Services heading */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -423,7 +557,6 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
           className="text-center mb-14"
         >
-          
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl leading-[1.08] font-display tracking-tight text-[#f2f2f0]"
           >
@@ -436,79 +569,10 @@ export default function ServicesSection({ onOpenApplication }: ServicesSectionPr
             Every service, from marketplace launch to scale — fully managed by our specialist teams.
           </p>
         </motion.div>
-
-        {/* Asymmetrical Masonry Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.6, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -6 }}
-              className={`${service.gridClass} group relative rounded-2xl p-7 sm:p-9 bg-[#080808] border border-white/[0.07] hover:border-white/[0.18] hover:bg-[#0d0d0d] transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.6)] cursor-pointer`}
-              onClick={() => setSelectedService(service)}
-            >
-              {/* Subtle hover gradient glow inside card */}
-              <div
-                className="absolute top-0 right-0 -mr-16 -mt-16 w-52 h-52 rounded-full blur-3xl opacity-0 group-hover:opacity-25 transition-opacity duration-500 pointer-events-none"
-                style={{ backgroundColor: service.color }}
-              />
-
-              {/* Card Header */}
-              <div>
-                <div className="flex items-center justify-between gap-4 mb-6">
-                  <div className="flex items-center gap-3">
-                    <div className="relative w-12 h-12 rounded-2xl bg-[#1a1c1f] border border-white/10 flex items-center justify-center text-2xl group-hover:scale-110 group-hover:border-[#6B96FF]/40 transition-all">
-                      <Image src={service.icon} alt={service.marketplace} fill className="object-contain" sizes="40px" />
-                    </div>
-                    <div>
-                      <span className="text-[11px] font-display text-[#6B96FF] uppercase tracking-wider block">
-                        {service.marketplace}
-                      </span>
-                      <div className="text-[11px] text-[#6E7078]">{service.subtitle}</div>
-                    </div>
-                  </div>
-
-                  {/* Arrow Action Button */}
-                  <div className="w-10 h-10 rounded-md bg-white/[0.04] border border-white/10 flex items-center justify-center text-[#96989F] group-hover:text-[#0B0D0F] group-hover:bg-gradient-to-r group-hover:from-[#4A7BFF] group-hover:to-[#2D5ADB] group-hover:border-transparent transition-all shrink-0">
-                    <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                  </div>
-                </div>
-
-                {/* Title */}
-                <h3 className="text-xl sm:text-2xl font-medium tracking-tight text-[#F3F3F1] group-hover:text-white transition-colors">
-                  {service.title}
-                </h3>
-
-                {/* Description */}
-                <p className="mt-3 text-sm text-[#96989F] leading-relaxed line-clamp-3">
-                  {service.description}
-                </p>
-              </div>
-
-              {/* Card Footer: Metrics & Tags */}
-              <div className="mt-8 pt-6 border-t border-white/[0.06] space-y-4">
-                {/* Metrics row */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                  {service.metrics.map((metric, i) => (
-                    <div key={i} className="p-2.5 rounded-xl bg-[#111315]/80 border border-white/5">
-                      <span className="text-[10px] uppercase font-display text-[#6E7078] block">
-                        {metric.label}
-                      </span>
-                      <span className="text-xs font-semibold text-[#F3F3F1] font-display mt-0.5 block">
-                        {metric.value}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-
-              </div>
-            </motion.div>
-          ))}
-        </div>
       </div>
+
+      {/* Horizontal Scroll Showcase — full viewport width, pinned scroll-driven */}
+      <HorizontalScrollShowcase services={services} onOpenApplication={onOpenApplication} />
 
       {/* Service Detail Deep Dive Modal */}
       <AnimatePresence>
